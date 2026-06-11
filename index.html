@@ -1,0 +1,1372 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A WAXLO transforma empresas em operações modernas com sites que impressionam, automação de atendimento com IA e estratégia para vender no digital.">
+    <meta name="theme-color" content="#0A0A0A">
+    <title>WAXLO — Sites e Automações com IA</title>
+
+    <!-- Item 5: Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://waxlo.com.br/">
+    <meta property="og:title" content="WAXLO — Sites e Automações com IA">
+    <meta property="og:description" content="Sites profissionais, automação de atendimento com IA e consultoria de marketing digital para empresas que querem crescer. Atendemos todo o Brasil.">
+    <meta property="og:image" content="https://waxlo.com.br/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="WAXLO">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="WAXLO — Sites e Automações com IA">
+    <meta name="twitter:description" content="Sites profissionais, automação de atendimento com IA e consultoria de marketing para empresas que querem crescer.">
+    <meta name="twitter:image" content="https://waxlo.com.br/og-image.png">
+
+    <!-- Item 6: Favicon inline SVG (W dourado em fundo escuro) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A0A0A'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23C9A96E'>W</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230A0A0A'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='110' fill='%23C9A96E'>W</text></svg>">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Syne:wght@800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        bg: '#0A0A0A',
+                        surface: '#141414',
+                        border: '#2A2A2A',
+                        text: '#FFFFFF',
+                        muted: '#888888',
+                        gold: '#C9A96E',
+                        'gold-dim': '#8B6E3F'
+                    },
+                    fontFamily: {
+                        display: ['Syne', 'sans-serif'],
+                        body: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --color-bg: #0A0A0A;
+            --color-surface: #141414;
+            --color-border: #2A2A2A;
+            --color-text: #FFFFFF;
+            --color-muted: #888888;
+            --color-gold: #C9A96E;
+            --color-gold-dim: #8B6E3F;
+        }
+
+        body {
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Utilities */
+        .sharp { border-radius: 0 !important; }
+        .rounded-tiny { border-radius: 4px !important; }
+        
+        /* Navbar Transitions */
+        #navbar {
+            transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            border-bottom: 1px solid transparent;
+        }
+        #navbar.scrolled {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        /* Mobile Menu */
+        #mobile-menu {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+        }
+        #mobile-menu.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Grid Background Pattern */
+        .bg-grid {
+            background-size: 60px 60px;
+            background-image: 
+                linear-gradient(to right, rgba(201,169,110,0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(201,169,110,0.04) 1px, transparent 1px);
+        }
+
+        /* Pulse Dot Animation */
+        .pulse-dot {
+            animation: pulse 2s infinite;
+            background-color: #22C55E;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+        }
+
+        /* Chat Sequence Animations */
+        .msg-1 { animation: msg1 8s infinite; opacity: 0; transform-origin: left bottom; }
+        @keyframes msg1 {
+            0% { opacity: 0; transform: translateY(10px); }
+            7.5% { opacity: 1; transform: translateY(0); }
+            95% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
+        }
+
+        .msg-2 { animation: msg2 8s infinite; opacity: 0; transform-origin: right bottom; }
+        @keyframes msg2 {
+            0%, 7.5% { opacity: 0; transform: translateY(10px); }
+            15% { opacity: 1; transform: translateY(0); } 
+            95% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
+        }
+
+        .msg-3 { animation: msg3 8s infinite; opacity: 0; transform-origin: left bottom; }
+        @keyframes msg3 {
+            0%, 15% { opacity: 0; transform: translateY(10px); }
+            22.5% { opacity: 1; transform: translateY(0); } 
+            95% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
+        }
+
+        .msg-4 { animation: msg4 8s infinite; opacity: 0; transform-origin: right bottom; }
+        @keyframes msg4 {
+            0%, 22.5% { opacity: 0; transform: translateY(10px); }
+            30% { opacity: 1; transform: translateY(0); } 
+            95% { opacity: 1; transform: translateY(0); }
+            100% { opacity: 0; transform: translateY(10px); }
+        }
+        
+        /* Demo Chat Animation */
+        @keyframes demoMsgFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .demo-msg-enter {
+            animation: demoMsgFadeIn 0.5s ease-out forwards;
+        }
+        
+        /* Intersection Observer Fade-Up */
+        .fade-up-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 600ms ease-out, transform 600ms ease-out;
+        }
+        .fade-up-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* FAQ Accordion */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 300ms ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px;
+        }
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        /* Smooth interactions per reduced-motion rules */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+
+        /* ── Social CTA Buttons ── */
+        .cta-social-btn {
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .cta-social-btn:hover {
+            transform: translateY(-2px);
+        }
+        .cta-social-btn:active {
+            transform: translateY(0);
+        }
+
+        /* WhatsApp button */
+        .whatsapp-btn {
+            background: transparent;
+            color: #25D366;
+            border: 1px solid #25D366;
+        }
+        .whatsapp-btn:hover {
+            background: rgba(37,211,102,0.08);
+            box-shadow: 0 0 24px rgba(37,211,102,0.15);
+            border-color: #25D366;
+        }
+
+        /* Instagram button */
+        .instagram-btn {
+            background: transparent;
+            color: #FFFFFF;
+            border: 1px solid #2A2A2A;
+            position: relative;
+        }
+        .instagram-btn:hover {
+            border-color: transparent;
+            box-shadow: 0 0 0 1px #E1306C, 0 0 24px rgba(225,48,108,0.2);
+        }
+        .instagram-btn:hover .instagram-icon-wrap {
+            background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+        }
+        .instagram-btn:hover span.relative.z-10:last-child {
+            background: linear-gradient(135deg, #f09433 0%, #dc2743 50%, #bc1888 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* ── WhatsApp Float ── */
+        #whatsapp-float {
+            filter: drop-shadow(0 4px 20px rgba(37,211,102,0.25));
+        }
+        #wpp-btn {
+            cursor: pointer;
+            border: none;
+            outline: none;
+        }
+        .wpp-tooltip {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        }
+        #whatsapp-float:hover .wpp-tooltip,
+        #wpp-btn:focus + .wpp-tooltip {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Float entrance animation */
+        @keyframes floatEntrance {
+            from { opacity: 0; transform: translateY(20px) scale(0.8); }
+            to   { opacity: 1; transform: translateY(0)   scale(1); }
+        }
+        #whatsapp-float {
+            animation: floatEntrance 0.6s 1.5s cubic-bezier(0.34,1.56,0.64,1) both;
+        }
+
+        /* ── Responsiveness fixes ── */
+        @media (max-width: 640px) {
+            .cta-social-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            #whatsapp-float {
+                bottom: 20px;
+                right: 16px;
+            }
+        }
+
+        /* Niches grid responsiveness */
+        @media (max-width: 480px) {
+            .niche-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full h-[80px] flex items-center justify-between px-6 md:px-[60px] bg-bg/85 backdrop-blur-[20px]">
+        <!-- Left: Logo -->
+        <a href="#" class="font-display font-[800] text-[24px] text-white tracking-[-0.02em]">
+            WAX<span class="text-gold">L</span>O
+        </a>
+
+        <!-- Center: Links (Desktop) -->
+        <div class="hidden md:flex items-center gap-[40px]">
+            <a href="#servicos" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Serviços</a>
+            <a href="#comofunciona" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Como Funciona</a>
+            <a href="#contato" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Contato</a>
+        </div>
+
+        <!-- Right: CTA (Desktop) -->
+        <div class="hidden md:block">
+            <button class="sharp border border-gold text-gold bg-transparent px-[20px] py-[10px] font-body font-medium text-[15px] hover:bg-gold hover:text-bg transition-colors duration-200">
+                Falar com especialista &rarr;
+            </button>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <button id="menu-btn" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] z-[60]">
+            <span class="block w-6 h-[2px] bg-white transition-transform duration-300"></span>
+            <span class="block w-6 h-[2px] bg-white transition-transform duration-300"></span>
+        </button>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu" class="fixed inset-0 bg-bg z-40 flex flex-col items-center justify-center gap-8 px-6">
+        <a href="#servicos" class="mobile-link font-display font-[800] text-[32px] text-white">Serviços</a>
+        <a href="#comofunciona" class="mobile-link font-display font-[800] text-[32px] text-white">Como Funciona</a>
+        <a href="#contato" class="mobile-link font-display font-[800] text-[32px] text-white">Contato</a>
+        <button class="sharp border border-gold text-gold bg-transparent px-[24px] py-[14px] font-body font-medium text-[16px] hover:bg-gold hover:text-bg transition-colors duration-200 mt-4">
+            Falar com especialista &rarr;
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen pt-[80px] bg-grid overflow-hidden flex items-center">
+        <!-- Main Container -->
+        <div class="max-w-[1280px] w-full mx-auto px-6 md:px-12 py-[48px] md:py-[120px] flex flex-col md:flex-row items-center gap-10 md:gap-8">
+            
+            <!-- Left Column (60%) -->
+            <div class="w-full md:w-[60%] flex flex-col items-start pt-6 md:pt-0">
+                <!-- Badge -->
+                <div class="rounded-tiny mb-5 border border-border bg-surface px-[14px] py-[6px] flex items-center">
+                    <span class="font-body font-medium text-[11px] text-muted">✦ Sites &amp; Automações com IA</span>
+                </div>
+
+                <!-- Headline — responsive sizes -->
+                <h1 class="font-display font-[800] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] leading-[1.05] text-white">
+                    Seu negócio no <span class="underline decoration-gold decoration-1 underline-offset-[6px]">digital</span>.<br>
+                    Trabalhando por você —<br>
+                    24 horas por dia.
+                </h1>
+
+                <!-- Subtext -->
+                <p class="font-body font-normal text-[16px] md:text-[18px] text-muted max-w-[480px] leading-[1.65] mt-[20px] md:mt-[24px]">
+                    A WAXLO transforma empresas em operações modernas com sites que impressionam, automação de atendimento com IA e estratégia para vender no digital.
+                </p>
+
+                <!-- Item 4: CTA Buttons — now anchor links -->
+                <div class="flex flex-col sm:flex-row gap-[14px] mt-[32px] md:mt-[40px] w-full sm:w-auto">
+                    <a href="#contato" class="sharp bg-gold text-bg px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[600] text-[15px] md:text-[16px] hover:bg-gold-dim transition-colors duration-200 w-full sm:w-auto text-center">
+                        Quero meu site &rarr;
+                    </a>
+                    <a href="#demonstracao" class="sharp border border-border bg-transparent text-white px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[500] text-[15px] md:text-[16px] hover:border-muted transition-colors duration-200 w-full sm:w-auto text-center">
+                        Ver demonstração &darr;
+                    </a>
+                </div>
+
+                <!-- Features Badges Row -->
+                <div class="flex flex-wrap items-center gap-x-2 gap-y-2 font-body font-[500] text-[12px] md:text-[13px] text-muted mt-[32px] md:mt-[48px]">
+                    <span>✦ Atendemos todo o Brasil</span>
+                    <span class="hidden sm:inline">&middot;</span>
+                    <span>✦ Diagnóstico gratuito</span>
+                    <span class="hidden sm:inline">&middot;</span>
+                    <span>✦ Suporte contínuo</span>
+                </div>
+            </div>
+
+            <!-- Right Column — hidden on small mobile, shown from sm up -->
+            <div class="hidden sm:flex w-full md:w-[40%] justify-center md:justify-end">
+                <!-- Phone Mockup — smaller on tablet, full on desktop -->
+                <div class="relative w-full max-w-[240px] md:max-w-[280px] h-[460px] md:h-[540px] border border-border bg-surface sharp overflow-hidden flex flex-col z-10 shadow-2xl shadow-black/50">
+                    
+                    <!-- Top Status Bar -->
+                    <div class="h-[52px] md:h-[60px] border-b border-border flex items-center px-4 bg-surface shrink-0">
+                        <div class="flex items-center gap-2">
+                            <div class="w-[4px] h-[4px] rounded-full pulse-dot"></div>
+                            <span class="font-body font-medium text-[11px] md:text-[12px] text-muted">WAXLO IA • online agora</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Area -->
+                    <div class="flex-1 p-3 md:p-4 flex flex-col gap-3 md:gap-4 overflow-y-auto">
+                        <!-- Message 1: User -->
+                        <div class="msg-1 flex justify-end">
+                            <div class="bg-white text-bg px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[85%]">
+                                <p class="font-body text-[12px] md:text-[13px] leading-relaxed">Oi, queria marcar uma consulta 😊</p>
+                            </div>
+                        </div>
+                        <!-- Message 2: Bot -->
+                        <div class="msg-2 flex justify-start">
+                            <div class="bg-[#1C1C1C] text-white px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[90%] border border-border">
+                                <p class="font-body text-[12px] md:text-[13px] leading-relaxed">Olá! Temos horários disponíveis esta semana. Qual procedimento?</p>
+                            </div>
+                        </div>
+                        <!-- Message 3: User -->
+                        <div class="msg-3 flex justify-end">
+                            <div class="bg-white text-bg px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[85%]">
+                                <p class="font-body text-[12px] md:text-[13px] leading-relaxed">Limpeza de pele</p>
+                            </div>
+                        </div>
+                        <!-- Message 4: Bot -->
+                        <div class="msg-4 flex justify-start">
+                            <div class="bg-[#1C1C1C] text-white px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[90%] border border-border">
+                                <p class="font-body text-[12px] md:text-[13px] leading-relaxed">✅ Terça 14h confirmado! Até lá 😊</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bottom Input Bar Mockup -->
+                    <div class="h-[52px] md:h-[60px] border-t border-border flex items-center px-3 md:px-4 bg-surface shrink-0 gap-3">
+                        <div class="flex-1 h-[32px] md:h-[36px] bg-[#1C1C1C] border border-border rounded-tiny px-3 flex items-center">
+                            <span class="font-body text-[11px] md:text-[12px] text-muted">Mensagem...</span>
+                        </div>
+                        <div class="w-7 h-7 md:w-8 md:h-8 rounded-tiny bg-white flex items-center justify-center shrink-0">
+                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-bg translate-x-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Section 3: Pain / Problema -->
+    <section class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[760px] mx-auto text-center">
+            <h2 class="font-display font-[800] text-[28px] md:text-[42px] text-white leading-[1.3]">
+                Você responde as mesmas perguntas<br class="hidden md:block">
+                no WhatsApp todo dia.<br class="hidden md:block">
+                Perde pacientes porque demorou<br class="hidden md:block">
+                para responder.<br class="hidden md:block">
+                Seu concorrente já tem presença digital.<br class="hidden md:block">
+                Você ainda depende de indicação.
+            </h2>
+            
+            <div class="w-[40px] h-[1px] bg-gold mx-auto my-[40px]"></div>
+            
+            <p class="font-display font-[800] text-[24px] text-gold text-center">
+                Isso não é falta de esforço — é falta de sistema.
+            </p>
+        </div>
+
+        <!-- Cards -->
+        <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-[64px]">
+            <div class="sharp bg-surface border border-border px-[32px] py-[40px]">
+                <div class="font-display font-[800] text-[56px] text-gold leading-none">73%</div>
+                <p class="font-body font-[400] text-[14px] text-muted mt-[8px]">
+                    dos consumidores pesquisam online antes de escolher uma empresa
+                </p>
+            </div>
+            <div class="sharp bg-surface border border-border px-[32px] py-[40px]">
+                <div class="font-display font-[800] text-[56px] text-gold leading-none">3x</div>
+                <p class="font-body font-[400] text-[14px] text-muted mt-[8px]">
+                    mais agendamentos com atendimento automático 24 horas por dia
+                </p>
+            </div>
+            <div class="sharp bg-surface border border-border px-[32px] py-[40px]">
+                <div class="font-display font-[800] text-[56px] text-gold leading-none">R$0</div>
+                <p class="font-body font-[400] text-[14px] text-muted mt-[8px]">
+                    de custo extra para atender 1 ou 1.000 pacientes com IA
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Serviços -->
+    <section id="servicos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">O QUE FAZEMOS</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1] mb-12">
+                Uma empresa. Três soluções.<br>Resultado completo.
+            </h2>
+
+            <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- CARD 1 -->
+                <div class="sharp bg-surface border border-border px-[40px] py-[48px] flex flex-col">
+                    <svg class="w-8 h-8 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                    </svg>
+                    <h3 class="font-display font-[800] text-[22px] text-white mt-[20px]">Sites &amp; Landing Pages</h3>
+                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-3">
+                        Do site institucional à landing page de alta conversão. Sites rápidos, modernos e preparados para tráfego pago — simples, animados ou complexos.
+                    </p>
+                    <ul class="mt-[24px] flex flex-col gap-2">
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Landing pages de campanha
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Sites animados e interativos
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Sistemas web e dashboards
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Integração com WhatsApp e CRM
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="relative sharp bg-surface border border-border border-t-[2px] border-t-gold px-[40px] py-[48px] flex flex-col">
+                    <div class="absolute top-[20px] right-[24px]">
+                        <span class="font-mono text-gold text-[10px] tracking-[0.1em] font-bold">FOCO PRINCIPAL</span>
+                    </div>
+                    <svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2C6.477 2 2 5.82 2 10.533c0 2.652 1.396 5.011 3.568 6.551-.51 1.956-1.748 3.541-1.859 3.684a.999.999 0 00.914 1.62c3.048 0 5.46-1.282 6.963-2.31 1.139.197 2.316.3 3.535.3 5.523 0 10-3.82 10-8.533C25.12 5.82 20.643 2 15.12 2H12z" transform="translate(-1 -1)"/>
+                    </svg>
+                    <h3 class="font-display font-[800] text-[22px] text-white mt-[20px]">Automação &amp; IA</h3>
+                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-3">
+                        Seu WhatsApp respondendo, agendando e qualificando pacientes automaticamente — mesmo de madrugada. Feito para clínicas e negócios que não podem perder um cliente por demora no atendimento.
+                    </p>
+                    <ul class="mt-[24px] flex flex-col gap-2">
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Atendimento automático 24h
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Agendamento de consultas
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Follow-up e lembrete automático
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Dashboard de gestão para o dono
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="sharp bg-surface border border-border px-[40px] py-[48px] flex flex-col">
+                    <svg class="w-8 h-8 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z"></path>
+                    </svg>
+                    <h3 class="font-display font-[800] text-[22px] text-white mt-[20px]">Consultoria de Marketing Digital</h3>
+                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-3">
+                        Não basta estar no digital — precisa vender. Estruturamos funis, criamos campanhas e usamos IA para gerar conteúdo que converte visitantes em clientes reais.
+                    </p>
+                    <ul class="mt-[24px] flex flex-col gap-2">
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Estratégia de conteúdo com IA
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Estrutura de funil de vendas
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Campanhas para tráfego pago
+                        </li>
+                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
+                            <span class="text-gold mt-[1px]">&rarr;</span> Copywriting e anúncios
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: Demonstração Interativa -->
+    <section id="demonstracao" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[760px] mx-auto flex flex-col items-center">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">VER NA PRÁTICA</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+                Veja a automação funcionando agora
+            </h2>
+            <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4">
+                Escolha um segmento e assista como seria o atendimento do seu negócio — automático, inteligente, 24h por dia.
+            </p>
+
+            <!-- Toggles -->
+            <div class="flex gap-4 justify-center mt-[32px]">
+                <button onclick="window.switchDemoTab('clinica')" id="tab-clinica" class="demo-tab sharp border border-gold bg-[rgba(201,169,110,0.06)] text-gold px-[28px] py-[12px] font-body font-[600] text-[16px] transition-colors">
+                    🏥 Clínica
+                </button>
+                <button onclick="window.switchDemoTab('restaurante')" id="tab-restaurante" class="demo-tab sharp border border-border bg-transparent text-muted px-[28px] py-[12px] font-body font-[600] text-[16px] hover:border-gold hover:text-gold transition-colors">
+                    🍽️ Restaurante
+                </button>
+            </div>
+
+            <!-- Phone Container -->
+            <div class="w-full max-w-[360px] mx-auto mt-[40px] sharp border border-border bg-surface h-[520px] flex flex-col relative shadow-2xl shadow-black/50">
+                <!-- Header -->
+                <div class="bg-bg px-[16px] py-[12px] border-b border-border flex items-center shrink-0">
+                    <div class="flex items-center gap-2">
+                        <div class="w-[6px] h-[6px] rounded-full pulse-dot"></div>
+                        <span class="font-body font-[500] text-[13px] text-white">IA WAXLO • online</span>
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div id="demo-app-chat" class="p-[16px] overflow-hidden flex-1 flex flex-col gap-3 relative transition-opacity duration-300">
+                    <!-- Messages injected here -->
+                </div>
+            </div>
+
+            <!-- Caption -->
+            <p class="font-body font-[400] text-[14px] text-muted text-center italic mt-[24px]">
+                "Este atendimento acontece sem nenhuma pessoa digitando."
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 6: Vitrine de Sites -->
+    <section id="vitrine" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">NOSSO TRABALHO</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+                Sites que transformam visitantes em clientes
+            </h2>
+            <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[600px] leading-[1.6] mt-4">
+                Do site simples ao projeto complexo e animado — cada entrega feita para o negócio por trás dela.
+            </p>
+
+            <!-- Grid -->
+            <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mt-[48px]">
+                
+                <!-- CARD 1 -->
+                <div class="sharp border border-border bg-surface flex flex-col overflow-hidden group">
+                    <!-- TOP AREA -->
+                    <div class="bg-bg h-[200px] border-b border-border flex items-center justify-center relative overflow-hidden">
+                        <div class="w-full h-full flex flex-col items-center justify-center p-6 group-hover:scale-[1.02] transition-transform duration-400 ease-in-out">
+                            <!-- SC Advocacia Mockup -->
+                            <div class="w-full max-w-[280px] h-full bg-surface border border-border sharp flex flex-col">
+                                <div class="h-[24px] border-b border-border bg-bg flex items-center px-2 gap-[4px] shrink-0">
+                                    <div class="w-[6px] h-[6px] rounded-full bg-border"></div>
+                                    <div class="w-[6px] h-[6px] rounded-full bg-border"></div>
+                                    <div class="w-[6px] h-[6px] rounded-full bg-border"></div>
+                                    <div class="ml-2 text-[9px] font-mono text-muted truncate">sc-advocacia-five.vercel.app</div>
+                                </div>
+                                <div class="flex-1 p-4 flex flex-col gap-2 opacity-50 shrink-0">
+                                    <div class="w-1/2 h-[6px] bg-border"></div>
+                                    <div class="w-3/4 h-[6px] bg-border"></div>
+                                    <div class="w-1/4 h-[6px] bg-border mt-2"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- BOTTOM AREA -->
+                    <div class="p-[28px_32px] flex-1 flex flex-col">
+                        <div class="font-mono text-[11px] text-gold tracking-[0.1em]">ADVOCACIA &amp; DIREITO</div>
+                        <h3 class="font-display font-[800] text-[20px] text-white mt-2">SC Advocacia</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.6] mt-2 flex-1">
+                            Site institucional com agendamento via WhatsApp, galeria de áreas de atuação e tour virtual. Cliente real da WAXLO.
+                        </p>
+                        <a href="https://sc-advocacia-five.vercel.app" target="_blank" class="inline-block mt-4 font-body font-[500] text-[14px] text-gold hover:underline self-start">Ver site &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="sharp border border-border bg-surface flex flex-col overflow-hidden group">
+                    <!-- TOP AREA -->
+                    <div class="bg-bg h-[200px] border-b border-border flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-[20px] right-[20px] z-10">
+                            <span class="rounded-[4px] border border-border bg-bg px-[8px] py-[4px] font-body font-[500] text-[11px] text-muted">EM DESENVOLVIMENTO</span>
+                        </div>
+                        <div class="w-full h-full flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-400 ease-in-out">
+                            <!-- Clinica Mockup -->
+                            <svg class="w-16 h-16 text-gold opacity-80" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4v16m8-8H4"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- BOTTOM AREA -->
+                    <div class="p-[28px_32px] flex-1 flex flex-col">
+                        <div class="font-mono text-[11px] text-gold tracking-[0.1em]">CLÍNICA DE ESTÉTICA</div>
+                        <h3 class="font-display font-[800] text-[20px] text-white mt-2">Site Premium — Modelo</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.6] mt-2 flex-1">
+                            Site animado com sistema de agendamento integrado, galeria de procedimentos e automação de WhatsApp.
+                        </p>
+                        <a href="#" class="inline-block mt-4 font-body font-[500] text-[14px] text-gold hover:underline pointer-events-none opacity-50 self-start">Ver demonstração &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="sharp border border-border bg-surface flex flex-col overflow-hidden group">
+                    <!-- TOP AREA -->
+                    <div class="bg-bg h-[200px] border-b border-border flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute top-[20px] right-[20px] z-10">
+                            <span class="rounded-[4px] border border-border bg-bg px-[8px] py-[4px] font-body font-[500] text-[11px] text-muted">EM DESENVOLVIMENTO</span>
+                        </div>
+                        <div class="w-full h-full flex flex-col items-center justify-center group-hover:scale-[1.02] transition-transform duration-400 ease-in-out text-gold opacity-80 flex-row gap-2">
+                            <!-- Restaurante Mockup -->
+                            <svg class="w-[42px] h-[42px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 4v8M12 4v8M16 4v8M8 12a4 4 0 008 0V4H8zM12 12v8"></path>
+                            </svg>
+                            <svg class="w-[42px] h-[42px]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4v16M12 4c-4 0-6 4-6 8v8h6"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- BOTTOM AREA -->
+                    <div class="p-[28px_32px] flex-1 flex flex-col">
+                        <div class="font-mono text-[11px] text-gold tracking-[0.1em]">RESTAURANTE &amp; GASTRONOMIA</div>
+                        <h3 class="font-display font-[800] text-[20px] text-white mt-2">Site Premium — Modelo</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.6] mt-2 flex-1">
+                            Cardápio digital, reservas online e integração com atendimento automático via WhatsApp.
+                        </p>
+                        <a href="#" class="inline-block mt-4 font-body font-[500] text-[14px] text-gold hover:underline pointer-events-none opacity-50 self-start">Ver demonstração &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-[48px] text-center font-body text-[16px] text-muted">
+                Quer ver como ficaria o site do seu negócio? 
+                <a href="#contato" class="text-gold hover:underline">Fale com a nossa equipe &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 7: Como Funciona -->
+    <section id="como-funciona" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[1280px] mx-auto flex flex-col items-center lg:items-start text-center lg:text-left">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">O PROCESSO</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white leading-[1.1]">
+                Não somos fornecedores.<br>Somos parceiros do seu negócio.
+            </h2>
+            <p class="font-body font-[400] text-[18px] text-muted max-w-[600px] leading-[1.6] mt-4">
+                Antes de escrever uma linha de código, entendemos quem você é, como você vende e o que trava seu crescimento.
+            </p>
+
+            <!-- Timeline -->
+            <div class="relative flex flex-col lg:flex-row gap-12 lg:gap-8 mt-[64px] w-full text-left">
+                <!-- Connecting Line -->
+                <div class="absolute left-[20px] top-[20px] bottom-[20px] w-[1px] bg-border z-0 lg:hidden"></div>
+                <div class="hidden lg:block absolute top-[20px] left-[20px] w-[calc(100%-40px)] lg:w-[75%] h-[1px] bg-border z-0"></div>
+
+                <!-- STEP 01 -->
+                <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">1</div>
+                    <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
+                        <h3 class="font-display font-[800] text-[18px] text-white">DIAGNÓSTICO GRATUITO</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
+                            Uma conversa para entender seu negócio, seus clientes e seus objetivos reais. Sem compromisso.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 02 -->
+                <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">2</div>
+                    <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
+                        <h3 class="font-display font-[800] text-[18px] text-white">PROPOSTA E CONTRATO</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
+                            Apresentamos a solução ideal com escopo claro, prazo definido e investimento transparente. Tudo documentado.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 03 -->
+                <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">3</div>
+                    <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
+                        <h3 class="font-display font-[800] text-[18px] text-white">REUNIÕES DE ALINHAMENTO</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
+                            Trabalhamos junto com você durante o desenvolvimento. Você acompanha, aprova e sugere a cada etapa. Sem surpresas.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- STEP 04 -->
+                <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">4</div>
+                    <div class="pt-2 lg:pt-0">
+                        <h3 class="font-display font-[800] text-[18px] text-white">ENTREGA E PARCERIA</h3>
+                        <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
+                            Seu sistema no ar com suporte ativo. Melhorias contínuas e uma conexão que vai além do projeto.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- HIGHLIGHT BOX -->
+            <div class="w-full mt-[64px] bg-[rgba(201,169,110,0.06)] border border-[rgba(201,169,110,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
+                <div class="font-display font-[800] text-[64px] md:text-[80px] text-gold opacity-40 leading-none shrink-0 relative top-2">"</div>
+                <div class="flex-1 pl-0 md:pl-2">
+                    <p class="font-body text-[16px] md:text-[18px] text-white leading-[1.7]">
+                        Conectamos nossos clientes entre si. Uma clínica pode indicar um restaurante. Uma empresa pode precisar de outra. Construímos mais do que sistemas — construímos uma rede.
+                    </p>
+                    <div class="font-body font-[500] text-[14px] text-muted mt-4">— Equipe WAXLO</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 9: Para quem é -->
+    <section class="w-full bg-surface py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SEGMENTOS</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+                Para negócios que querem crescer com inteligência
+            </h2>
+
+            <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-[48px] md:mt-[64px]">
+                <!-- Item 1 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 0ms;">
+                    <i data-lucide="hospital" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Clínicas e consultórios</div>
+                </div>
+                <!-- Item 2 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 100ms;">
+                    <i data-lucide="sparkles" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Estética e beleza</div>
+                </div>
+                <!-- Item 3 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 200ms;">
+                    <i data-lucide="dumbbell" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Academias e studios</div>
+                </div>
+                <!-- Item 4 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 300ms;">
+                    <i data-lucide="utensils" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Restaurantes e bares</div>
+                </div>
+                <!-- Item 5 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 0ms;">
+                    <i data-lucide="shopping-bag" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Lojas e comércio local</div>
+                </div>
+                <!-- Item 6 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 100ms;">
+                    <i data-lucide="wrench" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Oficinas e serviços</div>
+                </div>
+                <!-- Item 7 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 200ms;">
+                    <i data-lucide="home" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Imobiliárias</div>
+                </div>
+                <!-- Item 8 -->
+                <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 300ms;">
+                    <i data-lucide="briefcase" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Prestadores de serviço</div>
+                </div>
+            </div>
+
+            <p class="font-body font-[400] text-[16px] text-muted text-center max-w-[600px] mt-[48px] fade-up-element">
+                Atendemos empresas em todo o Brasil. Começamos por Lages e região — e expandimos junto com nossos clientes.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 10: Prova Social -->
+    <section class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">CLIENTES</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+                Quem já confia na WAXLO
+            </h2>
+
+            <!-- Grid -->
+            <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6 mt-[64px]">
+                
+                <!-- CARD 1 -->
+                <div class="sharp border border-gold bg-surface p-[40px_36px] flex flex-col fade-up-element" style="transition-delay: 0ms;">
+                    <div class="self-start font-mono text-[10px] text-gold bg-[rgba(201,169,110,0.1)] px-[10px] py-[4px] tracking-[0.1em] sharp">CLIENTE ATIVO</div>
+                    <h3 class="font-display font-[800] text-[22px] text-white mt-[16px]">SC Advocacia</h3>
+                    <div class="font-body font-[400] text-[14px] text-muted mt-1">Lages, SC</div>
+                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-[16px] flex-1">
+                        Site institucional com agendamento via WhatsApp, galeria de áreas de atuação e tour virtual integrado.
+                    </p>
+                    <div class="mt-[20px] self-start rounded-tiny border border-border px-[12px] py-[4px] font-body font-[500] text-[12px] text-muted">Advocacia &amp; Direito</div>
+                    <a href="https://sc-advocacia-five.vercel.app" target="_blank" class="font-body font-[500] text-[14px] text-gold mt-[20px] hover:underline self-start">Visitar site &rarr;</a>
+                </div>
+
+                <!-- CARD 2 -->
+                <div class="sharp border border-border bg-surface p-[40px_36px] opacity-60 flex flex-col fade-up-element" style="transition-delay: 150ms;">
+                    <div class="self-start rounded-tiny border border-border px-[10px] py-[4px] font-body font-[500] text-[11px] text-muted">EM DESENVOLVIMENTO</div>
+                    <h3 class="font-display font-[800] text-[22px] text-white mt-[16px]">Clínica</h3>
+                    <div class="font-body font-[400] text-[14px] text-muted mt-1">Lages, SC</div>
+                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-[16px] flex-1">
+                        Automação completa de atendimento com IA, agendamento via WhatsApp e dashboard de gestão.
+                    </p>
+                </div>
+
+                <!-- CARD 3 -->
+                <div class="sharp border border-border bg-surface p-[40px_36px] opacity-60 flex flex-col fade-up-element" style="transition-delay: 300ms;">
+                    <div class="self-start rounded-tiny border border-border px-[10px] py-[4px] font-body font-[500] text-[11px] text-muted">EM DESENVOLVIMENTO</div>
+                    <h3 class="font-display font-[800] text-[22px] text-white mt-[16px]">Restaurante</h3>
+                    <div class="font-body font-[400] text-[14px] text-muted mt-1">Lages, SC</div>
+                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-[16px] flex-1">
+                        Site com cardápio digital, reservas online e integração com atendimento automático.
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="font-body font-[500] text-[16px] text-white text-center mt-[40px] fade-up-element">
+                Seja um dos primeiros negócios da região com operação totalmente automatizada.
+            </p>
+        </div>
+    </section>
+
+    <!-- Section 11: FAQ -->
+    <section id="faq" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[760px] mx-auto flex flex-col items-center">
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">DÚVIDAS</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1] mb-[40px]">
+                Perguntas frequentes
+            </h2>
+
+            <div class="w-full border-t border-border fade-up-element">
+                
+                <!-- Item 1 -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">Preciso entender de tecnologia para usar?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Não. O painel é simples como um aplicativo do celular. Você vê seus agendamentos, leads e conversas sem precisar entender nada técnico. Cuidamos de tudo por baixo.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">Quanto tempo leva para ficar pronto?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Depende do escopo do projeto. Na nossa primeira reunião, definimos juntos o que será feito, o prazo real e todas as etapas — para que não haja surpresas de nenhum dos dois lados. Alinhamento antes da execução é uma das prioridades.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">Como funciona o processo de criação?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Tudo começa com uma conversa. Entendemos seu negócio, seus clientes e seus objetivos. Fazemos reuniões de acompanhamento durante o desenvolvimento para que você participe de cada decisão. O resultado é algo construído para você — não um template genérico.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">Funciona para negócio pequeno?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Sim. Foi exatamente para negócios locais e em crescimento que desenvolvemos essas soluções. Não existe tamanho mínimo — existe vontade de crescer.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">E se eu precisar mudar algo depois?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Alterações estão inclusas na mensalidade. Você pede, nós executamos — sem custo extra e sem burocracia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">Atende fora de Lages?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Sim. Atendemos todo o Brasil de forma 100% remota. Videoconferência, WhatsApp e entrega digital — sem limitação geográfica.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 12: CTA Final -->
+    <section class="w-full bg-bg py-[100px] md:py-[160px] px-6 flex flex-col items-center text-center">
+        <!-- Decorative line -->
+        <div class="w-[40px] h-[1px] bg-gold opacity-40 mb-6 mx-auto fade-up-element"></div>
+
+        <!-- Eyebrow Pill -->
+        <div class="rounded-full border border-[rgba(201,169,110,0.3)] bg-[rgba(201,169,110,0.06)] px-[16px] py-[6px] font-body font-[500] text-[12px] text-gold mb-[24px] fade-up-element">
+            ✦ Diagnóstico gratuito &middot; Sem compromisso
+        </div>
+
+        <h2 class="font-display font-[800] text-[36px] md:text-[64px] text-white leading-[1.05] max-w-[800px] mx-auto fade-up-element">
+            Pronto para ter um negócio<br class="hidden sm:block">que trabalha por você?
+        </h2>
+        
+        <p class="font-body font-[400] text-[18px] text-muted mt-[20px] max-w-[600px] mx-auto fade-up-element">
+            Começamos com uma conversa. Você nos conta sobre o seu negócio — nós mostramos o que é possível.
+        </p>
+
+        <!-- Animated CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-[20px] justify-center mt-[48px] w-full sm:w-auto fade-up-element">
+            
+            <!-- WhatsApp Button -->
+            <a href="#" id="cta-whatsapp"
+               class="cta-social-btn whatsapp-btn sharp px-[40px] py-[18px] font-display font-[700] text-[16px] flex items-center justify-center gap-3 relative overflow-hidden group">
+                <!-- Glow layer -->
+                <span class="absolute inset-0 bg-[#25D366] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl"></span>
+                <!-- Icon container -->
+                <span class="relative z-10 flex items-center justify-center w-[28px] h-[28px] rounded-full bg-white/10 group-hover:bg-white/20 transition-colors duration-200 shrink-0">
+                    <svg class="w-[16px] h-[16px]" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </span>
+                <span class="relative z-10">Falar pelo WhatsApp</span>
+            </a>
+
+            <!-- Instagram Button -->
+            <a href="https://instagram.com/waxlo.tech" target="_blank" id="cta-instagram"
+               class="cta-social-btn instagram-btn sharp px-[40px] py-[18px] font-body font-[500] text-[16px] flex items-center justify-center gap-3 relative overflow-hidden group">
+                <!-- Gradient glow -->
+                <span class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl"
+                      style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);"></span>
+                <!-- Instagram icon -->
+                <span class="relative z-10 flex items-center justify-center w-[28px] h-[28px] rounded-full transition-all duration-300 shrink-0 instagram-icon-wrap">
+                    <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                </span>
+                <span class="relative z-10">@waxlo.tech</span>
+            </a>
+        </div>
+
+        <!-- Social proof line below buttons -->
+        <p class="font-body text-[13px] text-muted mt-6 fade-up-element">
+            Respondemos em até 2 horas em dias úteis
+        </p>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <div id="whatsapp-float" class="fixed bottom-[28px] right-[28px] z-50 flex flex-col items-end gap-3">
+        <!-- Tooltip -->
+        <div id="wpp-tooltip" class="wpp-tooltip opacity-0 translate-x-2 pointer-events-none transition-all duration-300
+             bg-surface border border-border px-4 py-2 sharp flex items-center gap-2 whitespace-nowrap">
+            <span class="w-2 h-2 rounded-full bg-[#25D366] pulse-dot shrink-0"></span>
+            <span class="font-body font-[500] text-[13px] text-white">Fale conosco agora</span>
+        </div>
+        <!-- Button -->
+        <button id="wpp-btn" aria-label="Falar no WhatsApp"
+                class="w-[56px] h-[56px] rounded-full bg-[#25D366] flex items-center justify-center shadow-lg shadow-black/40
+                       hover:scale-110 active:scale-95 transition-transform duration-200 relative group">
+            <!-- Pulse ring -->
+            <span class="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-20"></span>
+            <svg class="w-[28px] h-[28px] relative z-10" viewBox="0 0 24 24" fill="white">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer" class="w-full bg-bg border-t border-border pt-[64px] pb-[40px] px-6">
+        <div class="max-w-[1280px] mx-auto">
+            <!-- Top Row -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+                <!-- COL 1 -->
+                <div class="col-span-2 lg:col-span-1">
+                    <div class="font-display font-[800] text-[24px] text-white">WAXLO</div>
+                    <p class="font-body font-[400] text-[14px] text-muted leading-[1.7] mt-3">
+                        Sites e Automações<br>Lages, SC — Brasil
+                    </p>
+                </div>
+                
+                <!-- COL 2 -->
+                <div class="flex flex-col">
+                    <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">SERVIÇOS</span>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Sites &amp; Landing Pages</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Automação com IA</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Consultoria de Marketing</a>
+                    <a href="#contato" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Planos</a>
+                </div>
+
+                <!-- COL 3 -->
+                <div class="flex flex-col">
+                    <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">EMPRESA</span>
+                    <a href="#como-funciona" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Como Funciona</a>
+                    <a href="#vitrine" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Nosso Trabalho</a>
+                    <a href="#contato" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Contato</a>
+                </div>
+
+                <!-- COL 4 -->
+                <div class="flex flex-col">
+                    <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">CONTATO</span>
+                    <span class="font-body font-[400] text-[14px] text-muted py-1.5 block">WhatsApp (em breve)</span>
+                    <a href="https://instagram.com/waxlo.tech" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-gold transition-colors duration-200 py-1.5 block">@waxlo.tech</a>
+                    <span class="font-body font-[400] text-[14px] text-muted py-1.5 block mt-2">Lages, SC — Brasil</span>
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="border-t border-border mt-[48px] pt-[24px] flex flex-col md:flex-row items-center justify-between gap-4">
+                <span class="font-body font-[400] text-[13px] text-muted text-center md:text-left">
+                    &copy; 2026 WAXLO. Todos os direitos reservados.
+                </span>
+                <span class="font-body font-[400] text-[13px] text-muted text-center md:text-right">
+                    Sites &amp; Automações com IA
+                </span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const navbar = document.getElementById('navbar');
+            const menuBtn = document.getElementById('menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const spans = menuBtn.querySelectorAll('span');
+            
+            let isMenuOpen = false;
+
+            // Handle scroll for navbar border
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Handle mobile menu toggle
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                
+                if (isMenuOpen) {
+                    mobileMenu.classList.add('open');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling
+                    // Animate hamburger to X
+                    spans[0].style.transform = 'translateY(4px) rotate(45deg)';
+                    spans[1].style.transform = 'translateY(-4px) rotate(-45deg)';
+                } else {
+                    mobileMenu.classList.remove('open');
+                    document.body.style.overflow = ''; // Restore scrolling
+                    // Restore hamburger
+                    spans[0].style.transform = 'translateY(0) rotate(0)';
+                    spans[1].style.transform = 'translateY(0) rotate(0)';
+                }
+            }
+
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // Close mobile menu when clicking a link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (isMenuOpen) toggleMenu();
+                });
+            });
+
+            // --- Section 5: Demo Chat Logic ---
+            const demoScripts = {
+                clinica: [
+                    { type: 'user', text: 'Oi, queria marcar uma consulta' },
+                    { type: 'bot', text: 'Olá! Seja bem-vindo 😊 Temos horários esta semana. Qual procedimento?' },
+                    { type: 'user', text: 'Limpeza de pele' },
+                    { type: 'bot', text: 'Perfeito! Disponível: Terça 14h • Quarta 10h • Sexta 16h. Qual prefere?' },
+                    { type: 'user', text: 'Terça às 14h' },
+                    { type: 'bot', text: '✅ Agendado! Terça 14h — Limpeza de pele. Lembrete na véspera. Até lá! 😊' }
+                ],
+                restaurante: [
+                    { type: 'user', text: 'Qual o horário de vocês hoje?' },
+                    { type: 'bot', text: 'Olá! 🍽️ Abertos das 11h30 às 23h. Quer fazer uma reserva ou ver o cardápio?' },
+                    { type: 'user', text: 'Quero fazer uma reserva, 4 pessoas às 20h' },
+                    { type: 'bot', text: '✅ Reserva confirmada! 4 pessoas às 20h. Te esperamos 😊' }
+                ]
+            };
+
+            const demoChat = document.getElementById('demo-app-chat');
+            let demoTimeoutRefs = [];
+
+            window.switchDemoTab = function(tab) {
+                // Update UI buttons
+                document.querySelectorAll('.demo-tab').forEach(btn => {
+                    if(btn.id === 'tab-' + tab) {
+                        btn.className = 'demo-tab sharp border border-gold bg-[rgba(201,169,110,0.06)] text-gold px-[28px] py-[12px] font-body font-[600] text-[16px] transition-colors';
+                    } else {
+                        btn.className = 'demo-tab sharp border border-border bg-transparent text-muted px-[28px] py-[12px] font-body font-[600] text-[16px] hover:border-gold hover:text-gold transition-colors';
+                    }
+                });
+
+                // Fade out current chat
+                demoChat.style.opacity = '0';
+                
+                setTimeout(() => {
+                    playDemoScript(tab);
+                    demoChat.style.opacity = '1';
+                }, 300);
+            };
+
+            function playDemoScript(tab) {
+                // Clear existing loop/timeouts
+                demoTimeoutRefs.forEach(clearTimeout);
+                demoTimeoutRefs = [];
+                demoChat.innerHTML = '';
+                
+                const messages = demoScripts[tab];
+                let delay = 0;
+                
+                messages.forEach((msg, index) => {
+                    const timeout = setTimeout(() => {
+                        const div = document.createElement('div');
+                        div.className = `flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'} w-full demo-msg-enter opacity-0`;
+                        
+                        const inner = document.createElement('div');
+                        // Inject explicit border-radii depending on sender
+                        inner.className = msg.type === 'user' 
+                            ? 'bg-white text-bg px-[14px] py-[10px] rounded-tl-[12px] rounded-tr-[12px] rounded-br-[2px] rounded-bl-[12px] max-w-[85%] sm:max-w-[75%] font-body font-[400] text-[14px]'
+                            : 'bg-[#2A2A2A] text-white px-[14px] py-[10px] rounded-tl-[2px] rounded-tr-[12px] rounded-br-[12px] rounded-bl-[12px] max-w-[90%] sm:max-w-[75%] font-body font-[400] text-[14px]';
+                        
+                        inner.innerText = msg.text;
+                        div.appendChild(inner);
+                        demoChat.appendChild(div);
+                        
+                        // Restart sequence on completion
+                        if (index === messages.length - 1) {
+                            const restartTimeout = setTimeout(() => {
+                                playDemoScript(tab);
+                            }, 2000 + 500); // 500ms animation finish + 2s pause
+                            demoTimeoutRefs.push(restartTimeout);
+                        }
+                    }, delay);
+                    
+                    demoTimeoutRefs.push(timeout);
+                    delay += 800; // 800ms delay before next message appears
+                });
+            }
+
+            // Start default demo automatically
+            playDemoScript('clinica');
+
+            // --- Intersection Observer for Animations ---
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries, observerObj) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observerObj.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-up-element').forEach(el => {
+                observer.observe(el);
+            });
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const btn = item.querySelector('button');
+                btn.addEventListener('click', () => {
+                    // Close others
+                    faqItems.forEach(other => {
+                        if (other !== item) {
+                            other.classList.remove('open');
+                            const icon = other.querySelector('.faq-icon');
+                            if(icon) {
+                                icon.innerText = '+';
+                                icon.style.transform = 'rotate(0deg)';
+                            }
+                        }
+                    });
+                    
+                    item.classList.toggle('open');
+                    const icon = item.querySelector('.faq-icon');
+                    if(item.classList.contains('open')) {
+                        icon.innerText = '×';
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.innerText = '+';
+                        icon.style.transform = 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // --- Smooth Scroll & Nav Active States ---
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('#navbar a[href^="#"]');
+
+            // Explicit Smooth Scroll JS for all anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if(href !== '#' && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            window.scrollTo({
+                                top: target.offsetTop - 80, // Account for fixed navbar
+                                behavior: 'smooth'
+                            });
+                            // Close mobile menu if open
+                            if (isMenuOpen && typeof toggleMenu === 'function') toggleMenu();
+                        }
+                    }
+                });
+            });
+
+            // Set active link logic
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(sec => {
+                    const sectionTop = sec.offsetTop;
+                    if (scrollY >= sectionTop - 120) {
+                        current = sec.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href !== '#' && href.startsWith('#')) {
+                        link.classList.remove('text-white');
+                        link.classList.add('text-muted');
+                        if (href === `#${current}`) {
+                            link.classList.add('text-white');
+                            link.classList.remove('text-muted');
+                        }
+                    }
+                });
+            });
+
+            // Initialize Lucide Icons
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+
+            // ── WhatsApp Float Tooltip ──
+            const wppBtn = document.getElementById('wpp-btn');
+            const wppTooltip = document.getElementById('wpp-tooltip');
+            if (wppBtn && wppTooltip) {
+                wppBtn.addEventListener('mouseenter', () => {
+                    wppTooltip.style.opacity = '1';
+                    wppTooltip.style.transform = 'translateX(0)';
+                });
+                wppBtn.addEventListener('mouseleave', () => {
+                    wppTooltip.style.opacity = '0';
+                    wppTooltip.style.transform = 'translateX(8px)';
+                });
+                wppBtn.addEventListener('click', () => {
+                    // Placeholder — will route to WhatsApp number when defined
+                    window.open('#', '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
