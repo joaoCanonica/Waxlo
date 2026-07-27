@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A WAXLO transforma empresas em operações modernas com sites que impressionam, automação de atendimento com IA e estratégia para vender no digital.">
+    <meta name="description" content="A WAXLO constrói o ecossistema digital completo do seu negócio: sites, automações, CRM, dashboards, IA e identidade visual. Atendemos todo o Brasil.">
     <meta name="theme-color" content="#0A0A0A">
-    <title>WAXLO — Sites e Automações com IA</title>
+    <title>WAXLO — Tecnologia Digital para Empresas</title>
 
     <!-- Item 5: Open Graph / Social Preview -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://waxlo.com.br/">
-    <meta property="og:title" content="WAXLO — Sites e Automações com IA">
-    <meta property="og:description" content="Sites profissionais, automação de atendimento com IA e consultoria de marketing digital para empresas que querem crescer. Atendemos todo o Brasil.">
+    <meta property="og:title" content="WAXLO — Tecnologia Digital para Empresas">
+    <meta property="og:description" content="Sites profissionais, automações com IA, CRM, dashboards e identidade visual. Construímos a estrutura digital completa do seu negócio.">
     <meta property="og:image" content="https://waxlo.com.br/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -20,8 +20,8 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="WAXLO — Sites e Automações com IA">
-    <meta name="twitter:description" content="Sites profissionais, automação de atendimento com IA e consultoria de marketing para empresas que querem crescer.">
+    <meta name="twitter:title" content="WAXLO — Tecnologia Digital para Empresas">
+    <meta name="twitter:description" content="Sites profissionais, automações com IA, CRM, dashboards e identidade visual. Construímos a estrutura digital completa do seu negócio.">
     <meta name="twitter:image" content="https://waxlo.com.br/og-image.png">
 
     <!-- Item 6: Favicon inline SVG (W dourado em fundo escuro) -->
@@ -290,7 +290,53 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Service individual cells — lift on hover */
+        .service-cell {
+            transition: border-color 200ms ease, transform 200ms ease,
+                        box-shadow 200ms ease;
+        }
+        .service-cell:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 32px rgba(201,169,110,0.08);
+        }
+
+        /* Niche cards — already have border transition,
+           add subtle lift */
+        [data-lucide]:not(.w-\[16px\]) {
+            transition: color 200ms ease, transform 200ms ease;
+        }
+        .group:hover [data-lucide] {
+            transform: scale(1.1);
+        }
+
+        /* Stat cards — gold number counter animation trigger */
+        .stat-number {
+            transition: opacity 400ms ease;
+        }
+
+        /* Complete package card — gold border glow on hover */
+        .package-card:hover {
+            box-shadow: 0 0 40px rgba(201,169,110,0.08);
+            transition: box-shadow 300ms ease;
+        }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "WAXLO",
+      "url": "https://waxlo.com.br",
+      "description": "Empresa de tecnologia especializada em sites, automações, IA, CRM e dashboards para negócios brasileiros.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Lages",
+        "addressRegion": "SC",
+        "addressCountry": "BR"
+      },
+      "sameAs": ["https://instagram.com/waxlo.tech"]
+    }
+    </script>
 </head>
 <body class="antialiased">
 
@@ -304,6 +350,7 @@
         <!-- Center: Links (Desktop) -->
         <div class="hidden md:flex items-center gap-[40px]">
             <a href="#servicos" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Serviços</a>
+            <a href="#trabalhos" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Trabalhos</a>
             <a href="#comofunciona" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Como Funciona</a>
             <a href="#contato" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Contato</a>
         </div>
@@ -325,6 +372,7 @@
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-bg z-40 flex flex-col items-center justify-center gap-8 px-6">
         <a href="#servicos" class="mobile-link font-display font-[800] text-[32px] text-white">Serviços</a>
+        <a href="#trabalhos" class="mobile-link font-display font-[800] text-[32px] text-white">Trabalhos</a>
         <a href="#comofunciona" class="mobile-link font-display font-[800] text-[32px] text-white">Como Funciona</a>
         <a href="#contato" class="mobile-link font-display font-[800] text-[32px] text-white">Contato</a>
         <button class="sharp border border-gold text-gold bg-transparent px-[24px] py-[14px] font-body font-medium text-[16px] hover:bg-gold hover:text-bg transition-colors duration-200 mt-4">
@@ -341,28 +389,27 @@
             <div class="w-full md:w-[60%] flex flex-col items-start pt-6 md:pt-0">
                 <!-- Badge -->
                 <div class="rounded-tiny mb-5 border border-border bg-surface px-[14px] py-[6px] flex items-center">
-                    <span class="font-body font-medium text-[11px] text-muted">✦ Sites &amp; Automações com IA</span>
+                    <span class="font-body font-medium text-[11px] text-muted">✦ Tecnologia digital para empresas</span>
                 </div>
 
                 <!-- Headline — responsive sizes -->
                 <h1 class="font-display font-[800] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] leading-[1.05] text-white">
-                    Seu negócio no <span class="underline decoration-gold decoration-1 underline-offset-[6px]">digital</span>.<br>
-                    Trabalhando por você —<br>
-                    24 horas por dia.
+                    Criamos experiências digitais<br>
+                    que fazem <span class="underline decoration-gold decoration-1 underline-offset-[6px]">empresas crescerem</span>.
                 </h1>
 
                 <!-- Subtext -->
                 <p class="font-body font-normal text-[16px] md:text-[18px] text-muted max-w-[480px] leading-[1.65] mt-[20px] md:mt-[24px]">
-                    A WAXLO transforma empresas em operações modernas com sites que impressionam, automação de atendimento com IA e estratégia para vender no digital.
+                    Da identidade visual ao sistema completo — sites, automações, IA e dashboards. A WAXLO constrói a estrutura digital que o seu negócio precisa para crescer.
                 </p>
 
                 <!-- Item 4: CTA Buttons — now anchor links -->
                 <div class="flex flex-col sm:flex-row gap-[14px] mt-[32px] md:mt-[40px] w-full sm:w-auto">
-                    <a href="#contato" class="sharp bg-gold text-bg px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[600] text-[15px] md:text-[16px] hover:bg-gold-dim transition-colors duration-200 w-full sm:w-auto text-center">
-                        Quero meu site &rarr;
+                    <a href="#servicos" class="sharp bg-gold text-bg px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[600] text-[15px] md:text-[16px] hover:bg-gold-dim transition-colors duration-200 w-full sm:w-auto text-center">
+                        Conhecer soluções &rarr;
                     </a>
-                    <a href="#demonstracao" class="sharp border border-border bg-transparent text-white px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[500] text-[15px] md:text-[16px] hover:border-muted transition-colors duration-200 w-full sm:w-auto text-center">
-                        Ver demonstração &darr;
+                    <a href="#trabalhos" class="sharp border border-border bg-transparent text-white px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[500] text-[15px] md:text-[16px] hover:border-muted transition-colors duration-200 w-full sm:w-auto text-center">
+                        Ver nosso trabalho &darr;
                     </a>
                 </div>
 
@@ -372,7 +419,7 @@
                     <span class="hidden sm:inline">&middot;</span>
                     <span>✦ Diagnóstico gratuito</span>
                     <span class="hidden sm:inline">&middot;</span>
-                    <span>✦ Suporte contínuo</span>
+                    <span>✦ Solução completa</span>
                 </div>
             </div>
 
@@ -438,39 +485,38 @@
     <section class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[760px] mx-auto text-center">
             <h2 class="font-display font-[800] text-[28px] md:text-[42px] text-white leading-[1.3]">
-                Você responde as mesmas perguntas<br class="hidden md:block">
-                no WhatsApp todo dia.<br class="hidden md:block">
-                Perde pacientes porque demorou<br class="hidden md:block">
-                para responder.<br class="hidden md:block">
                 Seu concorrente já tem presença digital.<br class="hidden md:block">
-                Você ainda depende de indicação.
+                Você ainda depende de indicação.<br class="hidden md:block">
+                Seu site não existe — ou não converte.<br class="hidden md:block">
+                Seu atendimento depende de pessoas.<br class="hidden md:block">
+                Seus dados ficam espalhados em planilhas.
             </h2>
             
             <div class="w-[40px] h-[1px] bg-gold mx-auto my-[40px]"></div>
             
             <p class="font-display font-[800] text-[24px] text-gold text-center">
-                Isso não é falta de esforço — é falta de sistema.
+                Isso não é falta de esforço — é falta de estrutura digital.
             </p>
         </div>
 
         <!-- Cards -->
         <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-[64px]">
             <div class="sharp bg-surface border border-border px-[32px] py-[40px]">
-                <div class="font-display font-[800] text-[56px] text-gold leading-none">73%</div>
+                <div class="font-display font-[800] text-[56px] text-gold leading-none stat-number">73%</div>
                 <p class="font-body font-[400] text-[14px] text-muted mt-[8px]">
-                    dos consumidores pesquisam online antes de escolher uma empresa
+                    dos consumidores pesquisam online antes de contratar qualquer empresa
                 </p>
             </div>
             <div class="sharp bg-surface border border-border px-[32px] py-[40px]">
-                <div class="font-display font-[800] text-[56px] text-gold leading-none">3x</div>
+                <div class="font-display font-[800] text-[56px] text-gold leading-none stat-number">4x</div>
                 <p class="font-body font-[400] text-[14px] text-muted mt-[8px]">
-                    mais agendamentos com atendimento automático 24 horas por dia
+                    mais eficiência operacional com processos digitais e automações bem implementadas
                 </p>
             </div>
             <div class="sharp bg-surface border border-border px-[32px] py-[40px]">
-                <div class="font-display font-[800] text-[56px] text-gold leading-none">R$0</div>
+                <div class="font-display font-[800] text-[56px] text-gold leading-none stat-number">R$0</div>
                 <p class="font-body font-[400] text-[14px] text-muted mt-[8px]">
-                    de custo extra para atender 1 ou 1.000 pacientes com IA
+                    de custo extra para atender 1 ou 1.000 clientes com IA trabalhando por você
                 </p>
             </div>
         </div>
@@ -479,88 +525,125 @@
     <!-- Section 4: Serviços -->
     <section id="servicos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
-            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">O QUE FAZEMOS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1] mb-12">
-                Uma empresa. Três soluções.<br>Resultado completo.
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SOLUÇÕES</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+                Escolha o que precisa.<br>Ou tenha tudo em uma solução.
             </h2>
+            <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4 mb-12">
+                Cada serviço funciona sozinho. Juntos, formam o ecossistema digital completo do seu negócio.
+            </p>
 
-            <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- CARD 1 -->
-                <div class="sharp bg-surface border border-border px-[40px] py-[48px] flex flex-col">
-                    <svg class="w-8 h-8 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                    </svg>
-                    <h3 class="font-display font-[800] text-[22px] text-white mt-[20px]">Sites &amp; Landing Pages</h3>
-                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-3">
-                        Do site institucional à landing page de alta conversão. Sites rápidos, modernos e preparados para tráfego pago — simples, animados ou complexos.
-                    </p>
-                    <ul class="mt-[24px] flex flex-col gap-2">
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Landing pages de campanha
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Sites animados e interativos
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Sistemas web e dashboards
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Integração com WhatsApp e CRM
-                        </li>
-                    </ul>
+            <div class="w-full grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 0ms;">
+                    <i data-lucide="monitor" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Site Profissional</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Sites rápidos, modernos e focados em conversão.</p>
                 </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 100ms;">
+                    <i data-lucide="palette" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Identidade Visual</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Logo, cores e tipografia que representam sua marca.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms;">
+                    <i data-lucide="bar-chart-2" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Dashboard</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Painel de controle com os dados do seu negócio.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
+                    <i data-lucide="users" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">CRM</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Gestão de clientes, leads e funil de vendas.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 400ms;">
+                    <i data-lucide="message-circle" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Automação WhatsApp</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Atendimento, agendamento e follow-up automáticos.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 0ms;">
+                    <i data-lucide="bot" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Agentes de IA</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Agentes inteligentes que atendem e vendem por você.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 100ms;">
+                    <i data-lucide="plug" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Integrações</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Conectamos seus sistemas e ferramentas.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms;">
+                    <i data-lucide="globe" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Gestão Digital</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Presença online gerenciada e estratégica.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
+                    <i data-lucide="image" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Posts e Conteúdo</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Criação de conteúdo com IA para redes sociais.</p>
+                </div>
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 400ms;">
+                    <i data-lucide="lightbulb" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
+                    <div class="font-body font-[600] text-[14px] text-white">Consultoria</div>
+                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Estratégia e planejamento tecnológico.</p>
+                </div>
+            </div>
 
-                <!-- CARD 2 -->
-                <div class="relative sharp bg-surface border border-border border-t-[2px] border-t-gold px-[40px] py-[48px] flex flex-col">
-                    <div class="absolute top-[20px] right-[24px]">
-                        <span class="font-mono text-gold text-[10px] tracking-[0.1em] font-bold">FOCO PRINCIPAL</span>
+            <div class="w-full sharp border border-gold bg-surface p-[48px_40px] md:p-[56px_64px] flex flex-col md:flex-row gap-10 md:gap-16 items-start fade-up-element package-card">
+                <div class="flex-1">
+                    <div class="font-mono text-[11px] text-gold tracking-[0.15em] mb-4">
+                        PACOTE COMPLETO
                     </div>
-                    <svg class="w-8 h-8 text-gold" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2C6.477 2 2 5.82 2 10.533c0 2.652 1.396 5.011 3.568 6.551-.51 1.956-1.748 3.541-1.859 3.684a.999.999 0 00.914 1.62c3.048 0 5.46-1.282 6.963-2.31 1.139.197 2.316.3 3.535.3 5.523 0 10-3.82 10-8.533C25.12 5.82 20.643 2 15.12 2H12z" transform="translate(-1 -1)"/>
-                    </svg>
-                    <h3 class="font-display font-[800] text-[22px] text-white mt-[20px]">Automação &amp; IA</h3>
-                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-3">
-                        Seu WhatsApp respondendo, agendando e qualificando pacientes automaticamente — mesmo de madrugada. Feito para clínicas e negócios que não podem perder um cliente por demora no atendimento.
+                    <h3 class="font-display font-[800] text-[32px] md:text-[40px] text-white leading-[1.1]">
+                        Tudo que seu negócio precisa. Em um único projeto.
+                    </h3>
+                    <p class="font-body text-[16px] text-muted leading-[1.7] mt-4 max-w-[480px]">
+                        Desenvolvemos a estrutura digital completa da sua empresa — do zero à operação. Uma equipe, um processo, um resultado.
                     </p>
-                    <ul class="mt-[24px] flex flex-col gap-2">
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Atendimento automático 24h
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Agendamento de consultas
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Follow-up e lembrete automático
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Dashboard de gestão para o dono
-                        </li>
-                    </ul>
+                    <a href="#contato" class="inline-flex items-center gap-2 mt-8 sharp bg-gold text-bg px-[32px] py-[16px] font-body font-[600] text-[15px] hover:bg-gold-dim transition-colors duration-200">
+                        Quero a solução completa &rarr;
+                    </a>
                 </div>
-
-                <!-- CARD 3 -->
-                <div class="sharp bg-surface border border-border px-[40px] py-[48px] flex flex-col">
-                    <svg class="w-8 h-8 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 14C13.1046 14 14 13.1046 14 12C14 10.8954 13.1046 10 12 10C10.8954 10 10 10.8954 10 12C10 13.1046 10.8954 14 12 14Z"></path>
-                    </svg>
-                    <h3 class="font-display font-[800] text-[22px] text-white mt-[20px]">Consultoria de Marketing Digital</h3>
-                    <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-3">
-                        Não basta estar no digital — precisa vender. Estruturamos funis, criamos campanhas e usamos IA para gerar conteúdo que converte visitantes em clientes reais.
-                    </p>
-                    <ul class="mt-[24px] flex flex-col gap-2">
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Estratégia de conteúdo com IA
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Estrutura de funil de vendas
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Campanhas para tráfego pago
-                        </li>
-                        <li class="flex items-start gap-2 font-body font-[500] text-[14px] text-white">
-                            <span class="text-gold mt-[1px]">&rarr;</span> Copywriting e anúncios
-                        </li>
-                    </ul>
+                <div class="flex flex-col gap-3 min-w-[260px]">
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Site Premium</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Identidade Visual</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Automação Inicial</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Dashboard de Gestão</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Integração WhatsApp</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Posts para redes sociais</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
+                            <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+                        </span>
+                        <span class="font-body font-[500] text-[15px] text-white">Configuração completa</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -611,14 +694,14 @@
     </section>
 
     <!-- Section 6: Vitrine de Sites -->
-    <section id="vitrine" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+    <section id="trabalhos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
-            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">NOSSO TRABALHO</span>
+            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">TRABALHOS</span>
             <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
-                Sites que transformam visitantes em clientes
+                O que já entregamos.
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[600px] leading-[1.6] mt-4">
-                Do site simples ao projeto complexo e animado — cada entrega feita para o negócio por trás dela.
+                Projetos reais. Resultados concretos. Cada entrega feita para o negócio que está por trás dela.
             </p>
 
             <!-- Grid -->
@@ -730,10 +813,10 @@
         <div class="max-w-[1280px] mx-auto flex flex-col items-center lg:items-start text-center lg:text-left">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">O PROCESSO</span>
             <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white leading-[1.1]">
-                Não somos fornecedores.<br>Somos parceiros do seu negócio.
+                Não entregamos projetos.<br>Construímos parcerias.
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted max-w-[600px] leading-[1.6] mt-4">
-                Antes de escrever uma linha de código, entendemos quem você é, como você vende e o que trava seu crescimento.
+                Cada projeto começa com entendimento. Só desenvolvemos quando sabemos exatamente o que o seu negócio precisa — e por quê.
             </p>
 
             <!-- Timeline -->
@@ -805,7 +888,7 @@
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SEGMENTOS</span>
             <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
-                Para negócios que querem crescer com inteligência
+                Atendemos qualquer segmento.
             </h2>
 
             <div class="w-full grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 mt-[48px] md:mt-[64px]">
@@ -852,7 +935,7 @@
             </div>
 
             <p class="font-body font-[400] text-[16px] text-muted text-center max-w-[600px] mt-[48px] fade-up-element">
-                Atendemos empresas em todo o Brasil. Começamos por Lages e região — e expandimos junto com nossos clientes.
+                Não importa o segmento — se o seu negócio precisa crescer no digital, a WAXLO tem a solução. Atendemos todo o Brasil, começando por Lages e região.
             </p>
         </div>
     </section>
@@ -1003,21 +1086,21 @@
     </section>
 
     <!-- Section 12: CTA Final -->
-    <section class="w-full bg-bg py-[100px] md:py-[160px] px-6 flex flex-col items-center text-center">
+    <section id="contato" class="w-full bg-bg py-[100px] md:py-[160px] px-6 flex flex-col items-center text-center">
         <!-- Decorative line -->
         <div class="w-[40px] h-[1px] bg-gold opacity-40 mb-6 mx-auto fade-up-element"></div>
 
         <!-- Eyebrow Pill -->
         <div class="rounded-full border border-[rgba(201,169,110,0.3)] bg-[rgba(201,169,110,0.06)] px-[16px] py-[6px] font-body font-[500] text-[12px] text-gold mb-[24px] fade-up-element">
-            ✦ Diagnóstico gratuito &middot; Sem compromisso
+            ✦ Primeira conversa gratuita &middot; Sem compromisso
         </div>
 
         <h2 class="font-display font-[800] text-[36px] md:text-[64px] text-white leading-[1.05] max-w-[800px] mx-auto fade-up-element">
-            Pronto para ter um negócio<br class="hidden sm:block">que trabalha por você?
+            Pronto para construir a estrutura<br class="hidden sm:block">digital do seu negócio?
         </h2>
         
         <p class="font-body font-[400] text-[18px] text-muted mt-[20px] max-w-[600px] mx-auto fade-up-element">
-            Começamos com uma conversa. Você nos conta sobre o seu negócio — nós mostramos o que é possível.
+            Começamos com uma conversa. Você nos conta sobre o seu negócio — nós mostramos o que é possível construir juntos.
         </p>
 
         <!-- Animated CTA Buttons -->
@@ -1088,7 +1171,7 @@
                 <div class="col-span-2 lg:col-span-1">
                     <div class="font-display font-[800] text-[24px] text-white">WAXLO</div>
                     <p class="font-body font-[400] text-[14px] text-muted leading-[1.7] mt-3">
-                        Sites e Automações<br>Lages, SC — Brasil
+                        Tecnologia digital para empresas.<br>Lages, SC — Brasil.
                     </p>
                 </div>
                 
@@ -1097,8 +1180,9 @@
                     <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">SERVIÇOS</span>
                     <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Sites &amp; Landing Pages</a>
                     <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Automação com IA</a>
-                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Consultoria de Marketing</a>
-                    <a href="#contato" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Planos</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Identidade Visual</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">CRM e Dashboards</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Consultoria</a>
                 </div>
 
                 <!-- COL 3 -->
