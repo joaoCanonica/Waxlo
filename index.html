@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
+    <!-- Apply saved theme before first paint to avoid flash -->
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('waxlo-theme') || 'dark';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A WAXLO constrói o ecossistema digital completo do seu negócio: sites, automações, CRM, dashboards, IA e identidade visual. Atendemos todo o Brasil.">
@@ -45,13 +54,14 @@
             theme: {
                 extend: {
                     colors: {
-                        bg: '#0A0A0A',
-                        surface: '#141414',
-                        border: '#2A2A2A',
-                        text: '#FFFFFF',
-                        muted: '#888888',
-                        gold: '#C9A96E',
-                        'gold-dim': '#8B6E3F'
+                        bg: 'rgb(var(--color-bg-rgb) / <alpha-value>)',
+                        surface: 'var(--color-surface)',
+                        border: 'var(--color-border)',
+                        text: 'var(--color-text)',
+                        muted: 'var(--color-muted)',
+                        gold: 'var(--color-gold)',
+                        'gold-dim': 'var(--color-gold-dim)',
+                        ink: '#0A0A0A'
                     },
                     fontFamily: {
                         display: ['Syne', 'sans-serif'],
@@ -67,6 +77,7 @@
     <style>
         :root {
             --color-bg: #0A0A0A;
+            --color-bg-rgb: 10 10 10;
             --color-surface: #141414;
             --color-border: #2A2A2A;
             --color-text: #FFFFFF;
@@ -75,11 +86,23 @@
             --color-gold-dim: #8B6E3F;
         }
 
+        html[data-theme="light"] {
+            --color-bg: #FFFFFF;
+            --color-bg-rgb: 255 255 255;
+            --color-surface: #F6F5F2;
+            --color-border: #E3E1DC;
+            --color-text: #0A0A0A;
+            --color-muted: #5C5C5C;
+            --color-gold: #8B6E3F;
+            --color-gold-dim: #6B5228;
+        }
+
         body {
             background-color: var(--color-bg);
             color: var(--color-text);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Utilities */
@@ -227,8 +250,8 @@
         /* Instagram button */
         .instagram-btn {
             background: transparent;
-            color: #FFFFFF;
-            border: 1px solid #2A2A2A;
+            color: var(--color-text);
+            border: 1px solid var(--color-border);
             position: relative;
         }
         .instagram-btn:hover {
@@ -343,39 +366,48 @@
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full h-[80px] flex items-center justify-between px-6 md:px-[60px] bg-bg/85 backdrop-blur-[20px]">
         <!-- Left: Logo -->
-        <a href="#" class="font-display font-[800] text-[24px] text-white tracking-[-0.02em]">
+        <a href="#" class="font-display font-[800] text-[24px] text-text tracking-[-0.02em]">
             WAX<span class="text-gold">L</span>O
         </a>
 
         <!-- Center: Links (Desktop) -->
         <div class="hidden md:flex items-center gap-[40px]">
-            <a href="#servicos" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Serviços</a>
-            <a href="#trabalhos" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Trabalhos</a>
-            <a href="#comofunciona" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Como Funciona</a>
-            <a href="#contato" class="font-body font-medium text-[15px] text-muted hover:text-white transition-colors duration-200">Contato</a>
+            <a href="#servicos" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Serviços</a>
+            <a href="#trabalhos" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Trabalhos</a>
+            <a href="#comofunciona" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Como Funciona</a>
+            <a href="#contato" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Contato</a>
         </div>
 
-        <!-- Right: CTA (Desktop) -->
-        <div class="hidden md:block">
-            <button class="sharp border border-gold text-gold bg-transparent px-[20px] py-[10px] font-body font-medium text-[15px] hover:bg-gold hover:text-bg transition-colors duration-200">
-                Falar com especialista &rarr;
+        <!-- Right: Theme Toggle + CTA (Desktop) + Mobile Hamburger -->
+        <div class="flex items-center gap-3 md:gap-4">
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" aria-label="Alternar tema claro/escuro" class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full border border-border text-muted hover:border-gold hover:text-gold transition-colors duration-200">
+                <i data-lucide="sun" class="w-[18px] h-[18px] theme-icon-to-light"></i>
+                <i data-lucide="moon" class="w-[18px] h-[18px] theme-icon-to-dark hidden"></i>
+            </button>
+
+            <!-- CTA (Desktop) -->
+            <div class="hidden md:block">
+                <button class="sharp border border-gold text-gold bg-transparent px-[20px] py-[10px] font-body font-medium text-[15px] hover:bg-gold hover:text-ink transition-colors duration-200">
+                    Falar com especialista &rarr;
+                </button>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="menu-btn" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] z-[60]">
+                <span class="block w-6 h-[2px] bg-text transition-transform duration-300"></span>
+                <span class="block w-6 h-[2px] bg-text transition-transform duration-300"></span>
             </button>
         </div>
-
-        <!-- Mobile Hamburger Button -->
-        <button id="menu-btn" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] z-[60]">
-            <span class="block w-6 h-[2px] bg-white transition-transform duration-300"></span>
-            <span class="block w-6 h-[2px] bg-white transition-transform duration-300"></span>
-        </button>
     </nav>
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu" class="fixed inset-0 bg-bg z-40 flex flex-col items-center justify-center gap-8 px-6">
-        <a href="#servicos" class="mobile-link font-display font-[800] text-[32px] text-white">Serviços</a>
-        <a href="#trabalhos" class="mobile-link font-display font-[800] text-[32px] text-white">Trabalhos</a>
-        <a href="#comofunciona" class="mobile-link font-display font-[800] text-[32px] text-white">Como Funciona</a>
-        <a href="#contato" class="mobile-link font-display font-[800] text-[32px] text-white">Contato</a>
-        <button class="sharp border border-gold text-gold bg-transparent px-[24px] py-[14px] font-body font-medium text-[16px] hover:bg-gold hover:text-bg transition-colors duration-200 mt-4">
+        <a href="#servicos" class="mobile-link font-display font-[800] text-[32px] text-text">Serviços</a>
+        <a href="#trabalhos" class="mobile-link font-display font-[800] text-[32px] text-text">Trabalhos</a>
+        <a href="#comofunciona" class="mobile-link font-display font-[800] text-[32px] text-text">Como Funciona</a>
+        <a href="#contato" class="mobile-link font-display font-[800] text-[32px] text-text">Contato</a>
+        <button class="sharp border border-gold text-gold bg-transparent px-[24px] py-[14px] font-body font-medium text-[16px] hover:bg-gold hover:text-ink transition-colors duration-200 mt-4">
             Falar com especialista &rarr;
         </button>
     </div>
@@ -393,7 +425,7 @@
                 </div>
 
                 <!-- Headline — responsive sizes -->
-                <h1 class="font-display font-[800] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] leading-[1.05] text-white">
+                <h1 class="font-display font-[800] text-[36px] sm:text-[48px] md:text-[64px] lg:text-[72px] leading-[1.05] text-text">
                     Criamos experiências digitais<br>
                     que fazem <span class="underline decoration-gold decoration-1 underline-offset-[6px]">empresas crescerem</span>.
                 </h1>
@@ -405,10 +437,10 @@
 
                 <!-- Item 4: CTA Buttons — now anchor links -->
                 <div class="flex flex-col sm:flex-row gap-[14px] mt-[32px] md:mt-[40px] w-full sm:w-auto">
-                    <a href="#servicos" class="sharp bg-gold text-bg px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[600] text-[15px] md:text-[16px] hover:bg-gold-dim transition-colors duration-200 w-full sm:w-auto text-center">
+                    <a href="#servicos" class="sharp bg-gold text-ink px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[600] text-[15px] md:text-[16px] hover:bg-gold-dim transition-colors duration-200 w-full sm:w-auto text-center">
                         Conhecer soluções &rarr;
                     </a>
-                    <a href="#trabalhos" class="sharp border border-border bg-transparent text-white px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[500] text-[15px] md:text-[16px] hover:border-muted transition-colors duration-200 w-full sm:w-auto text-center">
+                    <a href="#trabalhos" class="sharp border border-border bg-transparent text-text px-[28px] md:px-[32px] py-[14px] md:py-[16px] font-body font-[500] text-[15px] md:text-[16px] hover:border-muted transition-colors duration-200 w-full sm:w-auto text-center">
                         Ver nosso trabalho &darr;
                     </a>
                 </div>
@@ -440,7 +472,7 @@
                     <div class="flex-1 p-3 md:p-4 flex flex-col gap-3 md:gap-4 overflow-y-auto">
                         <!-- Message 1: User -->
                         <div class="msg-1 flex justify-end">
-                            <div class="bg-white text-bg px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[85%]">
+                            <div class="bg-white text-ink px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[85%]">
                                 <p class="font-body text-[12px] md:text-[13px] leading-relaxed">Oi, queria marcar uma consulta 😊</p>
                             </div>
                         </div>
@@ -452,7 +484,7 @@
                         </div>
                         <!-- Message 3: User -->
                         <div class="msg-3 flex justify-end">
-                            <div class="bg-white text-bg px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[85%]">
+                            <div class="bg-white text-ink px-3 py-2 md:px-4 md:py-3 rounded-[4px] max-w-[85%]">
                                 <p class="font-body text-[12px] md:text-[13px] leading-relaxed">Limpeza de pele</p>
                             </div>
                         </div>
@@ -470,7 +502,7 @@
                             <span class="font-body text-[11px] md:text-[12px] text-muted">Mensagem...</span>
                         </div>
                         <div class="w-7 h-7 md:w-8 md:h-8 rounded-tiny bg-white flex items-center justify-center shrink-0">
-                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-bg translate-x-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-3.5 h-3.5 md:w-4 md:h-4 text-ink translate-x-[1px]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
                             </svg>
                         </div>
@@ -484,7 +516,7 @@
     <!-- Section 3: Pain / Problema -->
     <section class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[760px] mx-auto text-center">
-            <h2 class="font-display font-[800] text-[28px] md:text-[42px] text-white leading-[1.3]">
+            <h2 class="font-display font-[800] text-[28px] md:text-[42px] text-text leading-[1.3]">
                 Seu concorrente já tem presença digital.<br class="hidden md:block">
                 Você ainda depende de indicação.<br class="hidden md:block">
                 Seu site não existe — ou não converte.<br class="hidden md:block">
@@ -526,7 +558,7 @@
     <section id="servicos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SOLUÇÕES</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
                 Escolha o que precisa.<br>Ou tenha tudo em uma solução.
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4 mb-12">
@@ -536,52 +568,52 @@
             <div class="w-full grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 0ms;">
                     <i data-lucide="monitor" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Site Profissional</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Site Profissional</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Sites rápidos, modernos e focados em conversão.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 100ms;">
                     <i data-lucide="palette" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Identidade Visual</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Identidade Visual</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Logo, cores e tipografia que representam sua marca.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms;">
                     <i data-lucide="bar-chart-2" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Dashboard</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Dashboard</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Painel de controle com os dados do seu negócio.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
                     <i data-lucide="users" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">CRM</div>
+                    <div class="font-body font-[600] text-[14px] text-text">CRM</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Gestão de clientes, leads e funil de vendas.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 400ms;">
                     <i data-lucide="message-circle" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Automação WhatsApp</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Automação WhatsApp</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Atendimento, agendamento e follow-up automáticos.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 0ms;">
                     <i data-lucide="bot" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Agentes de IA</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Agentes de IA</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Agentes inteligentes que atendem e vendem por você.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 100ms;">
                     <i data-lucide="plug" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Integrações</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Integrações</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Conectamos seus sistemas e ferramentas.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms;">
                     <i data-lucide="globe" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Gestão Digital</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Gestão Digital</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Presença online gerenciada e estratégica.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
                     <i data-lucide="image" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Posts e Conteúdo</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Posts e Conteúdo</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Criação de conteúdo com IA para redes sociais.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 400ms;">
                     <i data-lucide="lightbulb" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-white">Consultoria</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Consultoria</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Estratégia e planejamento tecnológico.</p>
                 </div>
             </div>
@@ -591,13 +623,13 @@
                     <div class="font-mono text-[11px] text-gold tracking-[0.15em] mb-4">
                         PACOTE COMPLETO
                     </div>
-                    <h3 class="font-display font-[800] text-[32px] md:text-[40px] text-white leading-[1.1]">
+                    <h3 class="font-display font-[800] text-[32px] md:text-[40px] text-text leading-[1.1]">
                         Tudo que seu negócio precisa. Em um único projeto.
                     </h3>
                     <p class="font-body text-[16px] text-muted leading-[1.7] mt-4 max-w-[480px]">
                         Desenvolvemos a estrutura digital completa da sua empresa — do zero à operação. Uma equipe, um processo, um resultado.
                     </p>
-                    <a href="#contato" class="inline-flex items-center gap-2 mt-8 sharp bg-gold text-bg px-[32px] py-[16px] font-body font-[600] text-[15px] hover:bg-gold-dim transition-colors duration-200">
+                    <a href="#contato" class="inline-flex items-center gap-2 mt-8 sharp bg-gold text-ink px-[32px] py-[16px] font-body font-[600] text-[15px] hover:bg-gold-dim transition-colors duration-200">
                         Quero a solução completa &rarr;
                     </a>
                 </div>
@@ -606,43 +638,43 @@
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Site Premium</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Site Premium</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Identidade Visual</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Identidade Visual</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Automação Inicial</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Automação Inicial</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Dashboard de Gestão</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Dashboard de Gestão</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Integração WhatsApp</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Integração WhatsApp</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Posts para redes sociais</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Posts para redes sociais</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-white">Configuração completa</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Configuração completa</span>
                     </div>
                 </div>
             </div>
@@ -653,7 +685,7 @@
     <section id="demonstracao" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[760px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">VER NA PRÁTICA</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
                 Veja a automação funcionando agora
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4">
@@ -676,7 +708,7 @@
                 <div class="bg-bg px-[16px] py-[12px] border-b border-border flex items-center shrink-0">
                     <div class="flex items-center gap-2">
                         <div class="w-[6px] h-[6px] rounded-full pulse-dot"></div>
-                        <span class="font-body font-[500] text-[13px] text-white">IA WAXLO • online</span>
+                        <span class="font-body font-[500] text-[13px] text-text">IA WAXLO • online</span>
                     </div>
                 </div>
 
@@ -697,7 +729,7 @@
     <section id="trabalhos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">TRABALHOS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
                 O que já entregamos.
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[600px] leading-[1.6] mt-4">
@@ -710,7 +742,7 @@
                 <!-- FEATURED CARD TAH ON -->
                 <div class="md:col-span-2 sharp border border-gold bg-surface overflow-hidden fade-up-element group relative" style="transition-delay: 0ms;">
                     <!-- FEATURED badge — absolute top-left -->
-                    <div class="absolute top-0 left-0 z-10 bg-gold text-bg px-4 py-2 font-mono text-[11px] tracking-[0.12em] font-[500]">
+                    <div class="absolute top-0 left-0 z-10 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em] font-[500]">
                         DESTAQUE
                     </div>
 
@@ -764,7 +796,7 @@
                                 </div>
 
                                 <!-- Client name -->
-                                <h3 class="font-display font-[800] text-[36px] md:text-[44px] text-white leading-[1.0] tracking-[-0.02em]">TAH ON</h3>
+                                <h3 class="font-display font-[800] text-[36px] md:text-[44px] text-text leading-[1.0] tracking-[-0.02em]">TAH ON</h3>
 
                                 <!-- Location -->
                                 <p class="font-mono text-[12px] text-muted tracking-[0.08em] mt-2">Lages, SC</p>
@@ -785,7 +817,7 @@
 
                             <!-- Bottom: visit link -->
                             <div class="mt-8 flex items-center gap-6">
-                                <a href="https://tahon.lovable.app" target="_blank" class="inline-flex items-center gap-2 font-body font-[600] text-[14px] text-gold hover:text-white transition-colors duration-200 group/link">
+                                <a href="https://tahon.lovable.app" target="_blank" class="inline-flex items-center gap-2 font-body font-[600] text-[14px] text-gold hover:text-text transition-colors duration-200 group/link">
                                     Ver site
                                     <svg class="w-4 h-4 group-hover/link:translate-x-1 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
@@ -821,7 +853,7 @@
                     <!-- BOTTOM AREA -->
                     <div class="p-[28px_32px] flex-1 flex flex-col">
                         <div class="font-mono text-[11px] text-gold tracking-[0.1em]">ADVOCACIA &amp; DIREITO</div>
-                        <h3 class="font-display font-[800] text-[20px] text-white mt-2">SC Advocacia</h3>
+                        <h3 class="font-display font-[800] text-[20px] text-text mt-2">SC Advocacia</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.6] mt-2 flex-1">
                             Site institucional com agendamento via WhatsApp, galeria de áreas de atuação e tour virtual. Cliente real da WAXLO.
                         </p>
@@ -856,7 +888,7 @@
                     <!-- BOTTOM AREA -->
                     <div class="p-[28px_32px] flex-1 flex flex-col">
                         <div class="font-mono text-[11px] text-gold tracking-[0.1em]">RESTAURANTE &amp; CHURRASCARIA</div>
-                        <h3 class="font-display font-[800] text-[20px] text-white mt-2">Alto da Serra</h3>
+                        <h3 class="font-display font-[800] text-[20px] text-text mt-2">Alto da Serra</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.6] mt-2 flex-1">
                             Site institucional para restaurante aberto 24 horas na Rodovia Raposo Tavares, Angatuba/SP. Destaque para localização, cardápio e contato direto via ligação.
                         </p>
@@ -881,7 +913,7 @@
                     <!-- BOTTOM AREA -->
                     <div class="p-[28px_32px] flex-1 flex flex-col">
                         <div class="font-mono text-[11px] text-gold tracking-[0.1em]">CLÍNICA DE ESTÉTICA</div>
-                        <h3 class="font-display font-[800] text-[20px] text-white mt-2">Site Premium — Modelo</h3>
+                        <h3 class="font-display font-[800] text-[20px] text-text mt-2">Site Premium — Modelo</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.6] mt-2 flex-1">
                             Site animado com sistema de agendamento integrado, galeria de procedimentos e automação de WhatsApp.
                         </p>
@@ -902,7 +934,7 @@
     <section id="como-funciona" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center lg:items-start text-center lg:text-left">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">O PROCESSO</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white leading-[1.1]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text leading-[1.1]">
                 Não entregamos projetos.<br>Construímos parcerias.
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted max-w-[600px] leading-[1.6] mt-4">
@@ -919,7 +951,7 @@
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
                     <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">1</div>
                     <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
-                        <h3 class="font-display font-[800] text-[18px] text-white">DIAGNÓSTICO GRATUITO</h3>
+                        <h3 class="font-display font-[800] text-[18px] text-text">DIAGNÓSTICO GRATUITO</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Uma conversa para entender seu negócio, seus clientes e seus objetivos reais. Sem compromisso.
                         </p>
@@ -930,7 +962,7 @@
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
                     <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">2</div>
                     <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
-                        <h3 class="font-display font-[800] text-[18px] text-white">PROPOSTA E CONTRATO</h3>
+                        <h3 class="font-display font-[800] text-[18px] text-text">PROPOSTA E CONTRATO</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Apresentamos a solução ideal com escopo claro, prazo definido e investimento transparente. Tudo documentado.
                         </p>
@@ -941,7 +973,7 @@
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
                     <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">3</div>
                     <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
-                        <h3 class="font-display font-[800] text-[18px] text-white">REUNIÕES DE ALINHAMENTO</h3>
+                        <h3 class="font-display font-[800] text-[18px] text-text">REUNIÕES DE ALINHAMENTO</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Trabalhamos junto com você durante o desenvolvimento. Você acompanha, aprova e sugere a cada etapa. Sem surpresas.
                         </p>
@@ -952,7 +984,7 @@
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
                     <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">4</div>
                     <div class="pt-2 lg:pt-0">
-                        <h3 class="font-display font-[800] text-[18px] text-white">ENTREGA E PARCERIA</h3>
+                        <h3 class="font-display font-[800] text-[18px] text-text">ENTREGA E PARCERIA</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Seu sistema no ar com suporte ativo. Melhorias contínuas e uma conexão que vai além do projeto.
                         </p>
@@ -964,7 +996,7 @@
             <div class="w-full mt-[64px] bg-[rgba(201,169,110,0.06)] border border-[rgba(201,169,110,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
                 <div class="font-display font-[800] text-[64px] md:text-[80px] text-gold opacity-40 leading-none shrink-0 relative top-2">"</div>
                 <div class="flex-1 pl-0 md:pl-2">
-                    <p class="font-body text-[16px] md:text-[18px] text-white leading-[1.7]">
+                    <p class="font-body text-[16px] md:text-[18px] text-text leading-[1.7]">
                         Conectamos nossos clientes entre si. Uma clínica pode indicar um restaurante. Uma empresa pode precisar de outra. Construímos mais do que sistemas — construímos uma rede.
                     </p>
                     <div class="font-body font-[500] text-[14px] text-muted mt-4">— Equipe WAXLO</div>
@@ -977,7 +1009,7 @@
     <section class="w-full bg-surface py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SEGMENTOS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
                 Atendemos qualquer segmento.
             </h2>
 
@@ -985,42 +1017,42 @@
                 <!-- Item 1 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 0ms;">
                     <i data-lucide="hospital" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Clínicas e consultórios</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Clínicas e consultórios</div>
                 </div>
                 <!-- Item 2 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 100ms;">
                     <i data-lucide="sparkles" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Estética e beleza</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Estética e beleza</div>
                 </div>
                 <!-- Item 3 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 200ms;">
                     <i data-lucide="dumbbell" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Academias e studios</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Academias e studios</div>
                 </div>
                 <!-- Item 4 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 300ms;">
                     <i data-lucide="utensils" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Restaurantes e bares</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Restaurantes e bares</div>
                 </div>
                 <!-- Item 5 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 0ms;">
                     <i data-lucide="shopping-bag" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Lojas e comércio local</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Lojas e comércio local</div>
                 </div>
                 <!-- Item 6 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 100ms;">
                     <i data-lucide="wrench" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Oficinas e serviços</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Oficinas e serviços</div>
                 </div>
                 <!-- Item 7 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 200ms;">
                     <i data-lucide="home" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Imobiliárias</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Imobiliárias</div>
                 </div>
                 <!-- Item 8 -->
                 <div class="sharp border border-border bg-bg p-[20px_16px] md:p-[32px_24px] text-center hover:border-gold transition-colors duration-200 group flex flex-col items-center fade-up-element" style="transition-delay: 300ms;">
                     <i data-lucide="briefcase" class="w-[24px] h-[24px] md:w-[28px] md:h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-white transition-colors duration-200 leading-tight">Prestadores de serviço</div>
+                    <div class="font-body font-[500] text-[12px] md:text-[14px] text-muted mt-[10px] md:mt-[12px] group-hover:text-text transition-colors duration-200 leading-tight">Prestadores de serviço</div>
                 </div>
             </div>
 
@@ -1034,7 +1066,7 @@
     <section class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">CLIENTES</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
                 Quem já confia na WAXLO
             </h2>
 
@@ -1044,7 +1076,7 @@
                 <!-- CARD 1 -->
                 <div class="sharp border border-gold bg-surface p-[40px_36px] flex flex-col fade-up-element" style="transition-delay: 0ms;">
                     <div class="self-start font-mono text-[10px] text-gold bg-[rgba(201,169,110,0.1)] px-[10px] py-[4px] tracking-[0.1em] sharp">CLIENTE ATIVO</div>
-                    <h3 class="font-display font-[800] text-[22px] text-white mt-[16px]">SC Advocacia</h3>
+                    <h3 class="font-display font-[800] text-[22px] text-text mt-[16px]">SC Advocacia</h3>
                     <div class="font-body font-[400] text-[14px] text-muted mt-1">Lages, SC</div>
                     <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-[16px] flex-1">
                         Site institucional com agendamento via WhatsApp, galeria de áreas de atuação e tour virtual integrado.
@@ -1056,7 +1088,7 @@
                 <!-- CARD 2 -->
                 <div class="sharp border border-border bg-surface p-[40px_36px] flex flex-col fade-up-element" style="transition-delay: 150ms;">
                     <div class="self-start rounded-tiny border border-border px-[10px] py-[4px] font-mono font-[500] text-[10px] text-muted">CLIENTE ATIVO</div>
-                    <h3 class="font-display font-[800] text-[22px] text-white mt-[16px]">Alto da Serra</h3>
+                    <h3 class="font-display font-[800] text-[22px] text-text mt-[16px]">Alto da Serra</h3>
                     <div class="font-body font-[400] text-[14px] text-muted mt-1">Angatuba, SP</div>
                     <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-[16px] flex-1">
                         Restaurante e churrascaria aberta 24 horas, localizada na Rodovia Raposo Tavares. Site com cardápio, galeria e contato direto via ligação.
@@ -1071,7 +1103,7 @@
                         <span class="font-mono text-[10px] text-gold tracking-[0.1em] bg-[rgba(201,169,110,0.08)] border border-[rgba(201,169,110,0.2)] px-3 py-1">CLIENTE ATIVO</span>
                     </div>
 
-                    <h4 class="font-display font-[800] text-[22px] text-white mt-2">TAH ON</h4>
+                    <h4 class="font-display font-[800] text-[22px] text-text mt-2">TAH ON</h4>
                     <p class="font-body text-[14px] text-muted mt-1">Lages, SC</p>
 
                     <p class="font-body text-[15px] text-muted leading-[1.7] mt-4">
@@ -1088,7 +1120,7 @@
                 <!-- CARD 3 -->
                 <div class="sharp border border-border bg-surface p-[40px_36px] opacity-60 flex flex-col fade-up-element" style="transition-delay: 300ms;">
                     <div class="self-start rounded-tiny border border-border px-[10px] py-[4px] font-body font-[500] text-[11px] text-muted">EM DESENVOLVIMENTO</div>
-                    <h3 class="font-display font-[800] text-[22px] text-white mt-[16px]">Clínica</h3>
+                    <h3 class="font-display font-[800] text-[22px] text-text mt-[16px]">Clínica</h3>
                     <div class="font-body font-[400] text-[14px] text-muted mt-1">Lages, SC</div>
                     <p class="font-body font-[400] text-[15px] text-muted leading-[1.7] mt-[16px] flex-1">
                         Automação completa de atendimento com IA, agendamento via WhatsApp e dashboard de gestão.
@@ -1097,7 +1129,7 @@
 
             </div>
 
-            <p class="font-body font-[500] text-[16px] text-white text-center mt-[40px] fade-up-element">
+            <p class="font-body font-[500] text-[16px] text-text text-center mt-[40px] fade-up-element">
                 Seja um dos primeiros negócios da região com operação totalmente automatizada.
             </p>
         </div>
@@ -1107,7 +1139,7 @@
     <section id="faq" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
         <div class="max-w-[760px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">DÚVIDAS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-white text-center leading-[1.1] mb-[40px]">
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1] mb-[40px]">
                 Perguntas frequentes
             </h2>
 
@@ -1115,7 +1147,7 @@
                 
                 <!-- Item 1 -->
                 <div class="faq-item border-b border-border">
-                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
                         <span class="group-hover:text-gold transition-colors duration-200">Preciso entender de tecnologia para usar?</span>
                         <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
                     </button>
@@ -1128,7 +1160,7 @@
 
                 <!-- Item 2 -->
                 <div class="faq-item border-b border-border">
-                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
                         <span class="group-hover:text-gold transition-colors duration-200">Quanto tempo leva para ficar pronto?</span>
                         <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
                     </button>
@@ -1141,7 +1173,7 @@
 
                 <!-- Item 3 -->
                 <div class="faq-item border-b border-border">
-                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
                         <span class="group-hover:text-gold transition-colors duration-200">Como funciona o processo de criação?</span>
                         <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
                     </button>
@@ -1154,7 +1186,7 @@
 
                 <!-- Item 4 -->
                 <div class="faq-item border-b border-border">
-                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
                         <span class="group-hover:text-gold transition-colors duration-200">Funciona para negócio pequeno?</span>
                         <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
                     </button>
@@ -1167,7 +1199,7 @@
 
                 <!-- Item 5 -->
                 <div class="faq-item border-b border-border">
-                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
                         <span class="group-hover:text-gold transition-colors duration-200">E se eu precisar mudar algo depois?</span>
                         <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
                     </button>
@@ -1180,7 +1212,7 @@
 
                 <!-- Item 6 -->
                 <div class="faq-item border-b border-border">
-                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-white group outline-none">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
                         <span class="group-hover:text-gold transition-colors duration-200">Atende fora de Lages?</span>
                         <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
                     </button>
@@ -1205,7 +1237,7 @@
             ✦ Primeira conversa gratuita &middot; Sem compromisso
         </div>
 
-        <h2 class="font-display font-[800] text-[36px] md:text-[64px] text-white leading-[1.05] max-w-[800px] mx-auto fade-up-element">
+        <h2 class="font-display font-[800] text-[36px] md:text-[64px] text-text leading-[1.05] max-w-[800px] mx-auto fade-up-element">
             Pronto para construir a estrutura<br class="hidden sm:block">digital do seu negócio?
         </h2>
         
@@ -1258,7 +1290,7 @@
         <div id="wpp-tooltip" class="wpp-tooltip opacity-0 translate-x-2 pointer-events-none transition-all duration-300
              bg-surface border border-border px-4 py-2 sharp flex items-center gap-2 whitespace-nowrap">
             <span class="w-2 h-2 rounded-full bg-[#25D366] pulse-dot shrink-0"></span>
-            <span class="font-body font-[500] text-[13px] text-white">Fale conosco agora</span>
+            <span class="font-body font-[500] text-[13px] text-text">Fale conosco agora</span>
         </div>
         <!-- Button -->
         <button id="wpp-btn" aria-label="Falar no WhatsApp"
@@ -1279,7 +1311,7 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
                 <!-- COL 1 -->
                 <div class="col-span-2 lg:col-span-1">
-                    <div class="font-display font-[800] text-[24px] text-white">WAXLO</div>
+                    <div class="font-display font-[800] text-[24px] text-text">WAXLO</div>
                     <p class="font-body font-[400] text-[14px] text-muted leading-[1.7] mt-3">
                         Tecnologia digital para empresas.<br>Lages, SC — Brasil.
                     </p>
@@ -1288,19 +1320,19 @@
                 <!-- COL 2 -->
                 <div class="flex flex-col">
                     <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">SERVIÇOS</span>
-                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Sites &amp; Landing Pages</a>
-                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Automação com IA</a>
-                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Identidade Visual</a>
-                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">CRM e Dashboards</a>
-                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Consultoria</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Sites &amp; Landing Pages</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Automação com IA</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Identidade Visual</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">CRM e Dashboards</a>
+                    <a href="#servicos" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Consultoria</a>
                 </div>
 
                 <!-- COL 3 -->
                 <div class="flex flex-col">
                     <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">EMPRESA</span>
-                    <a href="#como-funciona" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Como Funciona</a>
-                    <a href="#vitrine" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Nosso Trabalho</a>
-                    <a href="#contato" class="font-body font-[400] text-[14px] text-muted hover:text-white transition-colors duration-200 py-1.5 block">Contato</a>
+                    <a href="#como-funciona" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Como Funciona</a>
+                    <a href="#vitrine" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Nosso Trabalho</a>
+                    <a href="#contato" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">Contato</a>
                 </div>
 
                 <!-- COL 4 -->
@@ -1429,7 +1461,7 @@
                         const inner = document.createElement('div');
                         // Inject explicit border-radii depending on sender
                         inner.className = msg.type === 'user' 
-                            ? 'bg-white text-bg px-[14px] py-[10px] rounded-tl-[12px] rounded-tr-[12px] rounded-br-[2px] rounded-bl-[12px] max-w-[85%] sm:max-w-[75%] font-body font-[400] text-[14px]'
+                            ? 'bg-white text-ink px-[14px] py-[10px] rounded-tl-[12px] rounded-tr-[12px] rounded-br-[2px] rounded-bl-[12px] max-w-[85%] sm:max-w-[75%] font-body font-[400] text-[14px]'
                             : 'bg-[#2A2A2A] text-white px-[14px] py-[10px] rounded-tl-[2px] rounded-tr-[12px] rounded-br-[12px] rounded-bl-[12px] max-w-[90%] sm:max-w-[75%] font-body font-[400] text-[14px]';
                         
                         inner.innerText = msg.text;
@@ -1537,10 +1569,10 @@
                 navLinks.forEach(link => {
                     const href = link.getAttribute('href');
                     if (href !== '#' && href.startsWith('#')) {
-                        link.classList.remove('text-white');
+                        link.classList.remove('text-text');
                         link.classList.add('text-muted');
                         if (href === `#${current}`) {
-                            link.classList.add('text-white');
+                            link.classList.add('text-text');
                             link.classList.remove('text-muted');
                         }
                     }
@@ -1550,6 +1582,36 @@
             // Initialize Lucide Icons
             if (typeof lucide !== 'undefined') {
                 lucide.createIcons();
+            }
+
+            // --- Theme Toggle ---
+            const themeToggleBtn = document.getElementById('theme-toggle');
+            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+            const iconsToLight = document.querySelectorAll('.theme-icon-to-light');
+            const iconsToDark = document.querySelectorAll('.theme-icon-to-dark');
+
+            function updateThemeIcon(theme) {
+                if (theme === 'light') {
+                    iconsToLight.forEach(el => el.classList.add('hidden'));
+                    iconsToDark.forEach(el => el.classList.remove('hidden'));
+                } else {
+                    iconsToLight.forEach(el => el.classList.remove('hidden'));
+                    iconsToDark.forEach(el => el.classList.add('hidden'));
+                }
+                if (themeColorMeta) {
+                    themeColorMeta.setAttribute('content', theme === 'light' ? '#FFFFFF' : '#0A0A0A');
+                }
+            }
+
+            updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'dark');
+
+            if (themeToggleBtn) {
+                themeToggleBtn.addEventListener('click', () => {
+                    const nextTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', nextTheme);
+                    try { localStorage.setItem('waxlo-theme', nextTheme); } catch (e) {}
+                    updateThemeIcon(nextTheme);
+                });
             }
 
             // ── WhatsApp Float Tooltip ──
