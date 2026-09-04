@@ -374,6 +374,9 @@
         <div class="hidden md:flex items-center gap-[40px]">
             <a href="#servicos" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Serviços</a>
             <a href="#trabalhos" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Trabalhos</a>
+            <a href="#apps" class="font-body font-medium text-[15px]
+            text-muted hover:text-text transition-colors duration-200">
+            Soluções</a>
             <a href="#comofunciona" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Como Funciona</a>
             <a href="#contato" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Contato</a>
         </div>
@@ -405,6 +408,8 @@
     <div id="mobile-menu" class="fixed inset-0 bg-bg z-40 flex flex-col items-center justify-center gap-8 px-6">
         <a href="#servicos" class="mobile-link font-display font-[800] text-[32px] text-text">Serviços</a>
         <a href="#trabalhos" class="mobile-link font-display font-[800] text-[32px] text-text">Trabalhos</a>
+        <a href="#apps" class="mobile-link
+        font-display font-[800] text-[32px] text-text">Soluções</a>
         <a href="#comofunciona" class="mobile-link font-display font-[800] text-[32px] text-text">Como Funciona</a>
         <a href="#contato" class="mobile-link font-display font-[800] text-[32px] text-text">Contato</a>
         <button class="sharp border border-gold text-gold bg-transparent px-[24px] py-[14px] font-body font-medium text-[16px] hover:bg-gold hover:text-ink transition-colors duration-200 mt-4">
@@ -576,9 +581,15 @@
                     <div class="font-body font-[600] text-[14px] text-text">Identidade Visual</div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Logo, cores e tipografia que representam sua marca.</p>
                 </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms;">
+                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms; border-top: 2px solid #C9A96E;">
                     <i data-lucide="bar-chart-2" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Dashboard</div>
+                    <div class="font-body font-[600] text-[14px] text-text">Dashboard<span style="display:inline-block;margin-left:8px;
+                    font-family:'JetBrains Mono',monospace;font-size:9px;
+                    color:#C9A96E;background:rgba(201,169,110,0.1);
+                    border:1px solid rgba(201,169,110,0.2);
+                    padding:2px 8px;letter-spacing:0.1em;vertical-align:middle;">
+                        NOVO
+                    </span></div>
                     <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Painel de controle com os dados do seu negócio.</p>
                 </div>
                 <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
@@ -650,7 +661,7 @@
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-text">Automação Inicial</span>
+                        <span class="font-body font-[500] text-[15px] text-text">App de Gestão</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
@@ -662,7 +673,7 @@
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
                             <svg class="w-[12px] h-[12px] text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
                         </span>
-                        <span class="font-body font-[500] text-[15px] text-text">Integração WhatsApp</span>
+                        <span class="font-body font-[500] text-[15px] text-text">Presença Digital Completa</span>
                     </div>
                     <div class="flex items-center gap-3">
                         <span class="w-5 h-5 rounded-full border border-gold flex items-center justify-center shrink-0">
@@ -683,45 +694,127 @@
 
     <!-- Section 5: Demonstração Interativa -->
     <section id="demonstracao" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
-        <div class="max-w-[760px] mx-auto flex flex-col items-center">
-            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">VER NA PRÁTICA</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
-                Veja a automação funcionando agora
+        <div class="max-w-[1280px] mx-auto px-6 md:px-12">
+
+          <!-- Eyebrow -->
+          <div class="flex flex-col items-center mb-14">
+            <span class="font-mono font-[500] text-[11px] text-muted
+            tracking-[0.15em] mb-4">O QUE ENTREGAMOS</span>
+            <h2 class="font-display font-[800] text-[36px] md:text-[48px]
+            text-text text-center leading-[1.1]">
+              Soluções que o seu negócio<br>realmente precisa.
             </h2>
-            <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4">
-                Escolha um segmento e assista como seria o atendimento do seu negócio — automático, inteligente, 24h por dia.
+            <p class="font-body text-[18px] text-muted text-center
+            max-w-[520px] leading-[1.6] mt-4">
+              Cada entrega resolve um problema real —
+              do visual ao sistema de gestão.
             </p>
+          </div>
 
-            <!-- Toggles -->
-            <div class="flex gap-4 justify-center mt-[32px]">
-                <button onclick="window.switchDemoTab('clinica')" id="tab-clinica" class="demo-tab sharp border border-gold bg-[rgba(201,169,110,0.06)] text-gold px-[28px] py-[12px] font-body font-[600] text-[16px] transition-colors">
-                    🏥 Clínica
-                </button>
-                <button onclick="window.switchDemoTab('restaurante')" id="tab-restaurante" class="demo-tab sharp border border-border bg-transparent text-muted px-[28px] py-[12px] font-body font-[600] text-[16px] hover:border-gold hover:text-gold transition-colors">
-                    🍽️ Restaurante
-                </button>
+          <!-- Two blocks side by side -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Block 1: Sites & Presença -->
+            <div class="sharp border border-border bg-surface
+            p-[40px_36px] md:p-[48px_44px] flex flex-col gap-6
+            fade-up-element">
+              <i data-lucide="monitor"
+                 class="w-[32px] h-[32px] text-muted"></i>
+              <div>
+                <h3 class="font-display font-[800] text-[26px]
+                md:text-[30px] text-text leading-[1.1]">
+                  Sua empresa vista<br>por quem importa.
+                </h3>
+                <p class="font-body text-[15px] text-muted
+                leading-[1.75] mt-4 max-w-[380px]">
+                  Do site profissional à presença completa no
+                  Google — construímos a vitrine digital do seu
+                  negócio do zero.
+                </p>
+              </div>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Site profissional moderno
+                </li>
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Identidade visual completa
+                </li>
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Google Maps e Search Console
+                </li>
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Marketing e conteúdo digital
+                </li>
+              </ul>
             </div>
 
-            <!-- Phone Container -->
-            <div class="w-full max-w-[360px] mx-auto mt-[40px] sharp border border-border bg-surface h-[520px] flex flex-col relative shadow-2xl shadow-black/50">
-                <!-- Header -->
-                <div class="bg-bg px-[16px] py-[12px] border-b border-border flex items-center shrink-0">
-                    <div class="flex items-center gap-2">
-                        <div class="w-[6px] h-[6px] rounded-full pulse-dot"></div>
-                        <span class="font-body font-[500] text-[13px] text-text">IA WAXLO • online</span>
-                    </div>
-                </div>
+            <!-- Block 2: Apps & Dashboards (gold highlight) -->
+            <div class="sharp border border-gold bg-surface
+            p-[40px_36px] md:p-[48px_44px] flex flex-col gap-6
+            fade-up-element" style="transition-delay:100ms;">
 
-                <!-- Chat Area -->
-                <div id="demo-app-chat" class="p-[16px] overflow-hidden flex-1 flex flex-col gap-3 relative transition-opacity duration-300">
-                    <!-- Messages injected here -->
-                </div>
+              <!-- Badge NOVO -->
+              <div class="flex items-center gap-3">
+                <span class="font-mono text-[10px] text-gold
+                tracking-[0.12em] bg-[rgba(201,169,110,0.08)]
+                border border-[rgba(201,169,110,0.2)]
+                px-3 py-1">NOVO</span>
+              </div>
+
+              <i data-lucide="layout-dashboard"
+                 class="w-[32px] h-[32px] text-gold"></i>
+              <div>
+                <h3 class="font-display font-[800] text-[26px]
+                md:text-[30px] text-text leading-[1.1]">
+                  Um sistema feito para<br>o seu negócio.
+                </h3>
+                <p class="font-body text-[15px] text-muted
+                leading-[1.75] mt-4 max-w-[380px]">
+                  Apps de gestão personalizados para clínicas,
+                  consultórios e profissionais autônomos.
+                  Com a sua cor, a sua logo e o que você
+                  realmente usa no dia a dia.
+                </p>
+              </div>
+              <ul class="flex flex-col gap-3">
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Controle de pacientes e clientes
+                </li>
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Agenda e histórico completo
+                </li>
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Dashboard com seus dados
+                </li>
+                <li class="flex items-center gap-3 font-body
+                text-[14px] text-text">
+                  <span class="text-gold font-[600]">→</span>
+                  Cores e logo da sua marca
+                </li>
+              </ul>
+
+              <a href="#apps" class="inline-flex items-center
+              gap-2 font-body font-[600] text-[14px] text-gold
+              hover:underline mt-2">
+                Ver apps disponíveis →
+              </a>
             </div>
 
-            <!-- Caption -->
-            <p class="font-body font-[400] text-[14px] text-muted text-center italic mt-[24px]">
-                "Este atendimento acontece sem nenhuma pessoa digitando."
-            </p>
+          </div>
         </div>
     </section>
 
@@ -924,10 +1017,262 @@
             </div>
 
             <div class="mt-[48px] text-center font-body text-[16px] text-muted">
-                Quer ver como ficaria o site do seu negócio? 
+                Quer ver como ficaria o site do seu negócio?
                 <a href="#contato" class="text-gold hover:underline">Fale com a nossa equipe &rarr;</a>
             </div>
         </div>
+    </section>
+
+    <!-- Section: Apps por Nicho -->
+    <section id="apps" class="w-full bg-surface
+    py-[60px] md:py-[120px] px-6">
+      <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+
+        <span class="font-mono font-[500] text-[11px] text-muted
+        tracking-[0.15em] mb-4">APPS DE GESTÃO</span>
+
+        <h2 class="font-display font-[800] text-[36px] md:text-[48px]
+        text-text text-center leading-[1.1]">
+          Um sistema feito para<br>o seu negócio.
+        </h2>
+
+        <p class="font-body text-[18px] text-muted text-center
+        max-w-[560px] leading-[1.6] mt-4 mb-16">
+          Não é um software genérico. É uma ferramenta construída
+          para o seu nicho — com a sua cor, a sua logo e o que
+          você realmente usa no dia a dia.
+        </p>
+
+        <!-- Grid de nichos -->
+        <div class="w-full grid grid-cols-1 md:grid-cols-2
+        lg:grid-cols-3 gap-4">
+
+          <!-- Card 1: Personal Trainer — DISPONÍVEL -->
+          <div class="sharp border border-border bg-bg
+          p-[32px_28px] flex flex-col gap-4 fade-up-element
+          hover:border-gold transition-colors duration-200"
+          style="transition-delay:0ms;">
+            <span class="font-mono text-[10px] text-gold
+            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
+            border border-[rgba(201,169,110,0.2)]
+            px-3 py-1 self-start">DISPONÍVEL</span>
+            <i data-lucide="dumbbell"
+               class="w-[28px] h-[28px] text-gold"></i>
+            <div>
+              <h3 class="font-display font-[800] text-[20px]
+              text-text">Personal Trainer</h3>
+              <p class="font-body text-[13px] text-muted mt-1">
+                Gestão de alunos e treinos</p>
+            </div>
+            <ul class="flex flex-col gap-2">
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Avaliação física completa
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Plano de treino automático
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Dashboard de evolução
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 2: Clínica Médica — DISPONÍVEL -->
+          <div class="sharp border border-border bg-bg
+          p-[32px_28px] flex flex-col gap-4 fade-up-element
+          hover:border-gold transition-colors duration-200"
+          style="transition-delay:100ms;">
+            <span class="font-mono text-[10px] text-gold
+            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
+            border border-[rgba(201,169,110,0.2)]
+            px-3 py-1 self-start">DISPONÍVEL</span>
+            <i data-lucide="stethoscope"
+               class="w-[28px] h-[28px] text-gold"></i>
+            <div>
+              <h3 class="font-display font-[800] text-[20px]
+              text-text">Clínica Médica</h3>
+              <p class="font-body text-[13px] text-muted mt-1">
+                Gestão de pacientes e consultas</p>
+            </div>
+            <ul class="flex flex-col gap-2">
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Cadastro e histórico de pacientes
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Agenda e prontuário
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Relatórios e indicadores
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 3: Psicologia — DISPONÍVEL -->
+          <div class="sharp border border-border bg-bg
+          p-[32px_28px] flex flex-col gap-4 fade-up-element
+          hover:border-gold transition-colors duration-200"
+          style="transition-delay:200ms;">
+            <span class="font-mono text-[10px] text-gold
+            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
+            border border-[rgba(201,169,110,0.2)]
+            px-3 py-1 self-start">DISPONÍVEL</span>
+            <i data-lucide="brain"
+               class="w-[28px] h-[28px] text-gold"></i>
+            <div>
+              <h3 class="font-display font-[800] text-[20px]
+              text-text">Psicologia</h3>
+              <p class="font-body text-[13px] text-muted mt-1">
+                Gestão de sessões e pacientes</p>
+            </div>
+            <ul class="flex flex-col gap-2">
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Prontuário por paciente
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Histórico de sessões
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Controle financeiro
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 4: Fisioterapia — DISPONÍVEL -->
+          <div class="sharp border border-border bg-bg
+          p-[32px_28px] flex flex-col gap-4 fade-up-element
+          hover:border-gold transition-colors duration-200"
+          style="transition-delay:0ms;">
+            <span class="font-mono text-[10px] text-gold
+            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
+            border border-[rgba(201,169,110,0.2)]
+            px-3 py-1 self-start">DISPONÍVEL</span>
+            <i data-lucide="activity"
+               class="w-[28px] h-[28px] text-gold"></i>
+            <div>
+              <h3 class="font-display font-[800] text-[20px]
+              text-text">Fisioterapia</h3>
+              <p class="font-body text-[13px] text-muted mt-1">
+                Controle de evolução e sessões</p>
+            </div>
+            <ul class="flex flex-col gap-2">
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Ficha de avaliação funcional
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Evolução por sessão (EVA)
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-gold">→</span>
+                Relatório de alta em PDF
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 5: Odontologia — EM DESENVOLVIMENTO -->
+          <div class="sharp border border-border bg-bg
+          p-[32px_28px] flex flex-col gap-4 fade-up-element
+          opacity-60" style="transition-delay:100ms;">
+            <span class="font-mono text-[10px] text-muted
+            tracking-[0.1em] border border-border
+            px-3 py-1 self-start">EM DESENVOLVIMENTO</span>
+            <i data-lucide="smile"
+               class="w-[28px] h-[28px] text-muted"></i>
+            <div>
+              <h3 class="font-display font-[800] text-[20px]
+              text-text">Odontologia</h3>
+              <p class="font-body text-[13px] text-muted mt-1">
+                Prontuário e agenda odontológica</p>
+            </div>
+            <ul class="flex flex-col gap-2">
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-muted">→</span>
+                Odontograma digital
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-muted">→</span>
+                Plano de tratamento
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-muted">→</span>
+                Histórico de procedimentos
+              </li>
+            </ul>
+          </div>
+
+          <!-- Card 6: Estética — EM DESENVOLVIMENTO -->
+          <div class="sharp border border-border bg-bg
+          p-[32px_28px] flex flex-col gap-4 fade-up-element
+          opacity-60" style="transition-delay:200ms;">
+            <span class="font-mono text-[10px] text-muted
+            tracking-[0.1em] border border-border
+            px-3 py-1 self-start">EM DESENVOLVIMENTO</span>
+            <i data-lucide="sparkles"
+               class="w-[28px] h-[28px] text-muted"></i>
+            <div>
+              <h3 class="font-display font-[800] text-[20px]
+              text-text">Estética e Beleza</h3>
+              <p class="font-body text-[13px] text-muted mt-1">
+                Gestão de atendimentos e agenda</p>
+            </div>
+            <ul class="flex flex-col gap-2">
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-muted">→</span>
+                Ficha da cliente
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-muted">→</span>
+                Histórico de procedimentos
+              </li>
+              <li class="font-body text-[13px] text-muted
+              flex items-center gap-2">
+                <span class="text-muted">→</span>
+                Controle de retorno
+              </li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- CTA -->
+        <div class="mt-14 text-center">
+          <p class="font-body text-[16px] text-muted">
+            Seu segmento não está aqui?
+            <a href="#contato"
+               class="text-gold hover:underline ml-1 font-[500]">
+              Desenvolvemos para qualquer nicho →
+            </a>
+          </p>
+        </div>
+
+      </div>
     </section>
 
     <!-- Section 7: Como Funciona -->
@@ -1210,6 +1555,32 @@
                     </div>
                 </div>
 
+                <!-- Item: App no celular -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">O app de gestão funciona no celular?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Sim. É desenvolvido como aplicação web responsiva — funciona em qualquer celular, tablet ou computador, sem precisar instalar nada na App Store ou Play Store. Basta abrir o navegador e acessar.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Item: Personalização do app -->
+                <div class="faq-item border-b border-border">
+                    <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
+                        <span class="group-hover:text-gold transition-colors duration-200">Posso personalizar o app com a minha marca?</span>
+                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
+                            Sim. Cada app é configurado com as cores e logo do seu negócio. A experiência é de um sistema próprio — não de um software genérico que parece de outra empresa.
+                        </p>
+                    </div>
+                </div>
+
                 <!-- Item 6 -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
@@ -1249,7 +1620,7 @@
         <div class="flex flex-col sm:flex-row gap-[20px] justify-center mt-[48px] w-full sm:w-auto fade-up-element">
             
             <!-- WhatsApp Button -->
-            <a href="#" id="cta-whatsapp"
+            <a href="https://wa.me/5549988913704" target="_blank" id="cta-whatsapp"
                class="cta-social-btn whatsapp-btn sharp px-[40px] py-[18px] font-display font-[700] text-[16px] flex items-center justify-center gap-3 relative overflow-hidden group">
                 <!-- Glow layer -->
                 <span class="absolute inset-0 bg-[#25D366] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl"></span>
@@ -1338,7 +1709,7 @@
                 <!-- COL 4 -->
                 <div class="flex flex-col">
                     <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">CONTATO</span>
-                    <span class="font-body font-[400] text-[14px] text-muted py-1.5 block">WhatsApp (em breve)</span>
+                    <a href="https://wa.me/5549988913704" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-gold transition-colors duration-200 py-1.5 block">(49) 98891-3704</a>
                     <a href="https://instagram.com/waxlo.tech" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-gold transition-colors duration-200 py-1.5 block">@waxlo.tech</a>
                     <span class="font-body font-[400] text-[14px] text-muted py-1.5 block mt-2">Lages, SC — Brasil</span>
                 </div>
@@ -1482,8 +1853,10 @@
                 });
             }
 
-            // Start default demo automatically
-            playDemoScript('clinica');
+            // Start default demo automatically (section #demonstracao no longer renders this chat)
+            if (demoChat) {
+                playDemoScript('clinica');
+            }
 
             // --- Intersection Observer for Animations ---
             const observerOptions = {
@@ -1627,8 +2000,7 @@
                     wppTooltip.style.transform = 'translateX(8px)';
                 });
                 wppBtn.addEventListener('click', () => {
-                    // Placeholder — will route to WhatsApp number when defined
-                    window.open('#', '_blank');
+                    window.open('https://wa.me/5549988913704', '_blank');
                 });
             }
         });
