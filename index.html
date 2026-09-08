@@ -526,71 +526,140 @@
     <!-- Hero Section -->
     <section class="relative w-full h-screen overflow-hidden flex items-center justify-center">
 
-        <!-- Background video -->
-        <video
-            class="absolute inset-0 w-full h-full object-cover z-0"
-            src="videos/hero-video.mp4"
-            autoplay muted loop playsinline
-            preload="auto">
-        </video>
+      <div class="max-w-[1400px] mx-auto px-6 md:px-12
+      w-full h-full flex items-center">
 
-        <!-- Dark overlay -->
-        <div class="absolute inset-0 bg-black/60 z-10"></div>
+        <!-- Left: text content (55%) -->
+        <div class="w-full md:w-[55%] flex flex-col
+        items-start justify-center pt-[100px] pb-[60px]
+        md:pt-0 md:pb-0 pr-0 md:pr-16">
 
-        <!-- Grid overlay (keeps brand texture) -->
-        <div class="absolute inset-0 z-10 opacity-[0.03]"
-             style="background-image:
-               repeating-linear-gradient(0deg,#C9A96E 0,#C9A96E 1px,
-                 transparent 1px,transparent 60px),
-               repeating-linear-gradient(90deg,#C9A96E 0,#C9A96E 1px,
-                 transparent 1px,transparent 60px);">
+          <!-- Eyebrow -->
+          <div class="flex items-center gap-3 mb-8">
+            <div class="w-6 h-[1px] bg-gold"></div>
+            <span class="font-mono text-[11px] text-gold
+            tracking-[0.2em] uppercase">
+              Lages, SC — Brasil
+            </span>
+          </div>
+
+          <!-- Headline: large, no word wrap on key phrase -->
+          <h1 class="font-display font-[800] leading-[1.0]
+          text-[44px] sm:text-[52px] md:text-[60px] lg:text-[72px]
+          text-white tracking-[-0.03em]">
+            Estrutura<br>
+            digital<br>
+            <span style="color:#C9A96E;">completa.</span>
+          </h1>
+
+          <!-- Sub — human, not generic -->
+          <p class="font-body text-[16px] md:text-[18px]
+          text-[#888888] leading-[1.75] mt-8
+          max-w-[420px]">
+            Sites, identidade visual, sistemas de gestão
+            e presença no Google — tudo construído para
+            o seu negócio, do zero.
+          </p>
+
+          <!-- CTAs -->
+          <div class="flex flex-col sm:flex-row gap-4 mt-10">
+            <a href="#trabalhos"
+              class="sharp bg-gold text-bg px-[32px] py-[16px]
+              font-body font-[600] text-[15px]
+              hover:bg-[#B8935A] transition-colors duration-200
+              inline-flex items-center gap-2">
+              Ver nosso trabalho
+              <svg width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+            <a href="#contato"
+              class="sharp border border-[#2A2A2A]
+              bg-transparent text-white px-[32px] py-[16px]
+              font-body font-[500] text-[15px]
+              hover:border-[#888888] transition-colors duration-200
+              inline-flex items-center gap-2">
+              Falar com especialista
+            </a>
+          </div>
+
+          <!-- Stats row -->
+          <div class="flex items-center gap-8 mt-14
+          border-t border-[#2A2A2A] pt-8 w-full max-w-[420px]">
+            <div>
+              <div class="font-display font-[800] text-[28px]
+              text-white leading-none">4+</div>
+              <div class="font-mono text-[11px] text-[#888888]
+              mt-1 tracking-[0.05em]">clientes ativos</div>
+            </div>
+            <div class="w-[1px] h-[32px] bg-[#2A2A2A]"></div>
+            <div>
+              <div class="font-display font-[800] text-[28px]
+              text-white leading-none">7d</div>
+              <div class="font-mono text-[11px] text-[#888888]
+              mt-1 tracking-[0.05em]">tempo médio entrega</div>
+            </div>
+            <div class="w-[1px] h-[32px] bg-[#2A2A2A]"></div>
+            <div>
+              <div class="font-display font-[800] text-[28px]
+              text-white leading-none">BR</div>
+              <div class="font-mono text-[11px] text-[#888888]
+              mt-1 tracking-[0.05em]">todo o Brasil</div>
+            </div>
+          </div>
         </div>
 
-        <!-- Content -->
-        <div class="relative z-20 flex flex-col items-center text-center px-6 max-w-[860px] mx-auto">
+        <!-- Right: video frame (45%) — hidden on small mobile -->
+        <div class="hidden md:flex w-[45%] items-center
+        justify-end h-full py-[80px]">
+          <div class="relative w-full max-w-[520px]
+          aspect-[9/16] md:aspect-[4/5]
+          border border-[#2A2A2A] overflow-hidden"
+          style="max-height:560px;">
 
-            <!-- Badge -->
-            <div class="border border-[rgba(201,169,110,0.4)] bg-[rgba(201,169,110,0.08)] px-[14px] py-[6px] mb-8 inline-flex items-center">
-                <span class="font-mono text-[11px] text-gold tracking-[0.15em]">✦ Tecnologia digital para empresas</span>
-            </div>
+            <!-- Video -->
+            <video
+              class="w-full h-full object-cover"
+              src="videos/hero-video.mp4"
+              autoplay muted loop playsinline
+              preload="auto">
+            </video>
 
-            <!-- Headline -->
-            <h1 class="font-display font-[800] text-[40px] sm:text-[56px] md:text-[72px] text-white leading-[1.05] tracking-[-0.02em]">
-                Criamos experiências digitais<br>
-                que fazem <span class="underline decoration-gold decoration-1 underline-offset-[8px]">empresas crescerem</span>.
-            </h1>
+            <!-- Subtle gold corner accents -->
+            <div style="
+              position:absolute;top:0;left:0;
+              width:32px;height:32px;
+              border-top:1px solid #C9A96E;
+              border-left:1px solid #C9A96E;
+            "></div>
+            <div style="
+              position:absolute;bottom:0;right:0;
+              width:32px;height:32px;
+              border-bottom:1px solid #C9A96E;
+              border-right:1px solid #C9A96E;
+            "></div>
 
-            <!-- Sub -->
-            <p class="font-body text-[17px] md:text-[19px] text-[rgba(255,255,255,0.7)] max-w-[560px] leading-[1.65] mt-6">
-                Da identidade visual ao sistema completo — a WAXLO constrói a estrutura digital que o seu negócio precisa para crescer.
-            </p>
+            <!-- Overlay gradient at bottom -->
+            <div style="
+              position:absolute;bottom:0;left:0;right:0;
+              height:120px;
+              background:linear-gradient(
+                to top,rgba(10,10,10,0.8),transparent);
+            "></div>
 
-            <!-- CTAs -->
-            <div class="flex flex-col sm:flex-row gap-4 mt-10">
-                <a href="#servicos"
-                   class="sharp bg-gold text-ink px-[32px] py-[16px] font-body font-[600] text-[15px] hover:bg-[#B8935A] transition-colors duration-200">
-                    Conhecer soluções →
-                </a>
-                <a href="#trabalhos"
-                   class="sharp border border-[rgba(255,255,255,0.3)] bg-transparent text-white px-[32px] py-[16px] font-body font-[500] text-[15px] hover:border-white transition-colors duration-200">
-                    Ver nosso trabalho ↓
-                </a>
-            </div>
-
-            <!-- Badges row -->
-            <div class="flex flex-wrap justify-center items-center gap-x-3 gap-y-2 font-body font-[500] text-[12px] text-[rgba(255,255,255,0.5)] mt-10">
-                <span>✦ Atendemos todo o Brasil</span>
-                <span class="hidden sm:inline opacity-40">·</span>
-                <span>✦ Diagnóstico gratuito</span>
-                <span class="hidden sm:inline opacity-40">·</span>
-                <span>✦ Solução completa</span>
-            </div>
+            <!-- Label inside video frame -->
+            <div style="
+              position:absolute;bottom:20px;left:20px;
+              font-family:'JetBrains Mono',monospace;
+              font-size:10px;color:rgba(255,255,255,0.5);
+              letter-spacing:0.12em;
+            ">WAXLO © 2026</div>
+          </div>
         </div>
 
-        <!-- Scroll indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-50">
-            <div class="w-[1px] h-[40px] bg-gold animate-bounce origin-top"></div>
-        </div>
+      </div>
 
     </section>
 
