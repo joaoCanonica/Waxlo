@@ -926,70 +926,157 @@
     <section id="servicos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SOLUÇÕES</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
-                Escolha o que precisa.<br>Ou tenha tudo em uma solução.
+            <h2 class="font-display font-[800]
+            text-[36px] md:text-[52px] text-white
+            leading-[1.05] tracking-[-0.02em]">
+              Três pilares.<br>Uma empresa.<br>
+              <span style="color:#C9A96E;">Resultado completo.</span>
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4 mb-12">
                 Cada serviço funciona sozinho. Juntos, formam o ecossistema digital completo do seu negócio.
             </p>
 
-            <div class="w-full grid grid-cols-2 md:grid-cols-5 gap-3 mb-12">
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 0ms;">
-                    <i data-lucide="monitor" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Site Profissional</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Sites rápidos, modernos e focados em conversão.</p>
+            <div class="w-full grid grid-cols-1 md:grid-cols-3
+            gap-0 border border-[#2A2A2A] mb-12">
+
+              <!-- Pillar 1 -->
+              <div class="p-[40px_36px] border-b md:border-b-0
+              md:border-r border-[#2A2A2A] flex flex-col gap-6
+              fade-up-element group hover:bg-[#141414]
+              transition-colors duration-300">
+                <span class="font-mono text-[11px] text-[#C9A96E]
+                tracking-[0.15em]">01</span>
+                <div>
+                  <h3 class="font-display font-[800] text-[26px]
+                  text-white leading-[1.1] tracking-[-0.01em]">
+                    Presença<br>Digital
+                  </h3>
+                  <p class="font-body text-[14px] text-[#888888]
+                  leading-[1.75] mt-4">
+                    Construímos a vitrine digital do seu negócio —
+                    site profissional, identidade visual, Google Maps,
+                    Search Console e estratégia de conteúdo.
+                    Tudo para você ser encontrado e criar confiança
+                    antes mesmo do cliente entrar em contato.
+                  </p>
                 </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 100ms;">
-                    <i data-lucide="palette" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Identidade Visual</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Logo, cores e tipografia que representam sua marca.</p>
+                <ul class="flex flex-col gap-2 mt-auto">
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Sites e landing pages
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Identidade visual
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Google e Maps
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Conteúdo e marketing
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Pillar 2 (highlighted) -->
+              <div class="p-[40px_36px] border-b md:border-b-0
+              md:border-r border-[#2A2A2A] flex flex-col gap-6
+              fade-up-element group hover:bg-[#141414]
+              transition-colors duration-300 relative"
+              style="transition-delay:100ms;">
+                <div style="
+                  position:absolute;top:0;left:0;right:0;
+                  height:2px;background:#C9A96E;
+                "></div>
+                <span class="font-mono text-[11px] text-[#C9A96E]
+                tracking-[0.15em]">02</span>
+                <div>
+                  <h3 class="font-display font-[800] text-[26px]
+                  text-white leading-[1.1] tracking-[-0.01em]">
+                    Sistemas de<br>Gestão
+                  </h3>
+                  <p class="font-body text-[14px] text-[#888888]
+                  leading-[1.75] mt-4">
+                    Apps e dashboards feitos para o seu segmento —
+                    com a sua cor e a sua logo. Clínicas,
+                    consultórios, academias e mais. Sem instalar nada,
+                    funciona direto no celular.
+                  </p>
                 </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms; border-top: 2px solid #C9A96E;">
-                    <i data-lucide="bar-chart-2" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Dashboard<span style="display:inline-block;margin-left:8px;
-                    font-family:'JetBrains Mono',monospace;font-size:9px;
-                    color:#C9A96E;background:rgba(201,169,110,0.1);
-                    border:1px solid rgba(201,169,110,0.2);
-                    padding:2px 8px;letter-spacing:0.1em;vertical-align:middle;">
-                        NOVO
-                    </span></div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Painel de controle com os dados do seu negócio.</p>
+                <ul class="flex flex-col gap-2 mt-auto">
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    App por nicho
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Dashboard de gestão
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    CRM de clientes
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Sua marca no sistema
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Pillar 3 -->
+              <div class="p-[40px_36px] flex flex-col gap-6
+              fade-up-element group hover:bg-[#141414]
+              transition-colors duration-300"
+              style="transition-delay:200ms;">
+                <span class="font-mono text-[11px] text-[#C9A96E]
+                tracking-[0.15em]">03</span>
+                <div>
+                  <h3 class="font-display font-[800] text-[26px]
+                  text-white leading-[1.1] tracking-[-0.01em]">
+                    Estratégia e<br>Consultoria
+                  </h3>
+                  <p class="font-body text-[14px] text-[#888888]
+                  leading-[1.75] mt-4">
+                    Para quem quer crescer com inteligência.
+                    Estruturamos funis, campanhas e conteúdo
+                    com IA — e conectamos clientes entre si,
+                    formando uma rede de negócios que se fortalecem.
+                  </p>
                 </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
-                    <i data-lucide="users" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">CRM</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Gestão de clientes, leads e funil de vendas.</p>
-                </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 400ms;">
-                    <i data-lucide="message-circle" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Automação WhatsApp</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Atendimento, agendamento e follow-up automáticos.</p>
-                </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 0ms;">
-                    <i data-lucide="bot" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Agentes de IA</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Agentes inteligentes que atendem e vendem por você.</p>
-                </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 100ms;">
-                    <i data-lucide="plug" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Integrações</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Conectamos seus sistemas e ferramentas.</p>
-                </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 200ms;">
-                    <i data-lucide="globe" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Gestão Digital</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Presença online gerenciada e estratégica.</p>
-                </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 300ms;">
-                    <i data-lucide="image" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Posts e Conteúdo</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Criação de conteúdo com IA para redes sociais.</p>
-                </div>
-                <div class="service-cell sharp border border-border bg-surface p-[24px_20px] flex flex-col gap-3 hover:border-gold transition-colors duration-200 group cursor-default fade-up-element" style="transition-delay: 400ms;">
-                    <i data-lucide="lightbulb" class="w-[28px] h-[28px] text-muted group-hover:text-gold transition-colors duration-200"></i>
-                    <div class="font-body font-[600] text-[14px] text-text">Consultoria</div>
-                    <p class="font-body font-[400] text-[13px] text-muted leading-[1.6]">Estratégia e planejamento tecnológico.</p>
-                </div>
+                <ul class="flex flex-col gap-2 mt-auto">
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Funil de vendas
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Tráfego pago
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Conteúdo com IA
+                  </li>
+                  <li class="font-body text-[13px] text-white
+                  flex items-center gap-2">
+                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    Rede de parceiros
+                  </li>
+                </ul>
+              </div>
+
             </div>
 
             <div class="w-full sharp border border-gold bg-surface p-[48px_40px] md:p-[56px_64px] flex flex-col md:flex-row gap-10 md:gap-16 items-start fade-up-element package-card">
