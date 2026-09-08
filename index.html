@@ -1,19 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-    <!-- Apply saved theme before first paint to avoid flash -->
-    <script>
-        (function () {
-            try {
-                var t = localStorage.getItem('waxlo-theme') || 'dark';
-                document.documentElement.setAttribute('data-theme', t);
-            } catch (e) {}
-        })();
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A WAXLO constrói o ecossistema digital completo do seu negócio: sites, automações, CRM, dashboards, IA e identidade visual. Atendemos todo o Brasil.">
-    <meta name="theme-color" content="#0A0A0A">
+    <meta name="theme-color" content="#F5F3EF">
     <title>WAXLO — Tecnologia Digital para Empresas</title>
 
     <!-- Item 5: Open Graph / Social Preview -->
@@ -34,8 +25,8 @@
     <meta name="twitter:image" content="https://waxlo.com.br/og-image.png">
 
     <!-- Item 6: Favicon inline SVG (W dourado em fundo escuro) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230A0A0A'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='20' fill='%23C9A96E'>W</text></svg>">
-    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230A0A0A'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='110' fill='%23C9A96E'>W</text></svg>">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230D0C0A'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='20' fill='%23B8A882'>W</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect width='180' height='180' rx='40' fill='%230D0C0A'/><text x='50%' y='50%' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-weight='700' font-size='110' fill='%23B8A882'>W</text></svg>">
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -43,7 +34,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Syne:wght@800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -54,19 +45,21 @@
             theme: {
                 extend: {
                     colors: {
-                        bg: 'rgb(var(--color-bg-rgb) / <alpha-value>)',
-                        surface: 'var(--color-surface)',
-                        border: 'var(--color-border)',
-                        text: 'var(--color-text)',
-                        muted: 'var(--color-muted)',
-                        gold: 'var(--color-gold)',
-                        'gold-dim': 'var(--color-gold-dim)',
-                        ink: '#0A0A0A'
+                        bg:         '#F5F3EF',
+                        subtle:     '#ECEAE5',
+                        border:     '#DEDAD3',
+                        text:       '#0D0C0A',
+                        muted:      '#7A7670',
+                        accent:     '#B8A882',
+                        'accent-h': '#A09570',
+                        line:       '#C4B896',
+                        dark:       '#0D0C0A',
+                        white:      '#FFFFFF',
                     },
                     fontFamily: {
-                        display: ['Syne', 'sans-serif'],
-                        body: ['Inter', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['"Playfair Display"', 'Georgia', 'serif'],
+                        body:    ['"DM Sans"', 'sans-serif'],
+                        mono:    ['"DM Mono"', 'monospace'],
                     }
                 }
             }
@@ -76,124 +69,106 @@
     <!-- Custom Styles -->
     <style>
         :root {
-            --color-bg: #0A0A0A;
-            --color-bg-rgb: 10 10 10;
-            --color-surface: #141414;
-            --color-border: #2A2A2A;
-            --color-text: #FFFFFF;
-            --color-muted: #888888;
-            --color-gold: #C9A96E;
-            --color-gold-dim: #8B6E3F;
+          --bg:         #F5F3EF;
+          --subtle:     #ECEAE5;
+          --border:     #DEDAD3;
+          --text:       #0D0C0A;
+          --muted:      #7A7670;
+          --accent:     #B8A882;
+          --accent-h:   #A09570;
+          --line:       #C4B896;
         }
 
-        html[data-theme="light"] {
-            --color-bg: #FFFFFF;
-            --color-bg-rgb: 255 255 255;
-            --color-surface: #F6F5F2;
-            --color-border: #E3E1DC;
-            --color-text: #0A0A0A;
-            --color-muted: #5C5C5C;
-            --color-gold: #8B6E3F;
-            --color-gold-dim: #6B5228;
-        }
+        *, *::before, *::after { box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            background-color: var(--color-bg);
-            color: var(--color-text);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
+          background-color: var(--bg);
+          color: var(--text);
+          font-family: 'DM Sans', sans-serif;
+          font-weight: 400;
+          -webkit-font-smoothing: antialiased;
+          overflow-x: hidden;
         }
+
+        /* Legacy class shims — map old dark-theme utility names to new tokens */
+        .bg-bg         { background-color: var(--bg) !important; }
+        .bg-surface    { background-color: var(--subtle) !important; }
+        .border-border { border-color: var(--border) !important; }
+        .text-white    { color: var(--text) !important; }
+        .text-muted    { color: var(--muted) !important; }
+        .text-gold     { color: var(--accent) !important; }
+        .border-gold   { border-color: var(--accent) !important; }
+        .bg-gold       { background-color: var(--accent) !important; }
+        .text-bg       { color: var(--bg) !important; }
+        .text-ink      { color: var(--text) !important; }
+
+        /* Typography system */
+        .font-display { font-family: 'Playfair Display', Georgia, serif; }
+        .font-body    { font-family: 'DM Sans', sans-serif; }
+        .font-mono    { font-family: 'DM Mono', monospace; }
 
         /* Utilities */
         .sharp { border-radius: 0 !important; }
-        .rounded-tiny { border-radius: 4px !important; }
-        
+        .rounded-tiny { border-radius: 2px; }
+
+        /* Background grid — lighter version for off-white */
+        .bg-grid {
+            background-image:
+                linear-gradient(var(--border) 1px, transparent 1px),
+                linear-gradient(90deg, var(--border) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: center center;
+        }
+
         /* Navbar Transitions */
         #navbar {
             transition: border-color 0.3s ease-in-out, background-color 0.3s ease-in-out;
             border-bottom: 1px solid transparent;
         }
-        #navbar.scrolled {
-            border-bottom: 1px solid var(--color-border);
+        #navbar.nav-scrolled {
+            border-bottom: 1px solid var(--border);
         }
 
         /* Mobile Menu */
         #mobile-menu {
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.35s ease;
             opacity: 0;
-            visibility: hidden;
+            pointer-events: none;
         }
         #mobile-menu.open {
             opacity: 1;
-            visibility: visible;
+            pointer-events: auto;
         }
-
-        /* Grid Background Pattern */
-        .bg-grid {
-            background-size: 60px 60px;
-            background-image: 
-                linear-gradient(to right, rgba(201,169,110,0.04) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(201,169,110,0.04) 1px, transparent 1px);
+        .mobile-link {
+            display: block;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 40px;
+            color: var(--bg);
+            text-decoration: none;
+            line-height: 1.1;
+            transition: color 0.2s ease;
         }
+        .mobile-link:hover { color: var(--accent); }
 
         /* Pulse Dot Animation */
         .pulse-dot {
-            animation: pulse 2s infinite;
-            background-color: #22C55E;
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: #25D366;
+            animation: pulse 2s ease-in-out infinite;
         }
         @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4); }
-            70% { box-shadow: 0 0 0 6px rgba(34, 197, 94, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
-        /* Chat Sequence Animations */
-        .msg-1 { animation: msg1 8s infinite; opacity: 0; transform-origin: left bottom; }
-        @keyframes msg1 {
-            0% { opacity: 0; transform: translateY(10px); }
-            7.5% { opacity: 1; transform: translateY(0); }
-            95% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(10px); }
-        }
-
-        .msg-2 { animation: msg2 8s infinite; opacity: 0; transform-origin: right bottom; }
-        @keyframes msg2 {
-            0%, 7.5% { opacity: 0; transform: translateY(10px); }
-            15% { opacity: 1; transform: translateY(0); } 
-            95% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(10px); }
-        }
-
-        .msg-3 { animation: msg3 8s infinite; opacity: 0; transform-origin: left bottom; }
-        @keyframes msg3 {
-            0%, 15% { opacity: 0; transform: translateY(10px); }
-            22.5% { opacity: 1; transform: translateY(0); } 
-            95% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(10px); }
-        }
-
-        .msg-4 { animation: msg4 8s infinite; opacity: 0; transform-origin: right bottom; }
-        @keyframes msg4 {
-            0%, 22.5% { opacity: 0; transform: translateY(10px); }
-            30% { opacity: 1; transform: translateY(0); } 
-            95% { opacity: 1; transform: translateY(0); }
-            100% { opacity: 0; transform: translateY(10px); }
-        }
-        
-        /* Demo Chat Animation */
-        @keyframes demoMsgFadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .demo-msg-enter {
-            animation: demoMsgFadeIn 0.5s ease-out forwards;
-        }
-        
         /* Intersection Observer Fade-Up */
         .fade-up-element {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(24px);
             transition: opacity 600ms ease-out, transform 600ms ease-out;
         }
         .fade-up-element.is-visible {
@@ -213,7 +188,7 @@
         .faq-item.open .faq-icon {
             transform: rotate(45deg);
         }
-        
+
         /* Smooth interactions per reduced-motion rules */
         @media (prefers-reduced-motion: reduce) {
             * {
@@ -242,21 +217,21 @@
             border: 1px solid #25D366;
         }
         .whatsapp-btn:hover {
-            background: rgba(37,211,102,0.08);
-            box-shadow: 0 0 24px rgba(37,211,102,0.15);
+            background: rgba(37,211,102,0.06);
+            box-shadow: 0 0 20px rgba(37,211,102,0.12);
             border-color: #25D366;
         }
 
         /* Instagram button */
         .instagram-btn {
             background: transparent;
-            color: var(--color-text);
-            border: 1px solid var(--color-border);
+            color: var(--text);
+            border: 1px solid var(--border);
             position: relative;
         }
         .instagram-btn:hover {
             border-color: transparent;
-            box-shadow: 0 0 0 1px #E1306C, 0 0 24px rgba(225,48,108,0.2);
+            box-shadow: 0 0 0 1px #E1306C, 0 0 24px rgba(225,48,108,0.15);
         }
         .instagram-btn:hover .instagram-icon-wrap {
             background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
@@ -270,7 +245,8 @@
 
         /* ── WhatsApp Float ── */
         #whatsapp-float {
-            filter: drop-shadow(0 4px 20px rgba(37,211,102,0.25));
+            filter: drop-shadow(0 4px 16px rgba(37,211,102,0.2));
+            animation: floatEntrance 0.6s 1.5s cubic-bezier(0.34,1.56,0.64,1) both;
         }
         #wpp-btn {
             cursor: pointer;
@@ -278,7 +254,8 @@
             outline: none;
         }
         .wpp-tooltip {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: opacity 0.25s ease, transform 0.25s ease;
         }
         #whatsapp-float:hover .wpp-tooltip,
         #wpp-btn:focus + .wpp-tooltip {
@@ -286,13 +263,9 @@
             transform: translateX(0);
         }
 
-        /* Float entrance animation */
         @keyframes floatEntrance {
-            from { opacity: 0; transform: translateY(20px) scale(0.8); }
-            to   { opacity: 1; transform: translateY(0)   scale(1); }
-        }
-        #whatsapp-float {
-            animation: floatEntrance 0.6s 1.5s cubic-bezier(0.34,1.56,0.64,1) both;
+            from { opacity: 0; transform: translateY(16px) scale(0.85); }
+            to   { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* ── Responsiveness fixes ── */
@@ -321,11 +294,9 @@
         }
         .service-cell:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(201,169,110,0.08);
+            box-shadow: 0 8px 32px rgba(184,168,130,0.08);
         }
 
-        /* Niche cards — already have border transition,
-           add subtle lift */
         [data-lucide]:not(.w-\[16px\]) {
             transition: color 200ms ease, transform 200ms ease;
         }
@@ -333,28 +304,28 @@
             transform: scale(1.1);
         }
 
-        /* Stat cards — gold number counter animation trigger */
         .stat-number {
             transition: opacity 400ms ease;
         }
 
-        /* Complete package card — gold border glow on hover */
+        /* Complete package card — accent border glow on hover */
         .package-card:hover {
-            box-shadow: 0 0 40px rgba(201,169,110,0.08);
+            box-shadow: 0 0 40px rgba(184,168,130,0.08);
             transition: box-shadow 300ms ease;
         }
 
         /* Portfolio Swiper */
         .portfolio-swiper {
             cursor: grab;
+            overflow: visible !important;
         }
         .portfolio-swiper:active {
             cursor: grabbing;
         }
         .portfolio-swiper .swiper-slide {
             transition: opacity 300ms ease, transform 300ms ease;
-            opacity: 0.5;
-            transform: scale(0.96);
+            opacity: 0.4;
+            transform: scale(0.97);
         }
         .portfolio-swiper .swiper-slide-active,
         .portfolio-swiper .swiper-slide-next {
@@ -363,33 +334,36 @@
         }
         .portfolio-swiper .swiper-button-prev,
         .portfolio-swiper .swiper-button-next {
-            background: rgba(10,10,10,0.8);
-            border: 1px solid #2A2A2A;
-            width: 48px !important;
-            height: 48px !important;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            width: 44px !important;
+            height: 44px !important;
             border-radius: 0;
-            backdrop-filter: blur(8px);
             top: 45%;
+            transition: border-color 0.2s ease;
         }
         .portfolio-swiper .swiper-button-prev:hover,
         .portfolio-swiper .swiper-button-next:hover {
-            border-color: #C9A96E;
+            border-color: var(--accent);
+        }
+        .portfolio-swiper .swiper-button-prev::after,
+        .portfolio-swiper .swiper-button-next::after {
+            color: var(--text);
         }
         .portfolio-swiper .swiper-pagination-bullet {
-            background: #2A2A2A;
+            background: var(--border);
             opacity: 1;
-            width: 32px;
+            width: 28px;
             height: 2px;
             border-radius: 0;
             transition: background 200ms ease, width 200ms ease;
         }
         .portfolio-swiper .swiper-pagination-bullet-active {
-            background: #C9A96E;
-            width: 48px;
+            background: var(--accent);
+            width: 44px;
         }
 
-        /* GSAP section fade-in (replaces IntersectionObserver
-           for sections only — keep existing fade-up-element class) */
+        /* GSAP section fade-in (works alongside fade-up-element) */
         .gsap-section {
             opacity: 0;
             transform: translateY(40px);
@@ -406,7 +380,7 @@
 
         /* WAXLO Intro Overlay */
         #waxlo-intro {
-            transition: opacity 0.6s ease;
+            transition: opacity 0.7s ease;
         }
         #waxlo-intro.fade-out {
             opacity: 0;
@@ -452,308 +426,371 @@
 
     <!-- WAXLO Intro Overlay -->
     <div id="waxlo-intro" aria-hidden="true"
-      style="
-        position:fixed;inset:0;z-index:9999;
-        background:#0A0A0A;
-        display:flex;align-items:center;justify-content:center;
-        pointer-events:none;
-      ">
+      style="position:fixed;inset:0;z-index:9999;
+             background:#0D0C0A;
+             display:flex;align-items:center;justify-content:center;">
 
-      <!-- Logo container -->
-      <div id="intro-logo" style="
-        display:flex;flex-direction:column;align-items:center;
-        gap:20px;opacity:0;transform:scale(0.92);
-        transition:opacity 0.7s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1);
-      ">
-        <img src="logo-waxlo.png" alt="WAXLO"
-          style="height:56px;width:auto;object-fit:contain;
-                 filter:brightness(1.1);">
-        <div style="
-          width:0px;height:1px;background:#C9A96E;
-          transition:width 0.8s cubic-bezier(0.16,1,0.3,1);
-          transition-delay:0.4s;
-        " id="intro-line"></div>
+      <div id="intro-content"
+        style="display:flex;flex-direction:column;align-items:center;
+               gap:24px;opacity:0;transform:translateY(12px);
+               transition:opacity 0.8s ease,transform 0.9s cubic-bezier(0.16,1,0.3,1);">
+
+        <!-- Logo branca no intro escuro -->
+        <img src="escritaWaxlo-alpha-light.png" alt="WAXLO"
+          style="height:48px;width:auto;object-fit:contain;">
+
+        <!-- Linha tracejada dourada animada -->
+        <div id="intro-dash-line"
+          style="width:0;height:1px;
+                 background:repeating-linear-gradient(
+                   90deg, #B8A882 0, #B8A882 6px, transparent 6px, transparent 12px);
+                 transition:width 1s cubic-bezier(0.16,1,0.3,1) 0.3s;">
+        </div>
       </div>
-
     </div>
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full h-[80px] flex items-center justify-between px-6 md:px-[60px] bg-bg/85 backdrop-blur-[20px]">
-        <!-- Left: Logo -->
-        <a href="#" class="flex items-center">
-            <img src="logo-waxlo.png" alt="WAXLO" class="h-[36px] w-auto object-contain" loading="eager">
+    <nav id="navbar"
+      style="position:fixed;top:0;left:0;right:0;z-index:100;
+             background:rgba(245,243,239,0.92);
+             backdrop-filter:blur(20px);
+             -webkit-backdrop-filter:blur(20px);
+             transition:border-bottom 0.3s ease;">
+
+      <div style="max-width:1400px;margin:0 auto;
+                  padding:0 24px;height:64px;
+                  display:flex;align-items:center;
+                  justify-content:space-between;">
+
+        <!-- Logo -->
+        <a href="#" style="display:flex;align-items:center;">
+          <img src="escritaWaxlo-alpha-dark.png" alt="WAXLO"
+            style="height:28px;width:auto;object-fit:contain;">
         </a>
 
-        <!-- Center: Links (Desktop) -->
-        <div class="hidden md:flex items-center gap-[40px]">
-            <a href="#trabalhos" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Trabalhos</a>
-            <a href="#apps" class="font-body font-medium text-[15px]
-            text-muted hover:text-text transition-colors duration-200">
-            Soluções</a>
-            <a href="#como-funciona" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Processo</a>
-            <a href="#contato" class="font-body font-medium text-[15px] text-muted hover:text-text transition-colors duration-200">Contato</a>
+        <!-- Desktop nav links -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="#trabalhos"
+            class="font-body font-medium text-[14px] text-muted
+            hover:text-text transition-colors duration-200"
+            style="text-decoration:none;">Trabalhos</a>
+          <a href="#apps"
+            class="font-body font-medium text-[14px] text-muted
+            hover:text-text transition-colors duration-200"
+            style="text-decoration:none;">Soluções</a>
+          <a href="#como-funciona"
+            class="font-body font-medium text-[14px] text-muted
+            hover:text-text transition-colors duration-200"
+            style="text-decoration:none;">Processo</a>
+          <a href="#contato"
+            class="font-body font-medium text-[14px] text-muted
+            hover:text-text transition-colors duration-200"
+            style="text-decoration:none;">Contato</a>
         </div>
 
-        <!-- Right: Theme Toggle + CTA (Desktop) + Mobile Hamburger -->
-        <div class="flex items-center gap-3 md:gap-4">
-            <!-- Theme Toggle Button -->
-            <button id="theme-toggle" aria-label="Alternar tema claro/escuro" class="w-10 h-10 shrink-0 flex items-center justify-center rounded-full border border-border text-muted hover:border-gold hover:text-gold transition-colors duration-200">
-                <i data-lucide="sun" class="w-[18px] h-[18px] theme-icon-to-light"></i>
-                <i data-lucide="moon" class="w-[18px] h-[18px] theme-icon-to-dark hidden"></i>
-            </button>
+        <!-- Right: CTA + hamburger -->
+        <div class="flex items-center gap-4">
+          <a href="#contato"
+            class="hidden md:inline-flex sharp border border-accent
+            text-accent font-body font-medium text-[13px]
+            px-5 py-2 hover:bg-accent hover:text-bg
+            transition-colors duration-200"
+            style="text-decoration:none;">
+            Falar com especialista &rarr;
+          </a>
 
-            <!-- CTA (Desktop) -->
-            <div class="hidden md:block">
-                <button class="sharp border border-gold text-gold bg-transparent px-[20px] py-[10px] font-body font-medium text-[15px] hover:bg-gold hover:text-ink transition-colors duration-200">
-                    Falar com especialista &rarr;
-                </button>
-            </div>
-
-            <!-- Mobile Hamburger Button -->
-            <button id="menu-btn" aria-label="Menu" class="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[6px] z-[60]">
-                <span class="block w-6 h-[2px] bg-text transition-transform duration-300"></span>
-                <span class="block w-6 h-[2px] bg-text transition-transform duration-300"></span>
-            </button>
+          <!-- Mobile hamburger -->
+          <button id="menu-btn" aria-label="Menu"
+            class="md:hidden flex flex-col gap-[5px] p-2 cursor-pointer
+            border-none bg-transparent">
+            <span class="block w-5 h-[1.5px] bg-text
+              transition-all duration-300" id="ham-1"></span>
+            <span class="block w-5 h-[1.5px] bg-text
+              transition-all duration-300" id="ham-2"></span>
+            <span class="block w-3 h-[1.5px] bg-text
+              transition-all duration-300 ml-auto" id="ham-3"></span>
+          </button>
         </div>
+      </div>
     </nav>
 
-    <!-- Mobile Menu Overlay -->
-    <div id="mobile-menu" class="fixed inset-0 bg-bg z-40 flex flex-col items-center justify-center gap-8 px-6">
-        <a href="#trabalhos" class="mobile-link font-display font-[800] text-[32px] text-text">Trabalhos</a>
-        <a href="#apps" class="mobile-link
-        font-display font-[800] text-[32px] text-text">Soluções</a>
-        <a href="#como-funciona" class="mobile-link font-display font-[800] text-[32px] text-text">Processo</a>
-        <a href="#contato" class="mobile-link font-display font-[800] text-[32px] text-text">Contato</a>
-        <button class="sharp border border-gold text-gold bg-transparent px-[24px] py-[14px] font-body font-medium text-[16px] hover:bg-gold hover:text-ink transition-colors duration-200 mt-4">
-            Falar com especialista &rarr;
-        </button>
+    <!-- Mobile menu overlay -->
+    <div id="mobile-menu"
+      style="position:fixed;inset:0;z-index:90;
+             background:#0D0C0A;
+             display:flex;flex-direction:column;
+             align-items:center;justify-content:center;gap:32px;">
+      <a href="#trabalhos" class="mobile-link">Trabalhos</a>
+      <a href="#apps" class="mobile-link">Soluções</a>
+      <a href="#como-funciona" class="mobile-link">Processo</a>
+      <a href="#contato" class="mobile-link">Contato</a>
+      <a href="#contato"
+        class="font-body font-medium text-[14px] mt-4"
+        style="color:#B8A882;text-decoration:none;
+               border:1px solid #B8A882;padding:12px 28px;">
+        Falar com especialista &rarr;
+      </a>
     </div>
 
     <!-- Hero Section -->
-    <section class="relative w-full h-screen overflow-hidden flex items-center justify-center">
+    <section style="min-height:100vh;padding-top:64px;
+      background:var(--bg);
+      display:flex;align-items:center;overflow:hidden;">
 
-      <div class="max-w-[1400px] mx-auto px-6 md:px-12
-      w-full h-full flex items-center">
+      <div style="max-width:1400px;margin:0 auto;
+        padding:60px 24px;width:100%;
+        display:grid;grid-template-columns:1fr;
+        gap:48px;align-items:center;"
+        class="md:grid-cols-[55%_45%] lg:grid-cols-[58%_42%]">
 
-        <!-- Left: text content (55%) -->
-        <div class="w-full md:w-[55%] flex flex-col
-        items-start justify-center pt-[100px] pb-[60px]
-        md:pt-0 md:pb-0 pr-0 md:pr-16">
+        <!-- Left: text -->
+        <div style="display:flex;flex-direction:column;gap:0;">
 
           <!-- Eyebrow -->
-          <div class="flex items-center gap-3 mb-8">
-            <div class="w-6 h-[1px] bg-gold"></div>
-            <span class="font-mono text-[11px] text-gold
-            tracking-[0.2em] uppercase">
+          <div style="display:flex;align-items:center;
+            gap:12px;margin-bottom:32px;">
+            <div style="width:24px;height:1px;
+              background:var(--accent);"></div>
+            <span class="font-mono"
+              style="font-size:11px;color:var(--muted);
+              letter-spacing:0.18em;text-transform:uppercase;">
               Lages, SC — Brasil
             </span>
           </div>
 
-          <!-- Headline: large, no word wrap on key phrase -->
-          <h1 class="font-display font-[800] leading-[1.0]
-          text-[44px] sm:text-[52px] md:text-[60px] lg:text-[72px]
-          text-white tracking-[-0.03em]">
+          <!-- Headline -->
+          <h1 class="font-display"
+            style="font-size:clamp(52px,7vw,96px);
+              font-weight:600;line-height:1.0;
+              letter-spacing:-0.03em;
+              color:var(--text);
+              margin-bottom:28px;">
             Estrutura<br>
             digital<br>
-            <span style="color:#C9A96E;">completa.</span>
+            <em style="font-style:italic;
+              color:var(--accent);">completa.</em>
           </h1>
 
-          <!-- Sub — human, not generic -->
-          <p class="font-body text-[16px] md:text-[18px]
-          text-[#888888] leading-[1.75] mt-8
-          max-w-[420px]">
+          <!-- Sub -->
+          <p class="font-body"
+            style="font-size:17px;font-weight:300;
+              line-height:1.75;color:var(--muted);
+              max-width:400px;margin-bottom:44px;">
             Sites, identidade visual, sistemas de gestão
-            e presença no Google — tudo construído para
-            o seu negócio, do zero.
+            e presença no Google — construídos para o
+            seu negócio, do zero.
           </p>
 
           <!-- CTAs -->
-          <div class="flex flex-col sm:flex-row gap-4 mt-10">
-            <a href="#trabalhos"
-              class="sharp bg-gold text-bg px-[32px] py-[16px]
-              font-body font-[600] text-[15px]
-              hover:bg-[#B8935A] transition-colors duration-200
-              inline-flex items-center gap-2">
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="#trabalhos" class="sharp font-body"
+              style="background:var(--text);color:var(--bg);
+                padding:14px 28px;font-size:14px;
+                font-weight:500;text-decoration:none;
+                transition:background 0.2s ease;display:inline-flex;
+                align-items:center;gap:8px;"
+              onmouseover="this.style.background='#2a2a2a'"
+              onmouseout="this.style.background='var(--text)'">
               Ver nosso trabalho
-              <svg width="16" height="16" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
+              <svg width="14" height="14" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
-            <a href="#contato"
-              class="sharp border border-[#2A2A2A]
-              bg-transparent text-white px-[32px] py-[16px]
-              font-body font-[500] text-[15px]
-              hover:border-[#888888] transition-colors duration-200
-              inline-flex items-center gap-2">
+            <a href="#contato" class="sharp font-body"
+              style="border:1px solid var(--border);
+                color:var(--text);padding:14px 28px;
+                font-size:14px;font-weight:400;
+                text-decoration:none;background:transparent;
+                transition:border-color 0.2s ease;"
+              onmouseover="this.style.borderColor='var(--muted)'"
+              onmouseout="this.style.borderColor='var(--border)'">
               Falar com especialista
             </a>
           </div>
 
-          <!-- Stats row -->
-          <div class="flex items-center gap-8 mt-14
-          border-t border-[#2A2A2A] pt-8 w-full max-w-[420px]">
+          <!-- Stats -->
+          <div style="display:flex;align-items:center;
+            gap:32px;margin-top:56px;padding-top:32px;
+            border-top:1px solid var(--border);">
             <div>
-              <div class="font-display font-[800] text-[28px]
-              text-white leading-none">4+</div>
-              <div class="font-mono text-[11px] text-[#888888]
-              mt-1 tracking-[0.05em]">clientes ativos</div>
+              <div class="font-display"
+                style="font-size:32px;font-weight:600;
+                  color:var(--text);line-height:1;">4+</div>
+              <div class="font-mono"
+                style="font-size:10px;color:var(--muted);
+                  margin-top:4px;letter-spacing:0.06em;">
+                clientes ativos</div>
             </div>
-            <div class="w-[1px] h-[32px] bg-[#2A2A2A]"></div>
+            <div style="width:1px;height:36px;
+              background:var(--border);"></div>
             <div>
-              <div class="font-display font-[800] text-[28px]
-              text-white leading-none">7d</div>
-              <div class="font-mono text-[11px] text-[#888888]
-              mt-1 tracking-[0.05em]">tempo médio entrega</div>
+              <div class="font-display"
+                style="font-size:32px;font-weight:600;
+                  color:var(--text);line-height:1;">7d</div>
+              <div class="font-mono"
+                style="font-size:10px;color:var(--muted);
+                  margin-top:4px;letter-spacing:0.06em;">
+                entrega média</div>
             </div>
-            <div class="w-[1px] h-[32px] bg-[#2A2A2A]"></div>
+            <div style="width:1px;height:36px;
+              background:var(--border);"></div>
             <div>
-              <div class="font-display font-[800] text-[28px]
-              text-white leading-none">BR</div>
-              <div class="font-mono text-[11px] text-[#888888]
-              mt-1 tracking-[0.05em]">todo o Brasil</div>
+              <div class="font-display"
+                style="font-size:32px;font-weight:600;
+                  color:var(--text);line-height:1;">BR</div>
+              <div class="font-mono"
+                style="font-size:10px;color:var(--muted);
+                  margin-top:4px;letter-spacing:0.06em;">
+                todo o Brasil</div>
             </div>
           </div>
         </div>
 
-        <!-- Right: video frame (45%) — hidden on small mobile -->
-        <div class="hidden md:flex w-[45%] items-center
-        justify-end h-full py-[80px]">
-          <div class="relative w-full max-w-[520px]
-          aspect-[9/16] md:aspect-[4/5]
-          border border-[#2A2A2A] overflow-hidden"
-          style="max-height:560px;">
+        <!-- Right: video frame (hidden mobile) -->
+        <div class="hidden md:flex"
+          style="justify-content:flex-end;align-items:center;
+            height:100%;padding:20px 0;">
 
-            <!-- Video -->
-            <video
-              class="w-full h-full object-cover"
+          <div style="position:relative;width:100%;
+            max-width:480px;aspect-ratio:4/5;
+            max-height:520px;border:1px solid var(--border);
+            overflow:hidden;background:var(--subtle);">
+
+            <video style="width:100%;height:100%;object-fit:cover;"
               src="videos/hero-video.mp4"
-              autoplay muted loop playsinline
-              preload="auto">
+              autoplay muted loop playsinline preload="auto">
             </video>
 
-            <!-- Subtle gold corner accents -->
-            <div style="
-              position:absolute;top:0;left:0;
-              width:32px;height:32px;
-              border-top:1px solid #C9A96E;
-              border-left:1px solid #C9A96E;
-            "></div>
-            <div style="
-              position:absolute;bottom:0;right:0;
-              width:32px;height:32px;
-              border-bottom:1px solid #C9A96E;
-              border-right:1px solid #C9A96E;
-            "></div>
+            <!-- Corner accents -->
+            <div style="position:absolute;top:0;left:0;
+              width:28px;height:28px;
+              border-top:1px solid var(--accent);
+              border-left:1px solid var(--accent);"></div>
+            <div style="position:absolute;bottom:0;right:0;
+              width:28px;height:28px;
+              border-bottom:1px solid var(--accent);
+              border-right:1px solid var(--accent);"></div>
 
-            <!-- Overlay gradient at bottom -->
-            <div style="
-              position:absolute;bottom:0;left:0;right:0;
-              height:120px;
-              background:linear-gradient(
-                to top,rgba(10,10,10,0.8),transparent);
-            "></div>
-
-            <!-- Label inside video frame -->
-            <div style="
-              position:absolute;bottom:20px;left:20px;
-              font-family:'JetBrains Mono',monospace;
-              font-size:10px;color:rgba(255,255,255,0.5);
-              letter-spacing:0.12em;
-            ">WAXLO © 2026</div>
+            <!-- Bottom label -->
+            <div class="font-mono"
+              style="position:absolute;bottom:16px;left:16px;
+                font-size:9px;color:rgba(13,12,10,0.4);
+                letter-spacing:0.1em;">
+              WAXLO © 2026
+            </div>
           </div>
         </div>
-
       </div>
-
     </section>
 
     <!-- Section 3: Pain / Problema -->
-    <section class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+    <section style="background:var(--subtle);
+      padding:100px 24px;">
 
-      <div class="max-w-[1100px] mx-auto px-6 md:px-12 w-full">
+      <div style="max-width:1100px;margin:0 auto;">
 
         <!-- Eyebrow -->
-        <div class="flex items-center gap-3 mb-16">
-          <div class="w-6 h-[1px] bg-[#2A2A2A]"></div>
-          <span class="font-mono text-[11px] text-[#888888]
-          tracking-[0.2em]">A REALIDADE</span>
-        </div>
-
-        <!-- Large typographic block — staggered sizes -->
-        <div class="flex flex-col gap-0">
-
-          <div class="border-t border-[#2A2A2A] py-[28px] md:py-[36px]
-          flex items-start md:items-center gap-6 group">
-            <span class="font-mono text-[11px] text-[#2A2A2A]
-            tracking-[0.1em] shrink-0 w-[32px] mt-1 md:mt-0">01</span>
-            <h2 class="font-display font-[800]
-            text-[28px] sm:text-[36px] md:text-[48px]
-            text-white leading-[1.1] tracking-[-0.02em]
-            group-hover:text-[#C9A96E] transition-colors duration-300">
-              Seu concorrente aparece no Google.
-              Você não.
-            </h2>
-          </div>
-
-          <div class="border-t border-[#2A2A2A] py-[28px] md:py-[36px]
-          flex items-start md:items-center gap-6 group">
-            <span class="font-mono text-[11px] text-[#2A2A2A]
-            tracking-[0.1em] shrink-0 w-[32px] mt-1 md:mt-0">02</span>
-            <h2 class="font-display font-[800]
-            text-[28px] sm:text-[36px] md:text-[48px]
-            text-white leading-[1.1] tracking-[-0.02em]
-            group-hover:text-[#C9A96E] transition-colors duration-300">
-              Seu site não existe — ou
-              não convence ninguém.
-            </h2>
-          </div>
-
-          <div class="border-t border-[#2A2A2A] py-[28px] md:py-[36px]
-          flex items-start md:items-center gap-6 group">
-            <span class="font-mono text-[11px] text-[#2A2A2A]
-            tracking-[0.1em] shrink-0 w-[32px] mt-1 md:mt-0">03</span>
-            <h2 class="font-display font-[800]
-            text-[28px] sm:text-[36px] md:text-[48px]
-            text-white leading-[1.1] tracking-[-0.02em]
-            group-hover:text-[#C9A96E] transition-colors duration-300">
-              Você perde clientes antes
-              mesmo de falar com eles.
-            </h2>
-          </div>
-
-          <div class="border-t border-b border-[#2A2A2A]
-          py-[28px] md:py-[36px]
-          flex items-start md:items-center gap-6 group">
-            <span class="font-mono text-[11px] text-[#2A2A2A]
-            tracking-[0.1em] shrink-0 w-[32px] mt-1 md:mt-0">04</span>
-            <h2 class="font-display font-[800]
-            text-[28px] sm:text-[36px] md:text-[48px]
-            text-white leading-[1.1] tracking-[-0.02em]
-            group-hover:text-[#C9A96E] transition-colors duration-300">
-              Isso não é falta de esforço.
-              É falta de estrutura digital.
-            </h2>
-          </div>
-
-        </div>
-
-        <!-- Single bold CTA line -->
-        <div class="mt-14 flex items-center gap-6">
-          <a href="#contato"
-            class="sharp bg-gold text-bg px-[28px] py-[14px]
-            font-body font-[600] text-[14px]
-            hover:bg-[#B8935A] transition-colors duration-200">
-            Resolver isso →
-          </a>
-          <span class="font-body text-[14px] text-[#888888]">
-            Diagnóstico gratuito, sem compromisso.
+        <div style="display:flex;align-items:center;
+          gap:12px;margin-bottom:64px;">
+          <div style="width:24px;height:1px;
+            background:var(--border);"></div>
+          <span class="font-mono"
+            style="font-size:11px;color:var(--muted);
+            letter-spacing:0.18em;text-transform:uppercase;">
+            A realidade
           </span>
         </div>
 
-      </div>
+        <!-- Numbered typographic lines -->
+        <div>
 
+          <div style="border-top:1px solid var(--border);
+            padding:28px 0;display:flex;align-items:center;
+            gap:24px;cursor:default;"
+            class="-mx-6 px-6">
+            <span class="font-mono"
+              style="font-size:11px;color:var(--border);
+              letter-spacing:0.1em;min-width:28px;">01</span>
+            <h2 class="font-display"
+              style="font-size:clamp(24px,3.5vw,44px);
+              font-weight:600;line-height:1.1;color:var(--text);
+              letter-spacing:-0.02em;
+              transition:color 0.3s ease;"
+              onmouseover="this.style.color='var(--accent)'"
+              onmouseout="this.style.color='var(--text)'">
+              Seu concorrente aparece no Google. Você não.
+            </h2>
+          </div>
+
+          <div style="border-top:1px solid var(--border);
+            padding:28px 0;display:flex;align-items:center;
+            gap:24px;cursor:default;"
+            class="-mx-6 px-6">
+            <span class="font-mono"
+              style="font-size:11px;color:var(--border);
+              letter-spacing:0.1em;min-width:28px;">02</span>
+            <h2 class="font-display"
+              style="font-size:clamp(24px,3.5vw,44px);
+              font-weight:600;line-height:1.1;color:var(--text);
+              letter-spacing:-0.02em;
+              transition:color 0.3s ease;"
+              onmouseover="this.style.color='var(--accent)'"
+              onmouseout="this.style.color='var(--text)'">
+              Seu site não existe — ou não convence ninguém.
+            </h2>
+          </div>
+
+          <div style="border-top:1px solid var(--border);
+            padding:28px 0;display:flex;align-items:center;
+            gap:24px;cursor:default;"
+            class="-mx-6 px-6">
+            <span class="font-mono"
+              style="font-size:11px;color:var(--border);
+              letter-spacing:0.1em;min-width:28px;">03</span>
+            <h2 class="font-display"
+              style="font-size:clamp(24px,3.5vw,44px);
+              font-weight:600;line-height:1.1;color:var(--text);
+              letter-spacing:-0.02em;
+              transition:color 0.3s ease;"
+              onmouseover="this.style.color='var(--accent)'"
+              onmouseout="this.style.color='var(--text)'">
+              Você perde clientes antes mesmo de falar com eles.
+            </h2>
+          </div>
+
+          <div style="border-top:1px solid var(--border);
+            border-bottom:1px solid var(--border);
+            padding:28px 0;display:flex;align-items:center;
+            gap:24px;cursor:default;"
+            class="-mx-6 px-6">
+            <span class="font-mono"
+              style="font-size:11px;color:var(--border);
+              letter-spacing:0.1em;min-width:28px;">04</span>
+            <h2 class="font-display"
+              style="font-size:clamp(24px,3.5vw,44px);
+              font-weight:600;line-height:1.1;color:var(--accent);
+              letter-spacing:-0.02em;">
+              Isso não é falta de esforço — é falta de estrutura.
+            </h2>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div style="margin-top:48px;
+          display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+          <a href="#contato" class="sharp font-body"
+            style="background:var(--text);color:var(--bg);
+              padding:13px 24px;font-size:13px;font-weight:500;
+              text-decoration:none;">
+            Resolver isso →
+          </a>
+          <span class="font-body"
+            style="font-size:13px;color:var(--muted);">
+            Diagnóstico gratuito, sem compromisso.
+          </span>
+        </div>
+      </div>
     </section>
 
     <!-- Section 6: Vitrine de Sites -->
@@ -761,21 +798,21 @@
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <!-- Eyebrow -->
             <div class="flex items-center gap-3 mb-6">
-              <div class="w-6 h-[1px] bg-[#2A2A2A]"></div>
-              <span class="font-mono text-[11px] text-[#888888]
-              tracking-[0.2em]">TRABALHOS</span>
+              <div style="width:24px;height:1px;background:var(--border);"></div>
+              <span class="font-mono" style="font-size:11px;color:var(--muted);
+              letter-spacing:0.18em;text-transform:uppercase;">Trabalhos</span>
             </div>
 
             <!-- H2 -->
-            <h2 class="font-display font-[800]
-            text-[36px] md:text-[52px] text-white
-            leading-[1.05] tracking-[-0.02em]">
+            <h2 class="font-display"
+            style="font-size:clamp(36px,5vw,64px);font-weight:600;
+            line-height:1.0;letter-spacing:-0.03em;color:var(--text);">
               O que já<br>entregamos.
             </h2>
 
             <!-- Mobile hint -->
-            <p class="font-mono text-[11px] text-[#888888]
-            tracking-[0.1em] mt-4 md:hidden">
+            <p class="font-mono text-muted mt-4 md:hidden"
+            style="font-size:11px;letter-spacing:0.1em;">
               ← deslize para ver mais →
             </p>
 
@@ -788,7 +825,7 @@
                         <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
 
                             <!-- Video preview -->
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
                                 <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
                                     src="videos/preview-tahon.mp4"
                                     muted loop playsinline
@@ -807,7 +844,7 @@
                             <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
                                 <div>
                                     <div class="font-mono text-[10px] text-gold tracking-[0.1em] mb-1">STREETWEAR & MODA</div>
-                                    <h3 class="font-display font-[800] text-[22px] text-text">TAH ON</h3>
+                                    <h3 class="font-display font-[600] text-[22px] text-text">TAH ON</h3>
                                     <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
                                 </div>
                                 <a href="https://tahon.lovable.app" target="_blank"
@@ -822,7 +859,7 @@
                     <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
                         <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
 
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
                                 <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
                                     src="videos/preview-vicore.mp4"
                                     muted loop playsinline
@@ -838,7 +875,7 @@
                             <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
                                 <div>
                                     <div class="font-mono text-[10px] text-gold tracking-[0.1em] mb-1">MARKETING & CONTEÚDO</div>
-                                    <h3 class="font-display font-[800] text-[22px] text-text">Vicore</h3>
+                                    <h3 class="font-display font-[600] text-[22px] text-text">Vicore</h3>
                                     <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
                                 </div>
                                 <a href="https://vicore-ten.vercel.app" target="_blank"
@@ -853,7 +890,7 @@
                     <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
                         <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
 
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
                                 <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
                                     src="videos/preview-advocacia.mp4"
                                     muted loop playsinline
@@ -865,7 +902,7 @@
                             <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
                                 <div>
                                     <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">ADVOCACIA & DIREITO</div>
-                                    <h3 class="font-display font-[800] text-[20px] text-text">SC Advocacia</h3>
+                                    <h3 class="font-display font-[600] text-[20px] text-text">SC Advocacia</h3>
                                     <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
                                 </div>
                                 <a href="https://sc-advocacia-five.vercel.app" target="_blank"
@@ -880,7 +917,7 @@
                     <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
                         <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
 
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
                                 <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
                                     src="videos/preview-restaurante.mp4"
                                     muted loop playsinline
@@ -892,7 +929,7 @@
                             <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
                                 <div>
                                     <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">RESTAURANTE & CHURRASCARIA</div>
-                                    <h3 class="font-display font-[800] text-[20px] text-text">Alto da Serra</h3>
+                                    <h3 class="font-display font-[600] text-[20px] text-text">Alto da Serra</h3>
                                     <p class="font-mono text-[11px] text-muted mt-1">Angatuba, SP</p>
                                 </div>
                                 <a href="https://restaurante-alto-da-serra.vercel.app" target="_blank"
@@ -924,32 +961,32 @@
     <section id="servicos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">SOLUÇÕES</span>
-            <h2 class="font-display font-[800]
-            text-[36px] md:text-[52px] text-white
-            leading-[1.05] tracking-[-0.02em]">
-              Três pilares.<br>Uma empresa.<br>
-              <span style="color:#C9A96E;">Resultado completo.</span>
+            <h2 class="font-display"
+            style="font-size:clamp(36px,5vw,64px);font-weight:600;
+            line-height:1.0;letter-spacing:-0.03em;color:var(--text);">
+              Três pilares.<br>
+              <em style="font-style:italic;color:var(--accent);">Resultado completo.</em>
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4 mb-12">
                 Cada serviço funciona sozinho. Juntos, formam o ecossistema digital completo do seu negócio.
             </p>
 
             <div class="w-full grid grid-cols-1 md:grid-cols-3
-            gap-0 border border-[#2A2A2A] mb-12">
+            gap-0 border border-[#DEDAD3] mb-12">
 
               <!-- Pillar 1 -->
               <div class="p-[40px_36px] border-b md:border-b-0
-              md:border-r border-[#2A2A2A] flex flex-col gap-6
-              fade-up-element group hover:bg-[#141414]
+              md:border-r border-[#DEDAD3] flex flex-col gap-6
+              fade-up-element group hover:bg-[var(--subtle)]
               transition-colors duration-300">
-                <span class="font-mono text-[11px] text-[#C9A96E]
+                <span class="font-mono text-[11px] text-[#B8A882]
                 tracking-[0.15em]">01</span>
                 <div>
-                  <h3 class="font-display font-[800] text-[26px]
+                  <h3 class="font-display font-[600] text-[26px]
                   text-white leading-[1.1] tracking-[-0.01em]">
                     Presença<br>Digital
                   </h3>
-                  <p class="font-body text-[14px] text-[#888888]
+                  <p class="font-body text-[14px] text-[#7A7670]
                   leading-[1.75] mt-4">
                     Construímos a vitrine digital do seu negócio —
                     site profissional, identidade visual, Google Maps,
@@ -961,22 +998,22 @@
                 <ul class="flex flex-col gap-2 mt-auto">
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Sites e landing pages
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Identidade visual
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Google e Maps
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Conteúdo e marketing
                   </li>
                 </ul>
@@ -984,22 +1021,22 @@
 
               <!-- Pillar 2 (highlighted) -->
               <div class="p-[40px_36px] border-b md:border-b-0
-              md:border-r border-[#2A2A2A] flex flex-col gap-6
-              fade-up-element group hover:bg-[#141414]
+              md:border-r border-[#DEDAD3] flex flex-col gap-6
+              fade-up-element group hover:bg-[var(--subtle)]
               transition-colors duration-300 relative"
               style="transition-delay:100ms;">
                 <div style="
                   position:absolute;top:0;left:0;right:0;
-                  height:2px;background:#C9A96E;
+                  height:2px;background:#B8A882;
                 "></div>
-                <span class="font-mono text-[11px] text-[#C9A96E]
+                <span class="font-mono text-[11px] text-[#B8A882]
                 tracking-[0.15em]">02</span>
                 <div>
-                  <h3 class="font-display font-[800] text-[26px]
+                  <h3 class="font-display font-[600] text-[26px]
                   text-white leading-[1.1] tracking-[-0.01em]">
                     Sistemas de<br>Gestão
                   </h3>
-                  <p class="font-body text-[14px] text-[#888888]
+                  <p class="font-body text-[14px] text-[#7A7670]
                   leading-[1.75] mt-4">
                     Apps e dashboards feitos para o seu segmento —
                     com a sua cor e a sua logo. Clínicas,
@@ -1010,22 +1047,22 @@
                 <ul class="flex flex-col gap-2 mt-auto">
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     App por nicho
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Dashboard de gestão
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     CRM de clientes
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Sua marca no sistema
                   </li>
                 </ul>
@@ -1033,17 +1070,17 @@
 
               <!-- Pillar 3 -->
               <div class="p-[40px_36px] flex flex-col gap-6
-              fade-up-element group hover:bg-[#141414]
+              fade-up-element group hover:bg-[var(--subtle)]
               transition-colors duration-300"
               style="transition-delay:200ms;">
-                <span class="font-mono text-[11px] text-[#C9A96E]
+                <span class="font-mono text-[11px] text-[#B8A882]
                 tracking-[0.15em]">03</span>
                 <div>
-                  <h3 class="font-display font-[800] text-[26px]
+                  <h3 class="font-display font-[600] text-[26px]
                   text-white leading-[1.1] tracking-[-0.01em]">
                     Estratégia e<br>Consultoria
                   </h3>
-                  <p class="font-body text-[14px] text-[#888888]
+                  <p class="font-body text-[14px] text-[#7A7670]
                   leading-[1.75] mt-4">
                     Para quem quer crescer com inteligência.
                     Estruturamos funis, campanhas e conteúdo
@@ -1054,22 +1091,22 @@
                 <ul class="flex flex-col gap-2 mt-auto">
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Funil de vendas
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Tráfego pago
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Conteúdo com IA
                   </li>
                   <li class="font-body text-[13px] text-white
                   flex items-center gap-2">
-                    <span class="text-[#C9A96E] font-[600]">→</span>
+                    <span class="text-[#B8A882] font-[600]">→</span>
                     Rede de parceiros
                   </li>
                 </ul>
@@ -1082,13 +1119,13 @@
                     <div class="font-mono text-[11px] text-gold tracking-[0.15em] mb-4">
                         PACOTE COMPLETO
                     </div>
-                    <h3 class="font-display font-[800] text-[32px] md:text-[40px] text-text leading-[1.1]">
+                    <h3 class="font-display font-[600] text-[32px] md:text-[40px] text-text leading-[1.1]">
                         Tudo que seu negócio precisa. Em um único projeto.
                     </h3>
                     <p class="font-body text-[16px] text-muted leading-[1.7] mt-4 max-w-[480px]">
                         Desenvolvemos a estrutura digital completa da sua empresa — do zero à operação. Uma equipe, um processo, um resultado.
                     </p>
-                    <a href="#contato" class="inline-flex items-center gap-2 mt-8 sharp bg-gold text-ink px-[32px] py-[16px] font-body font-[600] text-[15px] hover:bg-gold-dim transition-colors duration-200">
+                    <a href="#contato" class="inline-flex items-center gap-2 mt-8 sharp bg-gold text-ink px-[32px] py-[16px] font-body font-[600] text-[15px] hover:bg-[var(--accent-h)] transition-colors duration-200">
                         Quero a solução completa &rarr;
                     </a>
                 </div>
@@ -1148,7 +1185,7 @@
           <div class="flex flex-col items-center mb-14">
             <span class="font-mono font-[500] text-[11px] text-muted
             tracking-[0.15em] mb-4">O QUE ENTREGAMOS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px]
+            <h2 class="font-display font-[600] text-[36px] md:text-[48px]
             text-text text-center leading-[1.1]">
               Soluções que o seu negócio<br>realmente precisa.
             </h2>
@@ -1169,7 +1206,7 @@
               <i data-lucide="monitor"
                  class="w-[32px] h-[32px] text-muted"></i>
               <div>
-                <h3 class="font-display font-[800] text-[26px]
+                <h3 class="font-display font-[600] text-[26px]
                 md:text-[30px] text-text leading-[1.1]">
                   Sua empresa vista<br>por quem importa.
                 </h3>
@@ -1212,15 +1249,15 @@
               <!-- Badge NOVO -->
               <div class="flex items-center gap-3">
                 <span class="font-mono text-[10px] text-gold
-                tracking-[0.12em] bg-[rgba(201,169,110,0.08)]
-                border border-[rgba(201,169,110,0.2)]
+                tracking-[0.12em] bg-[rgba(184,168,130,0.08)]
+                border border-[rgba(184,168,130,0.2)]
                 px-3 py-1">NOVO</span>
               </div>
 
               <i data-lucide="layout-dashboard"
                  class="w-[32px] h-[32px] text-gold"></i>
               <div>
-                <h3 class="font-display font-[800] text-[26px]
+                <h3 class="font-display font-[600] text-[26px]
                 md:text-[30px] text-text leading-[1.1]">
                   Um sistema feito para<br>o seu negócio.
                 </h3>
@@ -1280,19 +1317,19 @@
           gap-8 md:sticky md:top-[100px]">
 
             <div class="flex items-center gap-3">
-              <div class="w-6 h-[1px] bg-[#2A2A2A]"></div>
-              <span class="font-mono text-[11px] text-[#888888]
+              <div class="w-6 h-[1px] bg-[#DEDAD3]"></div>
+              <span class="font-mono text-[11px] text-[#7A7670]
               tracking-[0.2em]">APPS DE GESTÃO</span>
             </div>
 
-            <h2 class="font-display font-[800]
+            <h2 class="font-display font-[600]
             text-[36px] md:text-[52px] text-white
             leading-[1.05] tracking-[-0.02em]">
               Um sistema<br>feito para<br>
-              <span style="color:#C9A96E;">você.</span>
+              <span style="color:#B8A882;">você.</span>
             </h2>
 
-            <p class="font-body text-[16px] text-[#888888]
+            <p class="font-body text-[16px] text-[#7A7670]
             leading-[1.8] max-w-[380px]">
               Não é um software genérico. É uma ferramenta
               construída para o seu segmento — com a sua cor,
@@ -1301,10 +1338,10 @@
             </p>
 
             <a href="#contato"
-              class="sharp border border-[#C9A96E]
-              text-[#C9A96E] px-[28px] py-[14px]
+              class="sharp border border-[#B8A882]
+              text-[#B8A882] px-[28px] py-[14px]
               font-body font-[500] text-[14px]
-              hover:bg-[#C9A96E] hover:text-[#0A0A0A]
+              hover:bg-[#B8A882] hover:text-[var(--bg)]
               transition-colors duration-200
               inline-flex items-center gap-2 self-start">
               Quero meu app →
@@ -1315,17 +1352,17 @@
           <div class="w-full md:w-[55%] flex flex-col gap-0">
 
             <!-- Feature rows -->
-            <div class="border-t border-[#2A2A2A] py-[28px]
+            <div class="border-t border-[#DEDAD3] py-[28px]
             flex items-start gap-5">
-              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              <div class="w-[40px] h-[40px] border border-[#DEDAD3]
               flex items-center justify-center shrink-0">
                 <i data-lucide="palette"
-                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+                  class="w-[18px] h-[18px] text-[#B8A882]"></i>
               </div>
               <div>
-                <h4 class="font-display font-[800] text-[17px]
+                <h4 class="font-display font-[600] text-[17px]
                 text-white">Sua identidade visual</h4>
-                <p class="font-body text-[14px] text-[#888888]
+                <p class="font-body text-[14px] text-[#7A7670]
                 leading-[1.65] mt-1">
                   Cor, logo e nome do seu negócio aplicados
                   em todo o sistema.
@@ -1333,17 +1370,17 @@
               </div>
             </div>
 
-            <div class="border-t border-[#2A2A2A] py-[28px]
+            <div class="border-t border-[#DEDAD3] py-[28px]
             flex items-start gap-5">
-              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              <div class="w-[40px] h-[40px] border border-[#DEDAD3]
               flex items-center justify-center shrink-0">
                 <i data-lucide="users"
-                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+                  class="w-[18px] h-[18px] text-[#B8A882]"></i>
               </div>
               <div>
-                <h4 class="font-display font-[800] text-[17px]
+                <h4 class="font-display font-[600] text-[17px]
                 text-white">Pacientes e clientes organizados</h4>
-                <p class="font-body text-[14px] text-[#888888]
+                <p class="font-body text-[14px] text-[#7A7670]
                 leading-[1.65] mt-1">
                   Cadastro, histórico, agenda e relatórios —
                   tudo num só lugar.
@@ -1351,17 +1388,17 @@
               </div>
             </div>
 
-            <div class="border-t border-[#2A2A2A] py-[28px]
+            <div class="border-t border-[#DEDAD3] py-[28px]
             flex items-start gap-5">
-              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              <div class="w-[40px] h-[40px] border border-[#DEDAD3]
               flex items-center justify-center shrink-0">
                 <i data-lucide="bar-chart-2"
-                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+                  class="w-[18px] h-[18px] text-[#B8A882]"></i>
               </div>
               <div>
-                <h4 class="font-display font-[800] text-[17px]
+                <h4 class="font-display font-[600] text-[17px]
                 text-white">Dashboard com seus dados</h4>
-                <p class="font-body text-[14px] text-[#888888]
+                <p class="font-body text-[14px] text-[#7A7670]
                 leading-[1.65] mt-1">
                   Visão do dia, da semana e do mês.
                   Sem planilha. Sem caderno.
@@ -1369,17 +1406,17 @@
               </div>
             </div>
 
-            <div class="border-t border-b border-[#2A2A2A]
+            <div class="border-t border-b border-[#DEDAD3]
             py-[28px] flex items-start gap-5">
-              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              <div class="w-[40px] h-[40px] border border-[#DEDAD3]
               flex items-center justify-center shrink-0">
                 <i data-lucide="smartphone"
-                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+                  class="w-[18px] h-[18px] text-[#B8A882]"></i>
               </div>
               <div>
-                <h4 class="font-display font-[800] text-[17px]
+                <h4 class="font-display font-[600] text-[17px]
                 text-white">Funciona no celular</h4>
-                <p class="font-body text-[14px] text-[#888888]
+                <p class="font-body text-[14px] text-[#7A7670]
                 leading-[1.65] mt-1">
                   Sem baixar nada. Abre no navegador
                   e funciona como um app.
@@ -1389,43 +1426,43 @@
 
             <!-- Niches tag cloud -->
             <div class="mt-10">
-              <span class="font-mono text-[11px] text-[#888888]
+              <span class="font-mono text-[11px] text-[#7A7670]
               tracking-[0.15em] block mb-5">
                 SEGMENTOS DISPONÍVEIS
               </span>
               <div class="flex flex-wrap gap-2">
-                <span class="border border-[#C9A96E]
-                text-[#C9A96E] font-mono text-[11px]
+                <span class="border border-[#B8A882]
+                text-[#B8A882] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
                   Personal Trainer
                 </span>
-                <span class="border border-[#C9A96E]
-                text-[#C9A96E] font-mono text-[11px]
+                <span class="border border-[#B8A882]
+                text-[#B8A882] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
                   Clínica Médica
                 </span>
-                <span class="border border-[#C9A96E]
-                text-[#C9A96E] font-mono text-[11px]
+                <span class="border border-[#B8A882]
+                text-[#B8A882] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
                   Psicologia
                 </span>
-                <span class="border border-[#C9A96E]
-                text-[#C9A96E] font-mono text-[11px]
+                <span class="border border-[#B8A882]
+                text-[#B8A882] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
                   Fisioterapia
                 </span>
-                <span class="border border-[#2A2A2A]
-                text-[#888888] font-mono text-[11px]
+                <span class="border border-[#B8A882]
+                text-[#B8A882] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
-                  Odontologia (em breve)
+                  Odontologia
                 </span>
-                <span class="border border-[#2A2A2A]
-                text-[#888888] font-mono text-[11px]
+                <span class="border border-[#B8A882]
+                text-[#B8A882] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
-                  Estética (em breve)
+                  Estética e Beleza
                 </span>
-                <span class="border border-dashed border-[#2A2A2A]
-                text-[#888888] font-mono text-[11px]
+                <span class="border border-dashed border-[#DEDAD3]
+                text-[#7A7670] font-mono text-[11px]
                 tracking-[0.08em] px-4 py-2">
                   + seu segmento
                 </span>
@@ -1441,12 +1478,13 @@
     <section id="como-funciona" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center lg:items-start text-center lg:text-left">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">O PROCESSO</span>
-            <h2 class="font-display font-[800]
-            text-[36px] md:text-[52px] text-white
-            leading-[1.05] tracking-[-0.02em]">
-              Como a gente<br>trabalha.
+            <h2 class="font-display"
+            style="font-size:clamp(36px,5vw,64px);font-weight:600;
+            line-height:1.0;letter-spacing:-0.03em;color:var(--text);">
+              Como a gente<br>
+              <em style="font-style:italic;">trabalha.</em>
             </h2>
-            <p class="font-body text-[16px] text-[#888888]
+            <p class="font-body text-[16px] text-[#7A7670]
             leading-[1.75] mt-4 max-w-[480px]">
               Antes de qualquer entrega, existe uma conversa.
               Depois dela, existe um contrato. Só depois
@@ -1461,9 +1499,9 @@
 
                 <!-- STEP 01 -->
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
-                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">1</div>
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[600] text-[18px] text-gold relative">1</div>
                     <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
-                        <h3 class="font-display font-[800] text-[18px] text-text">Diagnóstico</h3>
+                        <h3 class="font-display font-[600] text-[18px] text-text">Diagnóstico</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Uma conversa sem pressa. Você fala sobre o seu negócio, seus clientes, o que funciona e o que trava. A gente escuta.
                         </p>
@@ -1472,9 +1510,9 @@
 
                 <!-- STEP 02 -->
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
-                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">2</div>
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[600] text-[18px] text-gold relative">2</div>
                     <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
-                        <h3 class="font-display font-[800] text-[18px] text-text">Proposta e contrato</h3>
+                        <h3 class="font-display font-[600] text-[18px] text-text">Proposta e contrato</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Tudo documentado: o que será feito, em quanto tempo, por quanto. Sem surpresa depois.
                         </p>
@@ -1483,9 +1521,9 @@
 
                 <!-- STEP 03 -->
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
-                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">3</div>
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[600] text-[18px] text-gold relative">3</div>
                     <div class="pt-2 lg:pt-0 pr-4 lg:pr-0">
-                        <h3 class="font-display font-[800] text-[18px] text-text">Desenvolvemos juntos</h3>
+                        <h3 class="font-display font-[600] text-[18px] text-text">Desenvolvemos juntos</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Reuniões de alinhamento ao longo do projeto. Você vê, aprova e sugere a cada etapa.
                         </p>
@@ -1494,9 +1532,9 @@
 
                 <!-- STEP 04 -->
                 <div class="relative flex lg:flex-col items-start gap-4 lg:gap-6 flex-1 z-10">
-                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[800] text-[18px] text-gold relative">4</div>
+                    <div class="w-[40px] h-[40px] shrink-0 border border-gold bg-transparent rounded-full flex items-center justify-center font-display font-[600] text-[18px] text-gold relative">4</div>
                     <div class="pt-2 lg:pt-0">
-                        <h3 class="font-display font-[800] text-[18px] text-text">Entrega e parceria</h3>
+                        <h3 class="font-display font-[600] text-[18px] text-text">Entrega e parceria</h3>
                         <p class="font-body text-[14px] text-muted leading-[1.7] mt-2">
                             Seu projeto no ar — e a gente continua do lado. Suporte, melhorias, e uma conexão que não acaba com a entrega.
                         </p>
@@ -1505,8 +1543,8 @@
             </div>
 
             <!-- HIGHLIGHT BOX -->
-            <div class="w-full mt-[64px] bg-[rgba(201,169,110,0.06)] border border-[rgba(201,169,110,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
-                <div class="font-display font-[800] text-[64px] md:text-[80px] text-gold opacity-40 leading-none shrink-0 relative top-2">"</div>
+            <div class="w-full mt-[64px] bg-[rgba(184,168,130,0.06)] border border-[rgba(184,168,130,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
+                <div class="font-display font-[600] text-[64px] md:text-[80px] text-gold opacity-40 leading-none shrink-0 relative top-2">"</div>
                 <div class="flex-1 pl-0 md:pl-2">
                     <p class="font-body text-[16px] md:text-[18px] text-text leading-[1.7]">
                         Conectamos nossos clientes entre si. Uma clínica pode indicar um restaurante. Uma empresa pode precisar de outra. Construímos mais do que sistemas — construímos uma rede.
@@ -1522,7 +1560,7 @@
     <section id="faq" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
         <div class="max-w-[760px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">DÚVIDAS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1] mb-[40px]">
+            <h2 class="font-display font-[600] text-[36px] md:text-[48px] text-text text-center leading-[1.1] mb-[40px]">
                 Perguntas frequentes
             </h2>
 
@@ -1611,60 +1649,83 @@
     </section>
 
     <!-- Section 12: CTA Final -->
-    <section id="contato" class="w-full bg-bg py-[100px] md:py-[160px] px-6 flex flex-col items-center text-center">
-        <!-- Decorative line -->
-        <div class="w-[40px] h-[1px] bg-gold opacity-40 mb-6 mx-auto fade-up-element"></div>
+    <section id="contato"
+      style="background:var(--text);padding:120px 24px;">
 
-        <!-- Eyebrow Pill -->
-        <div class="rounded-full border border-[rgba(201,169,110,0.3)] bg-[rgba(201,169,110,0.06)] px-[16px] py-[6px] font-body font-[500] text-[12px] text-gold mb-[24px] fade-up-element">
-            ✦ Primeira conversa gratuita &middot; Sem compromisso
+      <div style="max-width:800px;margin:0 auto;
+        text-align:center;display:flex;
+        flex-direction:column;align-items:center;gap:0;">
+
+        <!-- Eyebrow pill -->
+        <div class="fade-up-element" style="border:1px solid rgba(184,168,130,0.4);
+          background:rgba(184,168,130,0.08);
+          padding:6px 16px;margin-bottom:32px;
+          display:inline-flex;align-items:center;">
+          <span class="font-mono"
+            style="font-size:11px;color:var(--accent);
+            letter-spacing:0.14em;">
+            ✦ Primeira conversa gratuita · Sem compromisso
+          </span>
         </div>
 
-        <h2 class="font-display font-[800] text-[36px] md:text-[64px] text-text leading-[1.05] max-w-[800px] mx-auto fade-up-element">
-            Pronto para construir a estrutura<br class="hidden sm:block">digital do seu negócio?
+        <!-- Headline -->
+        <h2 class="font-display fade-up-element"
+          style="font-size:clamp(40px,6vw,80px);
+          font-weight:600;line-height:1.0;
+          letter-spacing:-0.03em;color:var(--bg);
+          margin-bottom:24px;">
+          Pronto para construir<br>
+          <em style="font-style:italic;color:var(--accent);">
+            sua estrutura digital?</em>
         </h2>
-        
-        <p class="font-body font-[400] text-[18px] text-muted mt-[20px] max-w-[600px] mx-auto fade-up-element">
-            Começamos com uma conversa. Você nos conta sobre o seu negócio — nós mostramos o que é possível construir juntos.
+
+        <!-- Sub -->
+        <p class="font-body fade-up-element"
+          style="font-size:17px;font-weight:300;
+          color:rgba(245,243,239,0.6);line-height:1.75;
+          max-width:480px;margin-bottom:48px;">
+          Começamos com uma conversa. Você nos conta
+          sobre o seu negócio — nós mostramos o que
+          é possível construir juntos.
         </p>
 
-        <!-- Animated CTA Buttons -->
-        <div class="flex flex-col sm:flex-row gap-[20px] justify-center mt-[48px] w-full sm:w-auto fade-up-element">
-            
-            <!-- WhatsApp Button -->
-            <a href="https://wa.me/5549988913704" target="_blank" id="cta-whatsapp"
-               class="cta-social-btn whatsapp-btn sharp px-[40px] py-[18px] font-display font-[700] text-[16px] flex items-center justify-center gap-3 relative overflow-hidden group">
-                <!-- Glow layer -->
-                <span class="absolute inset-0 bg-[#25D366] opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl"></span>
-                <!-- Icon container -->
-                <span class="relative z-10 flex items-center justify-center w-[28px] h-[28px] rounded-full bg-white/10 group-hover:bg-white/20 transition-colors duration-200 shrink-0">
-                    <svg class="w-[16px] h-[16px]" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                </span>
-                <span class="relative z-10">Falar pelo WhatsApp</span>
-            </a>
+        <!-- Buttons -->
+        <div class="fade-up-element" style="display:flex;gap:16px;
+          flex-wrap:wrap;justify-content:center;">
 
-            <!-- Instagram Button -->
-            <a href="https://instagram.com/waxlo.tech" target="_blank" id="cta-instagram"
-               class="cta-social-btn instagram-btn sharp px-[40px] py-[18px] font-body font-[500] text-[16px] flex items-center justify-center gap-3 relative overflow-hidden group">
-                <!-- Gradient glow -->
-                <span class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-300 blur-xl"
-                      style="background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);"></span>
-                <!-- Instagram icon -->
-                <span class="relative z-10 flex items-center justify-center w-[28px] h-[28px] rounded-full transition-all duration-300 shrink-0 instagram-icon-wrap">
-                    <svg class="w-[17px] h-[17px]" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                    </svg>
-                </span>
-                <span class="relative z-10">@waxlo.tech</span>
-            </a>
+          <a href="https://wa.me/5549988913704" target="_blank"
+            class="sharp cta-social-btn whatsapp-btn font-body"
+            style="padding:16px 32px;font-size:15px;
+            font-weight:500;text-decoration:none;
+            display:inline-flex;align-items:center;gap:10px;">
+            <svg width="18" height="18" viewBox="0 0 24 24"
+              fill="currentColor">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+            Falar pelo WhatsApp
+          </a>
+
+          <a href="https://instagram.com/waxlo.tech"
+            target="_blank"
+            class="sharp cta-social-btn instagram-btn font-body"
+            style="padding:16px 32px;font-size:15px;
+            font-weight:400;text-decoration:none;
+            display:inline-flex;align-items:center;gap:10px;
+            border:1px solid rgba(245,243,239,0.2);
+            color:rgba(245,243,239,0.8);">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+            @waxlo.tech
+          </a>
         </div>
 
-        <!-- Social proof line below buttons -->
-        <p class="font-body text-[13px] text-muted mt-6 fade-up-element">
-            Respondemos em até 2 horas em dias úteis
+        <p class="font-mono fade-up-element"
+          style="font-size:12px;color:rgba(245,243,239,0.3);
+          margin-top:24px;letter-spacing:0.06em;">
+          Respondemos em até 2 horas em dias úteis
         </p>
+      </div>
     </section>
 
     <!-- WhatsApp Floating Button -->
@@ -1694,7 +1755,7 @@
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
                 <!-- COL 1 -->
                 <div class="col-span-2 lg:col-span-1">
-                    <img src="logo-waxlo.png" alt="WAXLO" class="h-[32px] w-auto object-contain mb-3" loading="lazy">
+                    <img src="escritaWaxlo-alpha-dark.png" alt="WAXLO" class="h-[32px] w-auto object-contain mb-3" loading="lazy">
                     <p class="font-body font-[400] text-[14px] text-muted leading-[1.7] mt-3">
                         Tecnologia digital para empresas.<br>Lages, SC — Brasil.
                     </p>
@@ -1741,39 +1802,36 @@
 
     <!-- WAXLO Intro Overlay Logic -->
     <script>
-    (function() {
-      // Lock scroll during intro
-      document.body.classList.add('intro-active');
+    (function(){
+      var intro   = document.getElementById('waxlo-intro');
+      var content = document.getElementById('intro-content');
+      var line    = document.getElementById('intro-dash-line');
 
-      var intro  = document.getElementById('waxlo-intro');
-      var logo   = document.getElementById('intro-logo');
-      var line   = document.getElementById('intro-line');
+      if (!intro) return;
 
-      // Check if already played this session
-      if (sessionStorage.getItem('waxlo-intro-played')) {
+      if (sessionStorage.getItem('waxlo-intro-v2')) {
         intro.style.display = 'none';
-        document.body.classList.remove('intro-active');
         return;
       }
 
-      // Slight delay then reveal logo
-      setTimeout(function() {
-        logo.style.opacity  = '1';
-        logo.style.transform = 'scale(1)';
-        line.style.width    = '80px';
-      }, 120);
+      document.body.classList.add('intro-active');
 
-      // Hold, then fade out entire overlay
-      setTimeout(function() {
-        intro.classList.add('fade-out');
+      setTimeout(function(){
+        content.style.opacity   = '1';
+        content.style.transform = 'translateY(0)';
+        line.style.width        = '120px';
+      }, 100);
+
+      setTimeout(function(){
+        intro.style.opacity = '0';
+        intro.style.transition = 'opacity 0.7s ease';
         document.body.classList.remove('intro-active');
-      }, 1900);
+      }, 2000);
 
-      // Remove from DOM after fade
-      setTimeout(function() {
+      setTimeout(function(){
         intro.style.display = 'none';
-        sessionStorage.setItem('waxlo-intro-played', '1');
-      }, 2600);
+        sessionStorage.setItem('waxlo-intro-v2','1');
+      }, 2750);
     })();
     </script>
 
@@ -1784,35 +1842,37 @@
             const menuBtn = document.getElementById('menu-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             const mobileLinks = document.querySelectorAll('.mobile-link');
-            const spans = menuBtn.querySelectorAll('span');
-            
+            const ham1 = document.getElementById('ham-1');
+            const ham2 = document.getElementById('ham-2');
+            const ham3 = document.getElementById('ham-3');
+
             let isMenuOpen = false;
 
             // Handle scroll for navbar border
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 50) {
-                    navbar.classList.add('scrolled');
+                    navbar.classList.add('nav-scrolled');
                 } else {
-                    navbar.classList.remove('scrolled');
+                    navbar.classList.remove('nav-scrolled');
                 }
             });
 
             // Handle mobile menu toggle
             function toggleMenu() {
                 isMenuOpen = !isMenuOpen;
-                
+
                 if (isMenuOpen) {
                     mobileMenu.classList.add('open');
-                    document.body.style.overflow = 'hidden'; // Prevent scrolling
-                    // Animate hamburger to X
-                    spans[0].style.transform = 'translateY(4px) rotate(45deg)';
-                    spans[1].style.transform = 'translateY(-4px) rotate(-45deg)';
+                    document.body.style.overflow = 'hidden';
+                    ham1.style.transform = 'translateY(3px) rotate(45deg)';
+                    ham2.style.transform = 'translateY(-3px) rotate(-45deg)';
+                    ham3.style.opacity = '0';
                 } else {
                     mobileMenu.classList.remove('open');
-                    document.body.style.overflow = ''; // Restore scrolling
-                    // Restore hamburger
-                    spans[0].style.transform = 'translateY(0) rotate(0)';
-                    spans[1].style.transform = 'translateY(0) rotate(0)';
+                    document.body.style.overflow = '';
+                    ham1.style.transform = 'translateY(0) rotate(0)';
+                    ham2.style.transform = 'translateY(0) rotate(0)';
+                    ham3.style.opacity = '1';
                 }
             }
 
@@ -1824,89 +1884,6 @@
                     if (isMenuOpen) toggleMenu();
                 });
             });
-
-            // --- Section 5: Demo Chat Logic ---
-            const demoScripts = {
-                clinica: [
-                    { type: 'user', text: 'Oi, queria marcar uma consulta' },
-                    { type: 'bot', text: 'Olá! Seja bem-vindo 😊 Temos horários esta semana. Qual procedimento?' },
-                    { type: 'user', text: 'Limpeza de pele' },
-                    { type: 'bot', text: 'Perfeito! Disponível: Terça 14h • Quarta 10h • Sexta 16h. Qual prefere?' },
-                    { type: 'user', text: 'Terça às 14h' },
-                    { type: 'bot', text: '✅ Agendado! Terça 14h — Limpeza de pele. Lembrete na véspera. Até lá! 😊' }
-                ],
-                restaurante: [
-                    { type: 'user', text: 'Qual o horário de vocês hoje?' },
-                    { type: 'bot', text: 'Olá! 🍽️ Abertos das 11h30 às 23h. Quer fazer uma reserva ou ver o cardápio?' },
-                    { type: 'user', text: 'Quero fazer uma reserva, 4 pessoas às 20h' },
-                    { type: 'bot', text: '✅ Reserva confirmada! 4 pessoas às 20h. Te esperamos 😊' }
-                ]
-            };
-
-            const demoChat = document.getElementById('demo-app-chat');
-            let demoTimeoutRefs = [];
-
-            window.switchDemoTab = function(tab) {
-                // Update UI buttons
-                document.querySelectorAll('.demo-tab').forEach(btn => {
-                    if(btn.id === 'tab-' + tab) {
-                        btn.className = 'demo-tab sharp border border-gold bg-[rgba(201,169,110,0.06)] text-gold px-[28px] py-[12px] font-body font-[600] text-[16px] transition-colors';
-                    } else {
-                        btn.className = 'demo-tab sharp border border-border bg-transparent text-muted px-[28px] py-[12px] font-body font-[600] text-[16px] hover:border-gold hover:text-gold transition-colors';
-                    }
-                });
-
-                // Fade out current chat
-                demoChat.style.opacity = '0';
-                
-                setTimeout(() => {
-                    playDemoScript(tab);
-                    demoChat.style.opacity = '1';
-                }, 300);
-            };
-
-            function playDemoScript(tab) {
-                // Clear existing loop/timeouts
-                demoTimeoutRefs.forEach(clearTimeout);
-                demoTimeoutRefs = [];
-                demoChat.innerHTML = '';
-                
-                const messages = demoScripts[tab];
-                let delay = 0;
-                
-                messages.forEach((msg, index) => {
-                    const timeout = setTimeout(() => {
-                        const div = document.createElement('div');
-                        div.className = `flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'} w-full demo-msg-enter opacity-0`;
-                        
-                        const inner = document.createElement('div');
-                        // Inject explicit border-radii depending on sender
-                        inner.className = msg.type === 'user' 
-                            ? 'bg-white text-ink px-[14px] py-[10px] rounded-tl-[12px] rounded-tr-[12px] rounded-br-[2px] rounded-bl-[12px] max-w-[85%] sm:max-w-[75%] font-body font-[400] text-[14px]'
-                            : 'bg-[#2A2A2A] text-white px-[14px] py-[10px] rounded-tl-[2px] rounded-tr-[12px] rounded-br-[12px] rounded-bl-[12px] max-w-[90%] sm:max-w-[75%] font-body font-[400] text-[14px]';
-                        
-                        inner.innerText = msg.text;
-                        div.appendChild(inner);
-                        demoChat.appendChild(div);
-                        
-                        // Restart sequence on completion
-                        if (index === messages.length - 1) {
-                            const restartTimeout = setTimeout(() => {
-                                playDemoScript(tab);
-                            }, 2000 + 500); // 500ms animation finish + 2s pause
-                            demoTimeoutRefs.push(restartTimeout);
-                        }
-                    }, delay);
-                    
-                    demoTimeoutRefs.push(timeout);
-                    delay += 800; // 800ms delay before next message appears
-                });
-            }
-
-            // Start default demo automatically (section #demonstracao no longer renders this chat)
-            if (demoChat) {
-                playDemoScript('clinica');
-            }
 
             // --- Intersection Observer for Animations ---
             const observerOptions = {
@@ -2007,36 +1984,6 @@
                 lucide.createIcons();
             }
 
-            // --- Theme Toggle ---
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeColorMeta = document.querySelector('meta[name="theme-color"]');
-            const iconsToLight = document.querySelectorAll('.theme-icon-to-light');
-            const iconsToDark = document.querySelectorAll('.theme-icon-to-dark');
-
-            function updateThemeIcon(theme) {
-                if (theme === 'light') {
-                    iconsToLight.forEach(el => el.classList.add('hidden'));
-                    iconsToDark.forEach(el => el.classList.remove('hidden'));
-                } else {
-                    iconsToLight.forEach(el => el.classList.remove('hidden'));
-                    iconsToDark.forEach(el => el.classList.add('hidden'));
-                }
-                if (themeColorMeta) {
-                    themeColorMeta.setAttribute('content', theme === 'light' ? '#FFFFFF' : '#0A0A0A');
-                }
-            }
-
-            updateThemeIcon(document.documentElement.getAttribute('data-theme') || 'dark');
-
-            if (themeToggleBtn) {
-                themeToggleBtn.addEventListener('click', () => {
-                    const nextTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
-                    document.documentElement.setAttribute('data-theme', nextTheme);
-                    try { localStorage.setItem('waxlo-theme', nextTheme); } catch (e) {}
-                    updateThemeIcon(nextTheme);
-                });
-            }
-
             // ── WhatsApp Float Tooltip ──
             const wppBtn = document.getElementById('wpp-btn');
             const wppTooltip = document.getElementById('wpp-tooltip');
@@ -2110,59 +2057,6 @@
                         trigger: sec,
                         start: 'top 88%',
                         toggleActions: 'play none none none',
-                    },
-                });
-            });
-
-            /* ── 3. GSAP ScrollTrigger — pinned headline
-               (applied to the pain/problem section) ── */
-            const painSection = document.querySelector('.bg-bg h2');
-            if (painSection) {
-                gsap.from(painSection, {
-                    opacity: 0,
-                    y: 60,
-                    duration: 1,
-                    ease: 'power3.out',
-                    scrollTrigger: {
-                        trigger: painSection,
-                        start: 'top 80%',
-                        toggleActions: 'play none none none',
-                    },
-                });
-            }
-
-            /* ── 4. Gold line reveal on hero scroll ── */
-            gsap.to('.hero-gold-line', {
-                scaleX: 1,
-                duration: 1.2,
-                ease: 'power2.inOut',
-                scrollTrigger: {
-                    trigger: 'section:first-of-type',
-                    start: 'top top',
-                    toggleActions: 'play none none none',
-                },
-            });
-
-            /* ── 5. Stat numbers count-up ── */
-            document.querySelectorAll('[data-count]')
-            .forEach(function(el) {
-                const target = parseFloat(el.dataset.count);
-                ScrollTrigger.create({
-                    trigger: el,
-                    start: 'top 85%',
-                    once: true,
-                    onEnter: function() {
-                        gsap.to({ val: 0 }, {
-                            val: target,
-                            duration: 1.8,
-                            ease: 'power2.out',
-                            onUpdate: function() {
-                                el.textContent =
-                                    (this.targets()[0].val % 1 === 0)
-                                        ? Math.round(this.targets()[0].val)
-                                        : this.targets()[0].val.toFixed(0);
-                            },
-                        });
                     },
                 });
             });
