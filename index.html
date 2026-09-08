@@ -1271,252 +1271,171 @@
     <!-- Section: Apps por Nicho -->
     <section id="apps" class="w-full bg-surface
     py-[60px] md:py-[120px] px-6">
-      <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+      <div class="max-w-[1280px] mx-auto px-6 md:px-12 w-full">
 
-        <span class="font-mono font-[500] text-[11px] text-muted
-        tracking-[0.15em] mb-4">APPS DE GESTÃO</span>
+        <!-- Two column layout: left text, right details -->
+        <div class="flex flex-col md:flex-row gap-16 md:gap-24
+        items-start">
 
-        <h2 class="font-display font-[800] text-[36px] md:text-[48px]
-        text-text text-center leading-[1.1]">
-          Um sistema feito para<br>o seu negócio.
-        </h2>
+          <!-- Left: strong statement -->
+          <div class="w-full md:w-[45%] flex flex-col
+          gap-8 md:sticky md:top-[100px]">
 
-        <p class="font-body text-[18px] text-muted text-center
-        max-w-[560px] leading-[1.6] mt-4 mb-16">
-          Não é um software genérico. É uma ferramenta construída
-          para o seu nicho — com a sua cor, a sua logo e o que
-          você realmente usa no dia a dia.
-        </p>
-
-        <!-- Grid de nichos -->
-        <div class="w-full grid grid-cols-1 md:grid-cols-2
-        lg:grid-cols-3 gap-4">
-
-          <!-- Card 1: Personal Trainer — DISPONÍVEL -->
-          <div class="sharp border border-border bg-bg
-          p-[32px_28px] flex flex-col gap-4 fade-up-element
-          hover:border-gold transition-colors duration-200"
-          style="transition-delay:0ms;">
-            <span class="font-mono text-[10px] text-gold
-            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
-            border border-[rgba(201,169,110,0.2)]
-            px-3 py-1 self-start">DISPONÍVEL</span>
-            <i data-lucide="dumbbell"
-               class="w-[28px] h-[28px] text-gold"></i>
-            <div>
-              <h3 class="font-display font-[800] text-[20px]
-              text-text">Personal Trainer</h3>
-              <p class="font-body text-[13px] text-muted mt-1">
-                Gestão de alunos e treinos</p>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-[1px] bg-[#2A2A2A]"></div>
+              <span class="font-mono text-[11px] text-[#888888]
+              tracking-[0.2em]">APPS DE GESTÃO</span>
             </div>
-            <ul class="flex flex-col gap-2">
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Avaliação física completa
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Plano de treino automático
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Dashboard de evolução
-              </li>
-            </ul>
-          </div>
 
-          <!-- Card 2: Clínica Médica — DISPONÍVEL -->
-          <div class="sharp border border-border bg-bg
-          p-[32px_28px] flex flex-col gap-4 fade-up-element
-          hover:border-gold transition-colors duration-200"
-          style="transition-delay:100ms;">
-            <span class="font-mono text-[10px] text-gold
-            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
-            border border-[rgba(201,169,110,0.2)]
-            px-3 py-1 self-start">DISPONÍVEL</span>
-            <i data-lucide="stethoscope"
-               class="w-[28px] h-[28px] text-gold"></i>
-            <div>
-              <h3 class="font-display font-[800] text-[20px]
-              text-text">Clínica Médica</h3>
-              <p class="font-body text-[13px] text-muted mt-1">
-                Gestão de pacientes e consultas</p>
-            </div>
-            <ul class="flex flex-col gap-2">
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Cadastro e histórico de pacientes
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Agenda e prontuário
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Relatórios e indicadores
-              </li>
-            </ul>
-          </div>
+            <h2 class="font-display font-[800]
+            text-[36px] md:text-[52px] text-white
+            leading-[1.05] tracking-[-0.02em]">
+              Um sistema<br>feito para<br>
+              <span style="color:#C9A96E;">você.</span>
+            </h2>
 
-          <!-- Card 3: Psicologia — DISPONÍVEL -->
-          <div class="sharp border border-border bg-bg
-          p-[32px_28px] flex flex-col gap-4 fade-up-element
-          hover:border-gold transition-colors duration-200"
-          style="transition-delay:200ms;">
-            <span class="font-mono text-[10px] text-gold
-            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
-            border border-[rgba(201,169,110,0.2)]
-            px-3 py-1 self-start">DISPONÍVEL</span>
-            <i data-lucide="brain"
-               class="w-[28px] h-[28px] text-gold"></i>
-            <div>
-              <h3 class="font-display font-[800] text-[20px]
-              text-text">Psicologia</h3>
-              <p class="font-body text-[13px] text-muted mt-1">
-                Gestão de sessões e pacientes</p>
-            </div>
-            <ul class="flex flex-col gap-2">
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Prontuário por paciente
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Histórico de sessões
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Controle financeiro
-              </li>
-            </ul>
-          </div>
+            <p class="font-body text-[16px] text-[#888888]
+            leading-[1.8] max-w-[380px]">
+              Não é um software genérico. É uma ferramenta
+              construída para o seu segmento — com a sua cor,
+              a sua logo e só o que você realmente usa.
+              Sem instalar nada. Funciona no celular.
+            </p>
 
-          <!-- Card 4: Fisioterapia — DISPONÍVEL -->
-          <div class="sharp border border-border bg-bg
-          p-[32px_28px] flex flex-col gap-4 fade-up-element
-          hover:border-gold transition-colors duration-200"
-          style="transition-delay:0ms;">
-            <span class="font-mono text-[10px] text-gold
-            tracking-[0.1em] bg-[rgba(201,169,110,0.08)]
-            border border-[rgba(201,169,110,0.2)]
-            px-3 py-1 self-start">DISPONÍVEL</span>
-            <i data-lucide="activity"
-               class="w-[28px] h-[28px] text-gold"></i>
-            <div>
-              <h3 class="font-display font-[800] text-[20px]
-              text-text">Fisioterapia</h3>
-              <p class="font-body text-[13px] text-muted mt-1">
-                Controle de evolução e sessões</p>
-            </div>
-            <ul class="flex flex-col gap-2">
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Ficha de avaliação funcional
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Evolução por sessão (EVA)
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-gold">→</span>
-                Relatório de alta em PDF
-              </li>
-            </ul>
-          </div>
-
-          <!-- Card 5: Odontologia — EM DESENVOLVIMENTO -->
-          <div class="sharp border border-border bg-bg
-          p-[32px_28px] flex flex-col gap-4 fade-up-element
-          opacity-60" style="transition-delay:100ms;">
-            <span class="font-mono text-[10px] text-muted
-            tracking-[0.1em] border border-border
-            px-3 py-1 self-start">EM DESENVOLVIMENTO</span>
-            <i data-lucide="smile"
-               class="w-[28px] h-[28px] text-muted"></i>
-            <div>
-              <h3 class="font-display font-[800] text-[20px]
-              text-text">Odontologia</h3>
-              <p class="font-body text-[13px] text-muted mt-1">
-                Prontuário e agenda odontológica</p>
-            </div>
-            <ul class="flex flex-col gap-2">
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-muted">→</span>
-                Odontograma digital
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-muted">→</span>
-                Plano de tratamento
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-muted">→</span>
-                Histórico de procedimentos
-              </li>
-            </ul>
-          </div>
-
-          <!-- Card 6: Estética — EM DESENVOLVIMENTO -->
-          <div class="sharp border border-border bg-bg
-          p-[32px_28px] flex flex-col gap-4 fade-up-element
-          opacity-60" style="transition-delay:200ms;">
-            <span class="font-mono text-[10px] text-muted
-            tracking-[0.1em] border border-border
-            px-3 py-1 self-start">EM DESENVOLVIMENTO</span>
-            <i data-lucide="sparkles"
-               class="w-[28px] h-[28px] text-muted"></i>
-            <div>
-              <h3 class="font-display font-[800] text-[20px]
-              text-text">Estética e Beleza</h3>
-              <p class="font-body text-[13px] text-muted mt-1">
-                Gestão de atendimentos e agenda</p>
-            </div>
-            <ul class="flex flex-col gap-2">
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-muted">→</span>
-                Ficha da cliente
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-muted">→</span>
-                Histórico de procedimentos
-              </li>
-              <li class="font-body text-[13px] text-muted
-              flex items-center gap-2">
-                <span class="text-muted">→</span>
-                Controle de retorno
-              </li>
-            </ul>
-          </div>
-
-        </div>
-
-        <!-- CTA -->
-        <div class="mt-14 text-center">
-          <p class="font-body text-[16px] text-muted">
-            Seu segmento não está aqui?
             <a href="#contato"
-               class="text-gold hover:underline ml-1 font-[500]">
-              Desenvolvemos para qualquer nicho →
+              class="sharp border border-[#C9A96E]
+              text-[#C9A96E] px-[28px] py-[14px]
+              font-body font-[500] text-[14px]
+              hover:bg-[#C9A96E] hover:text-[#0A0A0A]
+              transition-colors duration-200
+              inline-flex items-center gap-2 self-start">
+              Quero meu app →
             </a>
-          </p>
-        </div>
+          </div>
 
+          <!-- Right: feature list + niches -->
+          <div class="w-full md:w-[55%] flex flex-col gap-0">
+
+            <!-- Feature rows -->
+            <div class="border-t border-[#2A2A2A] py-[28px]
+            flex items-start gap-5">
+              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              flex items-center justify-center shrink-0">
+                <i data-lucide="palette"
+                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-[800] text-[17px]
+                text-white">Sua identidade visual</h4>
+                <p class="font-body text-[14px] text-[#888888]
+                leading-[1.65] mt-1">
+                  Cor, logo e nome do seu negócio aplicados
+                  em todo o sistema.
+                </p>
+              </div>
+            </div>
+
+            <div class="border-t border-[#2A2A2A] py-[28px]
+            flex items-start gap-5">
+              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              flex items-center justify-center shrink-0">
+                <i data-lucide="users"
+                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-[800] text-[17px]
+                text-white">Pacientes e clientes organizados</h4>
+                <p class="font-body text-[14px] text-[#888888]
+                leading-[1.65] mt-1">
+                  Cadastro, histórico, agenda e relatórios —
+                  tudo num só lugar.
+                </p>
+              </div>
+            </div>
+
+            <div class="border-t border-[#2A2A2A] py-[28px]
+            flex items-start gap-5">
+              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              flex items-center justify-center shrink-0">
+                <i data-lucide="bar-chart-2"
+                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-[800] text-[17px]
+                text-white">Dashboard com seus dados</h4>
+                <p class="font-body text-[14px] text-[#888888]
+                leading-[1.65] mt-1">
+                  Visão do dia, da semana e do mês.
+                  Sem planilha. Sem caderno.
+                </p>
+              </div>
+            </div>
+
+            <div class="border-t border-b border-[#2A2A2A]
+            py-[28px] flex items-start gap-5">
+              <div class="w-[40px] h-[40px] border border-[#2A2A2A]
+              flex items-center justify-center shrink-0">
+                <i data-lucide="smartphone"
+                  class="w-[18px] h-[18px] text-[#C9A96E]"></i>
+              </div>
+              <div>
+                <h4 class="font-display font-[800] text-[17px]
+                text-white">Funciona no celular</h4>
+                <p class="font-body text-[14px] text-[#888888]
+                leading-[1.65] mt-1">
+                  Sem baixar nada. Abre no navegador
+                  e funciona como um app.
+                </p>
+              </div>
+            </div>
+
+            <!-- Niches tag cloud -->
+            <div class="mt-10">
+              <span class="font-mono text-[11px] text-[#888888]
+              tracking-[0.15em] block mb-5">
+                SEGMENTOS DISPONÍVEIS
+              </span>
+              <div class="flex flex-wrap gap-2">
+                <span class="border border-[#C9A96E]
+                text-[#C9A96E] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  Personal Trainer
+                </span>
+                <span class="border border-[#C9A96E]
+                text-[#C9A96E] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  Clínica Médica
+                </span>
+                <span class="border border-[#C9A96E]
+                text-[#C9A96E] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  Psicologia
+                </span>
+                <span class="border border-[#C9A96E]
+                text-[#C9A96E] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  Fisioterapia
+                </span>
+                <span class="border border-[#2A2A2A]
+                text-[#888888] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  Odontologia (em breve)
+                </span>
+                <span class="border border-[#2A2A2A]
+                text-[#888888] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  Estética (em breve)
+                </span>
+                <span class="border border-dashed border-[#2A2A2A]
+                text-[#888888] font-mono text-[11px]
+                tracking-[0.08em] px-4 py-2">
+                  + seu segmento
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </div>
     </section>
 
