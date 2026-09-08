@@ -414,6 +414,14 @@
         body.intro-active {
             overflow: hidden;
         }
+
+        /* Ensure swiper overflow visible for peek effect */
+        #trabalhos .portfolio-swiper {
+          overflow: visible !important;
+        }
+        #trabalhos .portfolio-swiper .swiper-wrapper {
+          padding-left: 0;
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -750,6 +758,170 @@
 
     </section>
 
+    <!-- Section 6: Vitrine de Sites -->
+    <section id="trabalhos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+        <div class="max-w-[1280px] mx-auto flex flex-col items-center">
+            <!-- Eyebrow -->
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-6 h-[1px] bg-[#2A2A2A]"></div>
+              <span class="font-mono text-[11px] text-[#888888]
+              tracking-[0.2em]">TRABALHOS</span>
+            </div>
+
+            <!-- H2 -->
+            <h2 class="font-display font-[800]
+            text-[36px] md:text-[52px] text-white
+            leading-[1.05] tracking-[-0.02em]">
+              O que já<br>entregamos.
+            </h2>
+
+            <!-- Mobile hint -->
+            <p class="font-mono text-[11px] text-[#888888]
+            tracking-[0.1em] mt-4 md:hidden">
+              ← deslize para ver mais →
+            </p>
+
+            <!-- Swiper Portfolio Carousel -->
+            <div class="swiper portfolio-swiper w-full mt-12 overflow-visible" style="padding-bottom:48px;">
+                <div class="swiper-wrapper">
+
+                    <!-- SLIDE 1: TAH ON (featured) -->
+                    <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
+                        <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
+
+                            <!-- Video preview -->
+                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                                <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
+                                    src="videos/preview-tahon.mp4"
+                                    muted loop playsinline
+                                    onmouseenter="this.play()"
+                                    onmouseleave="this.pause();this.currentTime=0;">
+                                </video>
+                                <!-- Gold overlay on hover -->
+                                <div class="absolute inset-0 bg-gold opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"></div>
+                                <!-- Badge -->
+                                <div class="absolute top-0 left-0 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em]">
+                                    DESTAQUE
+                                </div>
+                            </div>
+
+                            <!-- Info -->
+                            <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
+                                <div>
+                                    <div class="font-mono text-[10px] text-gold tracking-[0.1em] mb-1">STREETWEAR & MODA</div>
+                                    <h3 class="font-display font-[800] text-[22px] text-text">TAH ON</h3>
+                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
+                                </div>
+                                <a href="https://tahon.lovable.app" target="_blank"
+                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
+                                    Ver site →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 2: Vicore (new — featured) -->
+                    <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
+                        <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
+
+                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                                <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
+                                    src="videos/preview-vicore.mp4"
+                                    muted loop playsinline
+                                    onmouseenter="this.play()"
+                                    onmouseleave="this.pause();this.currentTime=0;">
+                                </video>
+                                <div class="absolute inset-0 bg-gold opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"></div>
+                                <div class="absolute top-0 left-0 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em]">
+                                    NOVO
+                                </div>
+                            </div>
+
+                            <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
+                                <div>
+                                    <div class="font-mono text-[10px] text-gold tracking-[0.1em] mb-1">MARKETING & CONTEÚDO</div>
+                                    <h3 class="font-display font-[800] text-[22px] text-text">Vicore</h3>
+                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
+                                </div>
+                                <a href="https://vicore-ten.vercel.app" target="_blank"
+                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
+                                    Ver site →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 3: SC Advocacia -->
+                    <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
+                        <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
+
+                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                                <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                                    src="videos/preview-advocacia.mp4"
+                                    muted loop playsinline
+                                    onmouseenter="this.play()"
+                                    onmouseleave="this.pause();this.currentTime=0;">
+                                </video>
+                            </div>
+
+                            <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
+                                <div>
+                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">ADVOCACIA & DIREITO</div>
+                                    <h3 class="font-display font-[800] text-[20px] text-text">SC Advocacia</h3>
+                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
+                                </div>
+                                <a href="https://sc-advocacia-five.vercel.app" target="_blank"
+                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
+                                    Ver site →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 4: Alto da Serra -->
+                    <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
+                        <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
+
+                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
+                                <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
+                                    src="videos/preview-restaurante.mp4"
+                                    muted loop playsinline
+                                    onmouseenter="this.play()"
+                                    onmouseleave="this.pause();this.currentTime=0;">
+                                </video>
+                            </div>
+
+                            <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
+                                <div>
+                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">RESTAURANTE & CHURRASCARIA</div>
+                                    <h3 class="font-display font-[800] text-[20px] text-text">Alto da Serra</h3>
+                                    <p class="font-mono text-[11px] text-muted mt-1">Angatuba, SP</p>
+                                </div>
+                                <a href="https://restaurante-alto-da-serra.vercel.app" target="_blank"
+                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
+                                    Ver site →
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- end swiper-wrapper -->
+
+                <!-- Navigation arrows -->
+                <div class="swiper-button-prev portfolio-prev !text-gold !w-[48px] !h-[48px] after:!text-[18px]"></div>
+                <div class="swiper-button-next portfolio-next !text-gold !w-[48px] !h-[48px] after:!text-[18px]"></div>
+
+                <!-- Pagination -->
+                <div class="swiper-pagination portfolio-pagination !bottom-0"></div>
+            </div>
+
+            <div class="mt-[48px] text-center font-body text-[16px] text-muted">
+                Quer ver como ficaria o site do seu negócio?
+                <a href="#contato" class="text-gold hover:underline">Fale com a nossa equipe &rarr;</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 4: Serviços -->
     <section id="servicos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
@@ -1006,158 +1178,6 @@
             </div>
 
           </div>
-        </div>
-    </section>
-
-    <!-- Section 6: Vitrine de Sites -->
-    <section id="trabalhos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
-        <div class="max-w-[1280px] mx-auto flex flex-col items-center">
-            <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">TRABALHOS</span>
-            <h2 class="font-display font-[800] text-[36px] md:text-[48px] text-text text-center leading-[1.1]">
-                O que já entregamos.
-            </h2>
-            <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[600px] leading-[1.6] mt-4">
-                Projetos reais, identidades fortes. Cada entrega construída para o negócio que está por trás dela.
-            </p>
-
-            <!-- Swiper Portfolio Carousel -->
-            <div class="swiper portfolio-swiper w-full mt-12 overflow-visible" style="padding-bottom:48px;">
-                <div class="swiper-wrapper">
-
-                    <!-- SLIDE 1: TAH ON (featured) -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
-                        <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <!-- Video preview -->
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
-                                <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
-                                    src="videos/preview-tahon.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                                <!-- Gold overlay on hover -->
-                                <div class="absolute inset-0 bg-gold opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"></div>
-                                <!-- Badge -->
-                                <div class="absolute top-0 left-0 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em]">
-                                    DESTAQUE
-                                </div>
-                            </div>
-
-                            <!-- Info -->
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-gold tracking-[0.1em] mb-1">STREETWEAR & MODA</div>
-                                    <h3 class="font-display font-[800] text-[22px] text-text">TAH ON</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
-                                </div>
-                                <a href="https://tahon.lovable.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SLIDE 2: Vicore (new — featured) -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
-                        <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
-                                <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
-                                    src="videos/preview-vicore.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                                <div class="absolute inset-0 bg-gold opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"></div>
-                                <div class="absolute top-0 left-0 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em]">
-                                    NOVO
-                                </div>
-                            </div>
-
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-gold tracking-[0.1em] mb-1">MARKETING & CONTEÚDO</div>
-                                    <h3 class="font-display font-[800] text-[22px] text-text">Vicore</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
-                                </div>
-                                <a href="https://vicore-ten.vercel.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SLIDE 3: SC Advocacia -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
-                        <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
-                                <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                                    src="videos/preview-advocacia.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                            </div>
-
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">ADVOCACIA & DIREITO</div>
-                                    <h3 class="font-display font-[800] text-[20px] text-text">SC Advocacia</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
-                                </div>
-                                <a href="https://sc-advocacia-five.vercel.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SLIDE 4: Alto da Serra -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
-                        <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <div class="relative flex-1 overflow-hidden bg-[#0A0A0A]">
-                                <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                                    src="videos/preview-restaurante.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                            </div>
-
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">RESTAURANTE & CHURRASCARIA</div>
-                                    <h3 class="font-display font-[800] text-[20px] text-text">Alto da Serra</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Angatuba, SP</p>
-                                </div>
-                                <a href="https://restaurante-alto-da-serra.vercel.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                </div><!-- end swiper-wrapper -->
-
-                <!-- Navigation arrows -->
-                <div class="swiper-button-prev portfolio-prev !text-gold !w-[48px] !h-[48px] after:!text-[18px]"></div>
-                <div class="swiper-button-next portfolio-next !text-gold !w-[48px] !h-[48px] after:!text-[18px]"></div>
-
-                <!-- Pagination -->
-                <div class="swiper-pagination portfolio-pagination !bottom-0"></div>
-            </div>
-
-            <div class="mt-[48px] text-center font-body text-[16px] text-muted">
-                Quer ver como ficaria o site do seu negócio?
-                <a href="#contato" class="text-gold hover:underline">Fale com a nossa equipe &rarr;</a>
-            </div>
         </div>
     </section>
 
