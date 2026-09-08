@@ -403,6 +403,17 @@
         .animate-bounce {
             animation: scrollBounce 1.8s ease-in-out infinite;
         }
+
+        /* WAXLO Intro Overlay */
+        #waxlo-intro {
+            transition: opacity 0.6s ease;
+        }
+        #waxlo-intro.fade-out {
+            opacity: 0;
+        }
+        body.intro-active {
+            overflow: hidden;
+        }
     </style>
     <script type="application/ld+json">
     {
@@ -430,6 +441,33 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 </head>
 <body class="antialiased">
+
+    <!-- WAXLO Intro Overlay -->
+    <div id="waxlo-intro" aria-hidden="true"
+      style="
+        position:fixed;inset:0;z-index:9999;
+        background:#0A0A0A;
+        display:flex;align-items:center;justify-content:center;
+        pointer-events:none;
+      ">
+
+      <!-- Logo container -->
+      <div id="intro-logo" style="
+        display:flex;flex-direction:column;align-items:center;
+        gap:20px;opacity:0;transform:scale(0.92);
+        transition:opacity 0.7s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1);
+      ">
+        <img src="logo-waxlo.png" alt="WAXLO"
+          style="height:56px;width:auto;object-fit:contain;
+                 filter:brightness(1.1);">
+        <div style="
+          width:0px;height:1px;background:#C9A96E;
+          transition:width 0.8s cubic-bezier(0.16,1,0.3,1);
+          transition-delay:0.4s;
+        " id="intro-line"></div>
+      </div>
+
+    </div>
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 w-full h-[80px] flex items-center justify-between px-6 md:px-[60px] bg-bg/85 backdrop-blur-[20px]">
@@ -1711,6 +1749,44 @@
             </div>
         </div>
     </footer>
+
+    <!-- WAXLO Intro Overlay Logic -->
+    <script>
+    (function() {
+      // Lock scroll during intro
+      document.body.classList.add('intro-active');
+
+      var intro  = document.getElementById('waxlo-intro');
+      var logo   = document.getElementById('intro-logo');
+      var line   = document.getElementById('intro-line');
+
+      // Check if already played this session
+      if (sessionStorage.getItem('waxlo-intro-played')) {
+        intro.style.display = 'none';
+        document.body.classList.remove('intro-active');
+        return;
+      }
+
+      // Slight delay then reveal logo
+      setTimeout(function() {
+        logo.style.opacity  = '1';
+        logo.style.transform = 'scale(1)';
+        line.style.width    = '80px';
+      }, 120);
+
+      // Hold, then fade out entire overlay
+      setTimeout(function() {
+        intro.classList.add('fade-out');
+        document.body.classList.remove('intro-active');
+      }, 1900);
+
+      // Remove from DOM after fade
+      setTimeout(function() {
+        intro.style.display = 'none';
+        sessionStorage.setItem('waxlo-intro-played', '1');
+      }, 2600);
+    })();
+    </script>
 
     <!-- JavaScript for interactivity -->
     <script>
