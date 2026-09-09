@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A WAXLO constrói a estrutura digital completa do seu negócio — sites profissionais, identidade visual, sistemas de gestão e presença no Google. Lages, SC. Atendemos todo o Brasil.">
-    <meta name="theme-color" content="#F5F3EF">
+    <meta name="theme-color" content="#F8F6F1">
     <title>WAXLO — Tecnologia Digital para Empresas</title>
 
     <!-- Item 5: Open Graph / Social Preview -->
@@ -34,7 +34,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -45,21 +45,21 @@
             theme: {
                 extend: {
                     colors: {
-                        bg:         '#F5F3EF',
-                        subtle:     '#ECEAE5',
-                        border:     '#DEDAD3',
-                        text:       '#0D0C0A',
-                        muted:      '#7A7670',
-                        accent:     '#B8A882',
-                        'accent-h': '#A09570',
-                        line:       '#C4B896',
-                        dark:       '#0D0C0A',
+                        bg:         '#F8F6F1',
+                        subtle:     '#FFFFFF',
+                        border:     '#E2DFD6',
+                        text:       '#1A1A1A',
+                        muted:      '#6B6B68',
+                        accent:     '#D4AF37',
+                        'accent-h': '#B3922E',
+                        line:       '#D4AF37',
+                        dark:       '#000000',
                         white:      '#FFFFFF',
                     },
                     fontFamily: {
-                        display: ['"Bricolage Grotesque"', 'sans-serif'],
-                        body:    ['"Geist"', 'sans-serif'],
-                        mono:    ['"DM Mono"', 'monospace'],
+                        display: ['"Manrope"', 'sans-serif'],
+                        body:    ['"Inter"', 'sans-serif'],
+                        mono:    ['"Inter"', 'sans-serif'],
                     }
                 }
             }
@@ -69,14 +69,15 @@
     <!-- Custom Styles -->
     <style>
         :root {
-          --bg:         #F5F3EF;
-          --subtle:     #ECEAE5;
-          --border:     #DEDAD3;
-          --text:       #0D0C0A;
-          --muted:      #7A7670;
-          --accent:     #B8A882;
-          --accent-h:   #A09570;
-          --line:       #C4B896;
+          --bg:         #F8F6F1;
+          --subtle:     #FFFFFF;
+          --border:     #E2DFD6;
+          --text:       #1A1A1A;
+          --muted:      #6B6B68;
+          --accent:     #D4AF37;
+          --accent-h:   #B3922E;
+          --line:       #D4AF37;
+          --dark:       #000000;
         }
 
         *, *::before, *::after { box-sizing: border-box; }
@@ -86,7 +87,7 @@
         body {
           background-color: var(--bg);
           color: var(--text);
-          font-family: 'Geist', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 400;
           -webkit-font-smoothing: antialiased;
           overflow-x: hidden;
@@ -105,9 +106,9 @@
         .text-ink      { color: var(--text) !important; }
 
         /* Typography system */
-        .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
-        .font-body    { font-family: 'Geist', sans-serif; }
-        .font-mono    { font-family: 'DM Mono', monospace; }
+        .font-display { font-family: 'Manrope', sans-serif; }
+        .font-body    { font-family: 'Inter', sans-serif; }
+        .font-mono    { font-family: 'Inter', sans-serif; }
 
         /* Utilities */
         .sharp { border-radius: 0 !important; }
@@ -143,7 +144,7 @@
         }
         .mobile-link {
             display: block;
-            font-family: 'Bricolage Grotesque', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-weight: 600;
             font-size: 40px;
             color: var(--bg);
@@ -294,7 +295,7 @@
         }
         .service-cell:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 32px rgba(184,168,130,0.08);
+            box-shadow: 0 8px 32px rgba(212,175,55,0.08);
         }
 
         [data-lucide]:not(.w-\[16px\]) {
@@ -310,7 +311,7 @@
 
         /* Complete package card — accent border glow on hover */
         .package-card:hover {
-            box-shadow: 0 0 40px rgba(184,168,130,0.08);
+            box-shadow: 0 0 40px rgba(212,175,55,0.08);
             transition: box-shadow 300ms ease;
         }
 
@@ -345,39 +346,39 @@
             padding: clamp(16px, 3vw, 28px) clamp(18px, 3.5vw, 32px);
             background: linear-gradient(
                 to top,
-                rgba(13,12,10,0.85) 0%,
-                rgba(13,12,10,0.4) 60%,
+                rgba(0,0,0,0.85) 0%,
+                rgba(0,0,0,0.4) 60%,
                 transparent 100%
             );
         }
         #trabalhos .swiper-slide .slide-badge {
-            font-family: 'DM Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(9px, 1vw, 11px);
             letter-spacing: 0.12em;
-            color: #B8A882;
+            color: #D4AF37;
             text-transform: uppercase;
             margin-bottom: 6px;
         }
         #trabalhos .swiper-slide .slide-title {
-            font-family: 'Bricolage Grotesque', sans-serif;
+            font-family: 'Manrope', sans-serif;
             font-size: clamp(18px, 2.6vw, 28px);
             font-weight: 700;
-            color: #F5F3EF;
+            color: #F8F6F1;
             margin-bottom: 4px;
         }
         #trabalhos .swiper-slide .slide-sub {
-            font-family: 'DM Mono', monospace;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(10px, 1.1vw, 12px);
-            color: rgba(245,243,239,0.5);
+            color: rgba(248,246,241,0.5);
         }
         #trabalhos .swiper-slide .slide-link {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            font-family: 'Geist', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(12px, 1.2vw, 14px);
             font-weight: 500;
-            color: #B8A882;
+            color: #D4AF37;
             text-decoration: none;
             margin-top: 12px;
             opacity: 0;
@@ -393,9 +394,9 @@
             top: 0;
             left: 0;
             z-index: 2;
-            background: #B8A882;
-            color: #0D0C0A;
-            font-family: 'DM Mono', monospace;
+            background: #D4AF37;
+            color: #000000;
+            font-family: 'Inter', sans-serif;
             font-size: clamp(9px, 1vw, 11px);
             letter-spacing: 0.12em;
             padding: 6px 14px;
@@ -410,7 +411,7 @@
             transition: all 0.3s ease;
         }
         #trabalhos .swiper-pagination-bullet-active {
-            background: #B8A882;
+            background: #D4AF37;
             width: 28px;
             border-radius: 4px;
         }
@@ -478,7 +479,7 @@
     <!-- WAXLO Intro Overlay -->
     <div id="waxlo-intro" aria-hidden="true"
       style="position:fixed;inset:0;z-index:9999;
-             background:#0D0C0A;
+             background:#000000;
              display:flex;align-items:center;justify-content:center;">
 
       <div id="intro-content"
@@ -490,8 +491,8 @@
         <img src="escritaWaxlo-alpha-light.png" alt="WAXLO"
           style="height:96px;width:auto;object-fit:contain;">
 
-        <p style="font-family:'DM Mono',monospace;
-          font-size:11px;color:rgba(184,168,130,0.5);
+        <p style="font-family:'Inter',sans-serif;
+          font-size:11px;color:rgba(212,175,55,0.5);
           letter-spacing:0.3em;text-transform:uppercase;
           margin-top:-8px;">
           Sites & Automações
@@ -501,7 +502,7 @@
         <div id="intro-dash-line"
           style="width:0;height:1px;
                  background:repeating-linear-gradient(
-                   90deg, #B8A882 0, #B8A882 6px, transparent 6px, transparent 12px);
+                   90deg, #D4AF37 0, #D4AF37 6px, transparent 6px, transparent 12px);
                  transition:width 1s cubic-bezier(0.16,1,0.3,1) 0.3s;">
         </div>
       </div>
@@ -510,7 +511,7 @@
     <!-- Navbar -->
     <nav id="navbar"
       style="position:fixed;top:0;left:0;right:0;z-index:100;
-             background:rgba(245,243,239,0.92);
+             background:rgba(248,246,241,0.92);
              backdrop-filter:blur(20px);
              -webkit-backdrop-filter:blur(20px);
              transition:border-bottom 0.3s ease;">
@@ -575,7 +576,7 @@
     <!-- Mobile menu overlay -->
     <div id="mobile-menu"
       style="position:fixed;inset:0;z-index:90;
-             background:#0D0C0A;
+             background:#000000;
              display:flex;flex-direction:column;
              align-items:center;justify-content:center;gap:32px;">
       <a href="#trabalhos" class="mobile-link">Trabalhos</a>
@@ -584,8 +585,8 @@
       <a href="#contato" class="mobile-link">Contato</a>
       <a href="#contato"
         class="font-body font-medium text-[14px] mt-4"
-        style="color:#B8A882;text-decoration:none;
-               border:1px solid #B8A882;padding:12px 28px;">
+        style="color:#D4AF37;text-decoration:none;
+               border:1px solid #D4AF37;padding:12px 28px;">
         Falar com especialista &rarr;
       </a>
     </div>
@@ -612,20 +613,20 @@
       <div style="position:absolute;inset:0;
         background:linear-gradient(
           135deg,
-          rgba(245,243,239,0.85) 0%,
-          rgba(245,243,239,0.6) 50%,
-          rgba(245,243,239,0.45) 100%
+          rgba(248,246,241,0.85) 0%,
+          rgba(248,246,241,0.6) 50%,
+          rgba(248,246,241,0.45) 100%
         );pointer-events:none;z-index:1;">
       </div>
 
       <!-- Conteúdo -->
       <div style="position:relative;z-index:2;
         max-width:1200px;margin:0 auto;
-        padding:80px 24px;width:100%;">
+        padding:56px 24px;width:100%;">
 
         <!-- Eyebrow -->
         <div style="display:flex;align-items:center;
-          gap:12px;margin-bottom:40px;">
+          gap:12px;margin-bottom:28px;">
           <div style="width:24px;height:1px;
             background:var(--accent);"></div>
           <span class="font-mono"
@@ -637,101 +638,99 @@
 
         <!-- Headline -->
         <h1 class="font-display"
-          style="font-size:clamp(56px,8vw,120px);
-            font-weight:800;line-height:0.95;
-            letter-spacing:-0.04em;
+          style="font-size:clamp(36px,5.2vw,68px);
+            font-weight:700;line-height:1.12;
+            letter-spacing:-0.02em;
             color:var(--text);
-            max-width:900px;
-            margin-bottom:32px;">
-          Estrutura<br>
-          digital<br>
-          <span style="color:var(--accent);
-            font-weight:500;font-style:italic;">
-            completa.
-          </span>
+            max-width:720px;
+            margin-bottom:24px;">
+          Mais clientes.<br>
+          Mais organização.<br>
+          Menos trabalho manual.
         </h1>
 
         <!-- Sub + CTAs -->
-        <div style="display:flex;flex-direction:column;gap:32px;
+        <div style="display:flex;flex-direction:column;gap:28px;
           max-width:760px;"
           class="md:flex-row md:items-end md:gap-12">
 
           <p class="font-body"
-            style="font-size:18px;font-weight:300;
-              line-height:1.7;color:var(--muted);
-              max-width:360px;flex-shrink:0;">
-            Sites, identidade visual, sistemas de gestão
-            e presença no Google — construídos para
-            o seu negócio, do zero.
+            style="font-size:17px;font-weight:400;
+              line-height:1.65;color:var(--muted);
+              max-width:380px;flex-shrink:0;">
+            Criamos a estrutura digital completa para empresas
+            que querem crescer: sites profissionais,
+            posicionamento digital, automações inteligentes
+            e sistemas de gestão personalizados.
           </p>
 
           <div style="display:flex;flex-direction:column;
             gap:12px;flex-shrink:0;">
-            <a href="#trabalhos" class="sharp font-body"
+            <a href="#contato" class="sharp font-body"
               style="display:inline-flex;align-items:center;gap:10px;
                 background:var(--text);color:var(--bg);
-                padding:16px 32px;font-size:15px;
+                padding:15px 30px;font-size:15px;
                 font-weight:500;text-decoration:none;
                 transition:background 0.2s ease;"
-              onmouseover="this.style.background='#2a2a2a'"
+              onmouseover="this.style.background='#333333'"
               onmouseout="this.style.background='var(--text)'">
-              Ver nosso trabalho
+              Solicitar diagnóstico
               <svg width="14" height="14" viewBox="0 0 24 24"
                 fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
-            <a href="#contato" class="sharp font-body"
+            <a href="#servicos" class="sharp font-body"
               style="display:inline-flex;align-items:center;gap:10px;
                 border:1px solid var(--border);
-                color:var(--text);padding:16px 32px;
-                font-size:15px;font-weight:400;
+                color:var(--text);padding:15px 30px;
+                font-size:15px;font-weight:500;
                 text-decoration:none;background:transparent;
                 transition:border-color 0.2s ease;"
               onmouseover="this.style.borderColor='var(--muted)'"
               onmouseout="this.style.borderColor='var(--border)'">
-              Falar com especialista
+              Ver soluções
             </a>
           </div>
         </div>
 
         <!-- Stats -->
         <div style="display:flex;align-items:center;
-          gap:40px;margin-top:72px;padding-top:40px;
+          gap:40px;margin-top:56px;padding-top:32px;
           border-top:1px solid var(--border);flex-wrap:wrap;">
           <div>
             <div class="font-display"
-              style="font-size:40px;font-weight:700;
-                color:var(--text);line-height:1;">4+</div>
+              style="font-size:36px;font-weight:700;
+                color:var(--text);line-height:1;">10+</div>
             <div class="font-mono"
               style="font-size:10px;color:var(--muted);
                 margin-top:6px;letter-spacing:0.08em;
                 text-transform:uppercase;">
-              clientes ativos</div>
+              clientes atendidos</div>
           </div>
-          <div style="width:1px;height:40px;
+          <div style="width:1px;height:36px;
             background:var(--border);"></div>
           <div>
             <div class="font-display"
-              style="font-size:40px;font-weight:700;
-                color:var(--text);line-height:1;">7d</div>
+              style="font-size:36px;font-weight:700;
+                color:var(--text);line-height:1;">10</div>
             <div class="font-mono"
               style="font-size:10px;color:var(--muted);
                 margin-top:6px;letter-spacing:0.08em;
                 text-transform:uppercase;">
-              entrega média</div>
+              dias para entrega</div>
           </div>
-          <div style="width:1px;height:40px;
+          <div style="width:1px;height:36px;
             background:var(--border);"></div>
           <div>
             <div class="font-display"
-              style="font-size:40px;font-weight:700;
-                color:var(--text);line-height:1;">BR</div>
+              style="font-size:36px;font-weight:700;
+                color:var(--text);line-height:1;">Mundial</div>
             <div class="font-mono"
               style="font-size:10px;color:var(--muted);
                 margin-top:6px;letter-spacing:0.08em;
                 text-transform:uppercase;">
-              todo o Brasil</div>
+              atendimento</div>
           </div>
         </div>
       </div>
@@ -847,7 +846,7 @@
     </section>
 
     <!-- Section 6: Vitrine de Sites -->
-    <section id="trabalhos" class="w-full bg-bg py-[60px] md:py-[120px] px-6">
+    <section id="trabalhos" class="w-full bg-bg py-[48px] md:py-[96px] px-6">
         <div class="max-w-[1280px] mx-auto flex flex-col items-center">
             <!-- Eyebrow -->
             <div class="flex items-center gap-3 mb-6">
@@ -959,18 +958,18 @@
             style="font-size:clamp(36px,5vw,64px);font-weight:700;
             line-height:1.0;letter-spacing:-0.04em;color:var(--text);">
               Três pilares.<br>
-              <em style="font-style:italic;color:var(--accent);">Resultado completo.</em>
+              <em style="font-style:italic;color:var(--text);">Resultado completo.</em>
             </h2>
             <p class="font-body font-[400] text-[18px] text-muted text-center max-w-[540px] leading-[1.6] mt-4 mb-12">
                 Cada serviço funciona sozinho. Juntos, formam o ecossistema digital completo do seu negócio.
             </p>
 
             <div class="w-full grid grid-cols-1 md:grid-cols-3
-            gap-0 border border-[#DEDAD3] mb-12">
+            gap-0 border border-[#E2DFD6] mb-12">
 
               <!-- Pillar 1 -->
               <div class="p-[40px_36px] border-b md:border-b-0
-              md:border-r border-[#DEDAD3] flex flex-col gap-6
+              md:border-r border-[#E2DFD6] flex flex-col gap-6
               fade-up-element group hover:bg-[var(--subtle)]
               transition-colors duration-300">
                 <span class="font-mono text-[11px]"
@@ -982,7 +981,7 @@
                   style="color:var(--text);">
                     Presença<br>Digital
                   </h3>
-                  <p class="font-body text-[14px] text-[#7A7670]
+                  <p class="font-body text-[14px] text-[#6B6B68]
                   leading-[1.75] mt-4">
                     Construímos a vitrine digital do seu negócio —
                     site profissional, identidade visual, Google Maps,
@@ -1017,13 +1016,13 @@
 
               <!-- Pillar 2 (highlighted) -->
               <div class="p-[40px_36px] border-b md:border-b-0
-              md:border-r border-[#DEDAD3] flex flex-col gap-6
+              md:border-r border-[#E2DFD6] flex flex-col gap-6
               fade-up-element group hover:bg-[var(--subtle)]
               transition-colors duration-300 relative"
               style="transition-delay:100ms;">
                 <div style="
                   position:absolute;top:0;left:0;right:0;
-                  height:2px;background:#B8A882;
+                  height:2px;background:#D4AF37;
                 "></div>
                 <span class="font-mono text-[11px]"
                 style="color:var(--border);
@@ -1034,7 +1033,7 @@
                   style="color:var(--text);">
                     Sistemas de<br>Gestão
                   </h3>
-                  <p class="font-body text-[14px] text-[#7A7670]
+                  <p class="font-body text-[14px] text-[#6B6B68]
                   leading-[1.75] mt-4">
                     Apps e dashboards feitos para o seu segmento —
                     com a sua cor e a sua logo. Clínicas,
@@ -1080,7 +1079,7 @@
                   style="color:var(--text);">
                     Estratégia e<br>Consultoria
                   </h3>
-                  <p class="font-body text-[14px] text-[#7A7670]
+                  <p class="font-body text-[14px] text-[#6B6B68]
                   leading-[1.75] mt-4">
                     Para quem quer crescer com inteligência.
                     Estruturamos funis, campanhas e conteúdo
@@ -1118,21 +1117,21 @@
               style="background:var(--text);padding:56px 48px;">
 
               <div style="flex:1;">
-                <span style="font-family:'DM Mono',monospace;
-                  font-size:11px;color:rgba(184,168,130,0.6);
+                <span style="font-family:'Inter',sans-serif;
+                  font-size:11px;color:rgba(212,175,55,0.6);
                   letter-spacing:0.18em;display:block;
                   margin-bottom:16px;">
                   PACOTE COMPLETO
                 </span>
-                <h3 style="font-family:'Bricolage Grotesque',sans-serif;
+                <h3 style="font-family:'Manrope',sans-serif;
                   font-size:clamp(28px,3.5vw,40px);
                   font-weight:700;line-height:1.1;
-                  color:#F5F3EF;letter-spacing:-0.02em;">
+                  color:#F8F6F1;letter-spacing:-0.02em;">
                   Tudo em um único projeto.
                 </h3>
-                <p style="font-family:'Geist',sans-serif;
-                  font-size:15px;font-weight:300;
-                  color:rgba(245,243,239,0.6);
+                <p style="font-family:'Inter',sans-serif;
+                  font-size:15px;font-weight:400;
+                  color:rgba(248,246,241,0.6);
                   line-height:1.75;margin-top:12px;
                   max-width:400px;">
                   Do zero à operação digital completa.
@@ -1141,13 +1140,13 @@
                 <a href="#contato"
                   style="display:inline-flex;align-items:center;
                     gap:8px;margin-top:24px;
-                    font-family:'Geist',sans-serif;
+                    font-family:'Inter',sans-serif;
                     font-size:14px;font-weight:500;
-                    color:#0D0C0A;background:#B8A882;
+                    color:#000000;background:#F8F6F1;
                     padding:13px 24px;text-decoration:none;
                     transition:background 0.2s ease;"
-                  onmouseover="this.style.background='#A09570'"
-                  onmouseout="this.style.background='#B8A882'">
+                  onmouseover="this.style.background='#FFFFFF'"
+                  onmouseout="this.style.background='#F8F6F1'">
                   Quero a solução completa &rarr;
                 </a>
               </div>
@@ -1156,49 +1155,49 @@
                 gap:10px;min-width:240px;">
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
-                    background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'Geist',sans-serif;
-                    font-size:14px;color:#F5F3EF;">
+                    background:#D4AF37;flex-shrink:0;"></div>
+                  <span style="font-family:'Inter',sans-serif;
+                    font-size:14px;color:#F8F6F1;">
                     Site Premium
                   </span>
                 </div>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
-                    background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'Geist',sans-serif;
-                    font-size:14px;color:#F5F3EF;">
+                    background:#D4AF37;flex-shrink:0;"></div>
+                  <span style="font-family:'Inter',sans-serif;
+                    font-size:14px;color:#F8F6F1;">
                     Identidade Visual
                   </span>
                 </div>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
-                    background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'Geist',sans-serif;
-                    font-size:14px;color:#F5F3EF;">
+                    background:#D4AF37;flex-shrink:0;"></div>
+                  <span style="font-family:'Inter',sans-serif;
+                    font-size:14px;color:#F8F6F1;">
                     App de Gestão
                   </span>
                 </div>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
-                    background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'Geist',sans-serif;
-                    font-size:14px;color:#F5F3EF;">
+                    background:#D4AF37;flex-shrink:0;"></div>
+                  <span style="font-family:'Inter',sans-serif;
+                    font-size:14px;color:#F8F6F1;">
                     Presença Digital Completa
                   </span>
                 </div>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
-                    background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'Geist',sans-serif;
-                    font-size:14px;color:#F5F3EF;">
+                    background:#D4AF37;flex-shrink:0;"></div>
+                  <span style="font-family:'Inter',sans-serif;
+                    font-size:14px;color:#F8F6F1;">
                     Posts e Marketing
                   </span>
                 </div>
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
-                    background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'Geist',sans-serif;
-                    font-size:14px;color:#F5F3EF;">
+                    background:#D4AF37;flex-shrink:0;"></div>
+                  <span style="font-family:'Inter',sans-serif;
+                    font-size:14px;color:#F8F6F1;">
                     Configuração completa
                   </span>
                 </div>
@@ -1231,11 +1230,11 @@
             line-height:1.0;letter-spacing:-0.04em;
             color:var(--text);max-width:480px;">
             Um sistema feito<br>para
-            <em style="font-style:italic;color:var(--accent);">
+            <em style="font-style:italic;color:var(--text);">
               você.</em>
           </h2>
           <p class="font-body"
-            style="font-size:16px;font-weight:300;
+            style="font-size:16px;font-weight:400;
             color:var(--muted);line-height:1.75;
             max-width:360px;">
             Com a sua cor, a sua logo e só o que você
@@ -1250,12 +1249,12 @@
           margin-bottom:40px;">
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;
+            <div style="font-family:'Manrope',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Sua identidade visual
             </div>
-            <p style="font-family:'Geist',sans-serif;
+            <p style="font-family:'Inter',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Cor, logo e nome do seu negócio em todo o sistema.
@@ -1263,12 +1262,12 @@
           </div>
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;
+            <div style="font-family:'Manrope',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Pacientes e clientes
             </div>
-            <p style="font-family:'Geist',sans-serif;
+            <p style="font-family:'Inter',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Cadastro, histórico, agenda e relatórios
@@ -1277,12 +1276,12 @@
           </div>
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;
+            <div style="font-family:'Manrope',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Dashboard com seus dados
             </div>
-            <p style="font-family:'Geist',sans-serif;
+            <p style="font-family:'Inter',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Visão do dia, semana e mês.
@@ -1291,12 +1290,12 @@
           </div>
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Bricolage Grotesque',sans-serif;
+            <div style="font-family:'Manrope',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Funciona no celular
             </div>
-            <p style="font-family:'Geist',sans-serif;
+            <p style="font-family:'Inter',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Sem baixar nada. Abre no navegador,
@@ -1316,28 +1315,28 @@
           </span>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
             <span class="font-mono"
-              style="font-size:11px;color:var(--accent);
-              border:1px solid var(--accent);
+              style="font-size:11px;color:var(--text);
+              border:1px solid var(--border);
               padding:6px 14px;">Personal Trainer</span>
             <span class="font-mono"
-              style="font-size:11px;color:var(--accent);
-              border:1px solid var(--accent);
+              style="font-size:11px;color:var(--text);
+              border:1px solid var(--border);
               padding:6px 14px;">Clínica Médica</span>
             <span class="font-mono"
-              style="font-size:11px;color:var(--accent);
-              border:1px solid var(--accent);
+              style="font-size:11px;color:var(--text);
+              border:1px solid var(--border);
               padding:6px 14px;">Psicologia</span>
             <span class="font-mono"
-              style="font-size:11px;color:var(--accent);
-              border:1px solid var(--accent);
+              style="font-size:11px;color:var(--text);
+              border:1px solid var(--border);
               padding:6px 14px;">Fisioterapia</span>
             <span class="font-mono"
-              style="font-size:11px;color:var(--accent);
-              border:1px solid var(--accent);
+              style="font-size:11px;color:var(--text);
+              border:1px solid var(--border);
               padding:6px 14px;">Odontologia</span>
             <span class="font-mono"
-              style="font-size:11px;color:var(--accent);
-              border:1px solid var(--accent);
+              style="font-size:11px;color:var(--text);
+              border:1px solid var(--border);
               padding:6px 14px;">Estética</span>
             <span class="font-mono"
               style="font-size:11px;color:var(--muted);
@@ -1350,7 +1349,7 @@
         <div style="margin-top:32px;">
           <a href="#contato"
             style="display:inline-flex;align-items:center;
-              gap:8px;font-family:'Geist',sans-serif;
+              gap:8px;font-family:'Inter',sans-serif;
               font-size:14px;font-weight:500;
               color:var(--text);text-decoration:none;
               border:1px solid var(--text);
@@ -1377,7 +1376,7 @@
               Como a gente<br>
               <em style="font-style:italic;">trabalha.</em>
             </h2>
-            <p class="font-body text-[16px] text-[#7A7670]
+            <p class="font-body text-[16px] text-[#6B6B68]
             leading-[1.75] mt-4 max-w-[480px]">
               Antes de qualquer entrega, existe uma conversa.
               Depois dela, existe um contrato. Só depois
@@ -1466,7 +1465,7 @@
             </div>
 
             <!-- HIGHLIGHT BOX -->
-            <div class="w-full mt-[64px] bg-[rgba(184,168,130,0.06)] border border-[rgba(184,168,130,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
+            <div class="w-full mt-[64px] bg-[rgba(212,175,55,0.06)] border border-[rgba(212,175,55,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
                 <div class="font-display font-[600] text-[64px] md:text-[80px] opacity-40 leading-none shrink-0 relative top-2" style="color:var(--muted);">"</div>
                 <div class="flex-1 pl-0 md:pl-2">
                     <p class="font-body text-[16px] md:text-[18px] text-text leading-[1.7]">
@@ -1480,7 +1479,7 @@
 
 
     <!-- Section 11: FAQ -->
-    <section id="faq" class="w-full bg-surface py-[60px] md:py-[120px] px-6">
+    <section id="faq" class="w-full bg-surface py-[48px] md:py-[96px] px-6">
         <div class="max-w-[760px] mx-auto flex flex-col items-center">
             <span class="font-mono font-[500] text-[11px] text-muted tracking-[0.15em] mb-4">DÚVIDAS</span>
             <h2 class="font-display font-[600] text-[36px] md:text-[48px] text-text text-center leading-[1.1] mb-[40px]">
@@ -1573,15 +1572,15 @@
 
     <!-- Section 12: CTA Final -->
     <section id="contato"
-      style="background:var(--text);padding:120px 24px;">
+      style="background:var(--text);padding:96px 24px;">
 
       <div style="max-width:800px;margin:0 auto;
         text-align:center;display:flex;
         flex-direction:column;align-items:center;gap:0;">
 
         <!-- Eyebrow pill -->
-        <div class="fade-up-element" style="border:1px solid rgba(184,168,130,0.4);
-          background:rgba(184,168,130,0.08);
+        <div class="fade-up-element" style="border:1px solid rgba(212,175,55,0.4);
+          background:rgba(212,175,55,0.08);
           padding:6px 16px;margin-bottom:32px;
           display:inline-flex;align-items:center;">
           <span class="font-mono"
@@ -1593,19 +1592,19 @@
 
         <!-- Headline -->
         <h2 class="font-display fade-up-element"
-          style="font-size:clamp(40px,6vw,80px);
-          font-weight:600;line-height:1.0;
-          letter-spacing:-0.03em;color:var(--bg);
-          margin-bottom:24px;">
+          style="font-size:clamp(32px,4.6vw,60px);
+          font-weight:700;line-height:1.08;
+          letter-spacing:-0.02em;color:var(--bg);
+          margin-bottom:20px;">
           Pronto para construir<br>
-          <em style="font-style:italic;color:var(--accent);">
+          <em style="font-style:italic;color:var(--bg);">
             sua estrutura digital?</em>
         </h2>
 
         <!-- Sub -->
         <p class="font-body fade-up-element"
-          style="font-size:17px;font-weight:300;
-          color:rgba(245,243,239,0.6);line-height:1.75;
+          style="font-size:17px;font-weight:400;
+          color:rgba(248,246,241,0.6);line-height:1.75;
           max-width:480px;margin-bottom:48px;">
           Começamos com uma conversa. Você nos conta
           sobre o seu negócio — nós mostramos o que
@@ -1634,8 +1633,8 @@
             style="padding:16px 32px;font-size:15px;
             font-weight:400;text-decoration:none;
             display:inline-flex;align-items:center;gap:10px;
-            border:1px solid rgba(245,243,239,0.2);
-            color:rgba(245,243,239,0.8);">
+            border:1px solid rgba(248,246,241,0.2);
+            color:rgba(248,246,241,0.8);">
             <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
             </svg>
@@ -1644,7 +1643,7 @@
         </div>
 
         <p class="font-mono fade-up-element"
-          style="font-size:12px;color:rgba(245,243,239,0.3);
+          style="font-size:12px;color:rgba(248,246,241,0.3);
           margin-top:24px;letter-spacing:0.06em;">
           Respondemos em até 2 horas em dias úteis
         </p>
