@@ -324,8 +324,9 @@
         #trabalhos .swiper-slide {
             background-position: center;
             background-size: cover;
-            width: 480px;
-            height: 270px;
+            width: clamp(280px, 62vw, 760px);
+            aspect-ratio: 16 / 9;
+            height: auto;
             overflow: hidden;
             position: relative;
             border: 1px solid var(--border);
@@ -341,7 +342,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            padding: 24px 28px;
+            padding: clamp(16px, 3vw, 28px) clamp(18px, 3.5vw, 32px);
             background: linear-gradient(
                 to top,
                 rgba(13,12,10,0.85) 0%,
@@ -351,7 +352,7 @@
         }
         #trabalhos .swiper-slide .slide-badge {
             font-family: 'DM Mono', monospace;
-            font-size: 10px;
+            font-size: clamp(9px, 1vw, 11px);
             letter-spacing: 0.12em;
             color: #B8A882;
             text-transform: uppercase;
@@ -359,14 +360,14 @@
         }
         #trabalhos .swiper-slide .slide-title {
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 22px;
+            font-size: clamp(18px, 2.6vw, 28px);
             font-weight: 700;
             color: #F5F3EF;
             margin-bottom: 4px;
         }
         #trabalhos .swiper-slide .slide-sub {
             font-family: 'DM Mono', monospace;
-            font-size: 11px;
+            font-size: clamp(10px, 1.1vw, 12px);
             color: rgba(245,243,239,0.5);
         }
         #trabalhos .swiper-slide .slide-link {
@@ -374,7 +375,7 @@
             align-items: center;
             gap: 6px;
             font-family: 'Geist', sans-serif;
-            font-size: 13px;
+            font-size: clamp(12px, 1.2vw, 14px);
             font-weight: 500;
             color: #B8A882;
             text-decoration: none;
@@ -395,7 +396,7 @@
             background: #B8A882;
             color: #0D0C0A;
             font-family: 'DM Mono', monospace;
-            font-size: 10px;
+            font-size: clamp(9px, 1vw, 11px);
             letter-spacing: 0.12em;
             padding: 6px 14px;
             text-transform: uppercase;
@@ -1948,12 +1949,12 @@
                     clickable: true,
                 },
                 breakpoints: {
-                    320:  { slidesPerView: 1.2 },
-                    580:  { slidesPerView: 1.8 },
-                    767:  { slidesPerView: 2.2 },
-                    992:  { slidesPerView: 2.8 },
-                    1200: { slidesPerView: 3.2 },
-                    1400: { slidesPerView: 3.6 },
+                    320:  { slidesPerView: 1.05 },
+                    580:  { slidesPerView: 1.2 },
+                    767:  { slidesPerView: 1.4 },
+                    992:  { slidesPerView: 1.8 },
+                    1200: { slidesPerView: 2.1 },
+                    1600: { slidesPerView: 2.4 },
                 },
             });
         }
