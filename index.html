@@ -34,7 +34,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Geist:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -57,8 +57,8 @@
                         white:      '#FFFFFF',
                     },
                     fontFamily: {
-                        display: ['"Playfair Display"', 'Georgia', 'serif'],
-                        body:    ['"DM Sans"', 'sans-serif'],
+                        display: ['"Bricolage Grotesque"', 'sans-serif'],
+                        body:    ['"Geist"', 'sans-serif'],
                         mono:    ['"DM Mono"', 'monospace'],
                     }
                 }
@@ -86,7 +86,7 @@
         body {
           background-color: var(--bg);
           color: var(--text);
-          font-family: 'DM Sans', sans-serif;
+          font-family: 'Geist', sans-serif;
           font-weight: 400;
           -webkit-font-smoothing: antialiased;
           overflow-x: hidden;
@@ -105,8 +105,8 @@
         .text-ink      { color: var(--text) !important; }
 
         /* Typography system */
-        .font-display { font-family: 'Playfair Display', Georgia, serif; }
-        .font-body    { font-family: 'DM Sans', sans-serif; }
+        .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+        .font-body    { font-family: 'Geist', sans-serif; }
         .font-mono    { font-family: 'DM Mono', monospace; }
 
         /* Utilities */
@@ -143,7 +143,7 @@
         }
         .mobile-link {
             display: block;
-            font-family: 'Playfair Display', serif;
+            font-family: 'Bricolage Grotesque', sans-serif;
             font-weight: 600;
             font-size: 40px;
             color: var(--bg);
@@ -314,53 +314,104 @@
             transition: box-shadow 300ms ease;
         }
 
-        /* Portfolio Swiper */
-        .portfolio-swiper {
-            cursor: grab;
-            overflow: visible !important;
+        /* Coverflow Swiper — Trabalhos */
+        #trabalhos .swiper {
+            width: 100%;
+            padding-top: 40px;
+            padding-bottom: 60px;
+            overflow: visible;
         }
-        .portfolio-swiper:active {
-            cursor: grabbing;
-        }
-        .portfolio-swiper .swiper-slide {
-            transition: opacity 300ms ease, transform 300ms ease;
-            opacity: 0.4;
-            transform: scale(0.97);
-        }
-        .portfolio-swiper .swiper-slide-active,
-        .portfolio-swiper .swiper-slide-next {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .portfolio-swiper .swiper-button-prev,
-        .portfolio-swiper .swiper-button-next {
-            background: var(--bg);
+        #trabalhos .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 400px;
+            height: 500px;
+            overflow: hidden;
+            position: relative;
             border: 1px solid var(--border);
-            width: 44px !important;
-            height: 44px !important;
-            border-radius: 0;
-            top: 45%;
-            transition: border-color 0.2s ease;
         }
-        .portfolio-swiper .swiper-button-prev:hover,
-        .portfolio-swiper .swiper-button-next:hover {
-            border-color: var(--accent);
+        #trabalhos .swiper-slide video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
-        .portfolio-swiper .swiper-button-prev::after,
-        .portfolio-swiper .swiper-button-next::after {
-            color: var(--text);
+        #trabalhos .swiper-slide .slide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 24px 28px;
+            background: linear-gradient(
+                to top,
+                rgba(13,12,10,0.85) 0%,
+                rgba(13,12,10,0.4) 60%,
+                transparent 100%
+            );
         }
-        .portfolio-swiper .swiper-pagination-bullet {
+        #trabalhos .swiper-slide .slide-badge {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            color: #B8A882;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        #trabalhos .swiper-slide .slide-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #F5F3EF;
+            margin-bottom: 4px;
+        }
+        #trabalhos .swiper-slide .slide-sub {
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            color: rgba(245,243,239,0.5);
+        }
+        #trabalhos .swiper-slide .slide-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-family: 'Geist', sans-serif;
+            font-size: 13px;
+            font-weight: 500;
+            color: #B8A882;
+            text-decoration: none;
+            margin-top: 12px;
+            opacity: 0;
+            transform: translateY(4px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        #trabalhos .swiper-slide-active .slide-link {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #trabalhos .swiper-slide .featured-badge {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            background: #B8A882;
+            color: #0D0C0A;
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 0.12em;
+            padding: 6px 14px;
+            text-transform: uppercase;
+        }
+        #trabalhos .swiper-pagination-bullet {
             background: var(--border);
             opacity: 1;
-            width: 28px;
-            height: 2px;
-            border-radius: 0;
-            transition: background 200ms ease, width 200ms ease;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
         }
-        .portfolio-swiper .swiper-pagination-bullet-active {
-            background: var(--accent);
-            width: 44px;
+        #trabalhos .swiper-pagination-bullet-active {
+            background: #B8A882;
+            width: 28px;
+            border-radius: 4px;
         }
 
         /* GSAP section fade-in (works alongside fade-up-element) */
@@ -387,14 +438,6 @@
         }
         body.intro-active {
             overflow: hidden;
-        }
-
-        /* Ensure swiper overflow visible for peek effect */
-        #trabalhos .portfolio-swiper {
-          overflow: visible !important;
-        }
-        #trabalhos .portfolio-swiper .swiper-wrapper {
-          padding-left: 0;
         }
 
         video {
@@ -547,74 +590,101 @@
     </div>
 
     <!-- Hero Section -->
-    <section style="min-height:100vh;padding-top:64px;
-      background:var(--bg);
-      display:flex;align-items:center;overflow:hidden;">
+    <section style="position:relative;min-height:100vh;
+      padding-top:64px;overflow:hidden;
+      display:flex;align-items:center;
+      background:var(--bg);">
 
-      <div style="max-width:1400px;margin:0 auto;
-        padding:60px 24px;width:100%;
-        display:grid;grid-template-columns:1fr;
-        gap:48px;align-items:center;"
-        class="md:grid-cols-[55%_45%] lg:grid-cols-[58%_42%]">
+      <!-- Vídeo de fundo -->
+      <video
+        style="position:absolute;inset:0;
+               width:100%;height:100%;
+               object-fit:cover;
+               opacity:0.18;
+               mix-blend-mode:multiply;"
+        src="videos/hero-video-white.mp4"
+        autoplay muted loop playsinline
+        preload="auto">
+      </video>
 
-        <!-- Left: text -->
-        <div style="display:flex;flex-direction:column;gap:0;">
+      <!-- Overlay suave -->
+      <div style="position:absolute;inset:0;
+        background:linear-gradient(
+          135deg,
+          rgba(245,243,239,0.97) 0%,
+          rgba(245,243,239,0.85) 50%,
+          rgba(245,243,239,0.75) 100%
+        );pointer-events:none;z-index:1;">
+      </div>
 
-          <!-- Eyebrow -->
-          <div style="display:flex;align-items:center;
-            gap:12px;margin-bottom:32px;">
-            <div style="width:24px;height:1px;
-              background:var(--accent);"></div>
-            <span class="font-mono"
-              style="font-size:11px;color:var(--muted);
-              letter-spacing:0.18em;text-transform:uppercase;">
-              Lages, SC — Brasil
-            </span>
-          </div>
+      <!-- Conteúdo -->
+      <div style="position:relative;z-index:2;
+        max-width:1200px;margin:0 auto;
+        padding:80px 24px;width:100%;">
 
-          <!-- Headline -->
-          <h1 class="font-display"
-            style="font-size:clamp(52px,7vw,96px);
-              font-weight:700;line-height:1.0;
-              letter-spacing:-0.03em;
-              color:var(--text);
-              margin-bottom:28px;">
-            Estrutura<br>
-            digital<br>
-            <em style="font-style:italic;
-              color:var(--accent);">completa.</em>
-          </h1>
+        <!-- Eyebrow -->
+        <div style="display:flex;align-items:center;
+          gap:12px;margin-bottom:40px;">
+          <div style="width:24px;height:1px;
+            background:var(--accent);"></div>
+          <span class="font-mono"
+            style="font-size:11px;color:var(--muted);
+            letter-spacing:0.2em;text-transform:uppercase;">
+            Lages, SC — Brasil
+          </span>
+        </div>
 
-          <!-- Sub -->
+        <!-- Headline -->
+        <h1 class="font-display"
+          style="font-size:clamp(56px,8vw,120px);
+            font-weight:800;line-height:0.95;
+            letter-spacing:-0.04em;
+            color:var(--text);
+            max-width:900px;
+            margin-bottom:32px;">
+          Estrutura<br>
+          digital<br>
+          <span style="color:var(--accent);
+            font-weight:500;font-style:italic;">
+            completa.
+          </span>
+        </h1>
+
+        <!-- Sub + CTAs -->
+        <div style="display:flex;flex-direction:column;gap:32px;
+          max-width:760px;"
+          class="md:flex-row md:items-end md:gap-12">
+
           <p class="font-body"
-            style="font-size:17px;font-weight:300;
-              line-height:1.75;color:var(--muted);
-              max-width:400px;margin-bottom:44px;">
+            style="font-size:18px;font-weight:300;
+              line-height:1.7;color:var(--muted);
+              max-width:360px;flex-shrink:0;">
             Sites, identidade visual, sistemas de gestão
-            e presença no Google — construídos para o
-            seu negócio, do zero.
+            e presença no Google — construídos para
+            o seu negócio, do zero.
           </p>
 
-          <!-- CTAs -->
-          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <div style="display:flex;flex-direction:column;
+            gap:12px;flex-shrink:0;">
             <a href="#trabalhos" class="sharp font-body"
-              style="background:var(--text);color:var(--bg);
-                padding:14px 28px;font-size:14px;
+              style="display:inline-flex;align-items:center;gap:10px;
+                background:var(--text);color:var(--bg);
+                padding:16px 32px;font-size:15px;
                 font-weight:500;text-decoration:none;
-                transition:background 0.2s ease;display:inline-flex;
-                align-items:center;gap:8px;"
+                transition:background 0.2s ease;"
               onmouseover="this.style.background='#2a2a2a'"
               onmouseout="this.style.background='var(--text)'">
               Ver nosso trabalho
               <svg width="14" height="14" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2">
+                fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M5 12h14M12 5l7 7-7 7"/>
               </svg>
             </a>
             <a href="#contato" class="sharp font-body"
-              style="border:1px solid var(--border);
-                color:var(--text);padding:14px 28px;
-                font-size:14px;font-weight:400;
+              style="display:inline-flex;align-items:center;gap:10px;
+                border:1px solid var(--border);
+                color:var(--text);padding:16px 32px;
+                font-size:15px;font-weight:400;
                 text-decoration:none;background:transparent;
                 transition:border-color 0.2s ease;"
               onmouseover="this.style.borderColor='var(--muted)'"
@@ -622,82 +692,45 @@
               Falar com especialista
             </a>
           </div>
-
-          <!-- Stats -->
-          <div style="display:flex;align-items:center;
-            gap:32px;margin-top:56px;padding-top:32px;
-            border-top:1px solid var(--border);">
-            <div>
-              <div class="font-display"
-                style="font-size:32px;font-weight:600;
-                  color:var(--text);line-height:1;">4+</div>
-              <div class="font-mono"
-                style="font-size:10px;color:var(--muted);
-                  margin-top:4px;letter-spacing:0.06em;">
-                clientes ativos</div>
-            </div>
-            <div style="width:1px;height:36px;
-              background:var(--border);"></div>
-            <div>
-              <div class="font-display"
-                style="font-size:32px;font-weight:600;
-                  color:var(--text);line-height:1;">7d</div>
-              <div class="font-mono"
-                style="font-size:10px;color:var(--muted);
-                  margin-top:4px;letter-spacing:0.06em;">
-                entrega média</div>
-            </div>
-            <div style="width:1px;height:36px;
-              background:var(--border);"></div>
-            <div>
-              <div class="font-display"
-                style="font-size:32px;font-weight:600;
-                  color:var(--text);line-height:1;">BR</div>
-              <div class="font-mono"
-                style="font-size:10px;color:var(--muted);
-                  margin-top:4px;letter-spacing:0.06em;">
-                todo o Brasil</div>
-            </div>
-          </div>
         </div>
 
-        <!-- Right: video frame (hidden mobile) -->
-        <div class="hidden md:flex"
-          style="justify-content:flex-end;align-items:center;
-            height:100%;padding:20px 0;">
-
-          <div style="position:relative;width:100%;
-            max-width:480px;aspect-ratio:4/5;
-            max-height:520px;border:1px solid var(--border);
-            overflow:hidden;background:var(--subtle);">
-
-            <video
-              style="width:100%;height:100%;object-fit:cover;
-                     display:block;"
-              src="videos/hero-video.mp4"
-              autoplay muted loop playsinline
-              preload="metadata"
-              poster="">
-              <source src="videos/hero-video.mp4" type="video/mp4">
-            </video>
-
-            <!-- Corner accents -->
-            <div style="position:absolute;top:0;left:0;
-              width:28px;height:28px;
-              border-top:1px solid var(--accent);
-              border-left:1px solid var(--accent);"></div>
-            <div style="position:absolute;bottom:0;right:0;
-              width:28px;height:28px;
-              border-bottom:1px solid var(--accent);
-              border-right:1px solid var(--accent);"></div>
-
-            <!-- Bottom label -->
+        <!-- Stats -->
+        <div style="display:flex;align-items:center;
+          gap:40px;margin-top:72px;padding-top:40px;
+          border-top:1px solid var(--border);flex-wrap:wrap;">
+          <div>
+            <div class="font-display"
+              style="font-size:40px;font-weight:700;
+                color:var(--text);line-height:1;">4+</div>
             <div class="font-mono"
-              style="position:absolute;bottom:16px;left:16px;
-                font-size:9px;color:rgba(13,12,10,0.4);
-                letter-spacing:0.1em;">
-              WAXLO © 2026
-            </div>
+              style="font-size:10px;color:var(--muted);
+                margin-top:6px;letter-spacing:0.08em;
+                text-transform:uppercase;">
+              clientes ativos</div>
+          </div>
+          <div style="width:1px;height:40px;
+            background:var(--border);"></div>
+          <div>
+            <div class="font-display"
+              style="font-size:40px;font-weight:700;
+                color:var(--text);line-height:1;">7d</div>
+            <div class="font-mono"
+              style="font-size:10px;color:var(--muted);
+                margin-top:6px;letter-spacing:0.08em;
+                text-transform:uppercase;">
+              entrega média</div>
+          </div>
+          <div style="width:1px;height:40px;
+            background:var(--border);"></div>
+          <div>
+            <div class="font-display"
+              style="font-size:40px;font-weight:700;
+                color:var(--text);line-height:1;">BR</div>
+            <div class="font-mono"
+              style="font-size:10px;color:var(--muted);
+                margin-top:6px;letter-spacing:0.08em;
+                text-transform:uppercase;">
+              todo o Brasil</div>
           </div>
         </div>
       </div>
@@ -835,143 +868,92 @@
               ← deslize para ver mais →
             </p>
 
-            <!-- Swiper Portfolio Carousel -->
-            <div class="swiper portfolio-swiper w-full mt-12 overflow-visible" style="padding-bottom:48px;">
+            <!-- Swiper Coverflow Carousel -->
+            <div class="swiper w-full mt-4" style="width:100%;">
                 <div class="swiper-wrapper">
 
-                    <!-- SLIDE 1: TAH ON (featured) -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
-                        <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <!-- Video preview -->
-                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
-                                <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
-                                    src="videos/preview-tahon.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                                <!-- Gold overlay on hover -->
-                                <div class="absolute inset-0 bg-gold opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"></div>
-                                <!-- Badge -->
-                                <div class="absolute top-0 left-0 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em]">
-                                    DESTAQUE
-                                </div>
-                            </div>
-
-                            <!-- Info -->
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">STREETWEAR & MODA</div>
-                                    <h3 class="font-display font-[600] text-[22px] text-text">TAH ON</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
-                                </div>
-                                <a href="https://tahon.lovable.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
+                    <!-- Slide 1: TAH ON -->
+                    <div class="swiper-slide">
+                        <span class="featured-badge">Destaque</span>
+                        <video src="videos/preview-tahon.mp4"
+                            muted loop playsinline
+                            onmouseenter="this.play()"
+                            onmouseleave="this.pause();this.currentTime=0;">
+                        </video>
+                        <div class="slide-info">
+                            <div class="slide-badge">Streetwear & Moda</div>
+                            <div class="slide-title">TAH ON</div>
+                            <div class="slide-sub">Lages, SC</div>
+                            <a href="https://tahon.lovable.app"
+                                target="_blank" class="slide-link">
+                                Ver site &rarr;
+                            </a>
                         </div>
                     </div>
 
-                    <!-- SLIDE 2: Vicore (new — featured) -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[640px] lg:!w-[700px]">
-                        <div class="sharp border border-gold bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
-                                <video class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 group-hover:scale-[1.02] transition-transform duration-700"
-                                    src="videos/preview-vicore.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                                <div class="absolute inset-0 bg-gold opacity-0 group-hover:opacity-[0.04] transition-opacity duration-500"></div>
-                                <div class="absolute top-0 left-0 bg-gold text-ink px-4 py-2 font-mono text-[11px] tracking-[0.12em]">
-                                    NOVO
-                                </div>
-                            </div>
-
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-gold shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">MARKETING & CONTEÚDO</div>
-                                    <h3 class="font-display font-[600] text-[22px] text-text">Vicore</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
-                                </div>
-                                <a href="https://vicore-ten.vercel.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
+                    <!-- Slide 2: Vicore -->
+                    <div class="swiper-slide">
+                        <span class="featured-badge">Novo</span>
+                        <video src="videos/preview-vicore.mp4"
+                            muted loop playsinline
+                            onmouseenter="this.play()"
+                            onmouseleave="this.pause();this.currentTime=0;">
+                        </video>
+                        <div class="slide-info">
+                            <div class="slide-badge">Marketing & Conteúdo</div>
+                            <div class="slide-title">Vicore</div>
+                            <div class="slide-sub">Lages, SC</div>
+                            <a href="https://vicore-ten.vercel.app"
+                                target="_blank" class="slide-link">
+                                Ver site &rarr;
+                            </a>
                         </div>
                     </div>
 
-                    <!-- SLIDE 3: SC Advocacia -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
-                        <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
-                                <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                                    src="videos/preview-advocacia.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                            </div>
-
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">ADVOCACIA & DIREITO</div>
-                                    <h3 class="font-display font-[600] text-[20px] text-text">SC Advocacia</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Lages, SC</p>
-                                </div>
-                                <a href="https://sc-advocacia-five.vercel.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
+                    <!-- Slide 3: SC Advocacia -->
+                    <div class="swiper-slide">
+                        <video src="videos/preview-advocacia.mp4"
+                            muted loop playsinline
+                            onmouseenter="this.play()"
+                            onmouseleave="this.pause();this.currentTime=0;">
+                        </video>
+                        <div class="slide-info">
+                            <div class="slide-badge">Advocacia & Direito</div>
+                            <div class="slide-title">SC Advocacia</div>
+                            <div class="slide-sub">Lages, SC</div>
+                            <a href="https://sc-advocacia-five.vercel.app"
+                                target="_blank" class="slide-link">
+                                Ver site &rarr;
+                            </a>
                         </div>
                     </div>
 
-                    <!-- SLIDE 4: Alto da Serra -->
-                    <div class="swiper-slide !w-[85vw] md:!w-[480px] lg:!w-[520px]">
-                        <div class="sharp border border-border bg-surface overflow-hidden group relative h-[420px] md:h-[480px] flex flex-col">
-
-                            <div class="relative flex-1 overflow-hidden bg-[var(--subtle)]">
-                                <video class="w-full h-full object-cover opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                                    src="videos/preview-restaurante.mp4"
-                                    muted loop playsinline
-                                    onmouseenter="this.play()"
-                                    onmouseleave="this.pause();this.currentTime=0;">
-                                </video>
-                            </div>
-
-                            <div class="p-[24px_28px] flex items-center justify-between border-t border-border shrink-0">
-                                <div>
-                                    <div class="font-mono text-[10px] text-muted tracking-[0.1em] mb-1">RESTAURANTE & CHURRASCARIA</div>
-                                    <h3 class="font-display font-[600] text-[20px] text-text">Alto da Serra</h3>
-                                    <p class="font-mono text-[11px] text-muted mt-1">Angatuba, SP</p>
-                                </div>
-                                <a href="https://restaurante-alto-da-serra.vercel.app" target="_blank"
-                                   class="font-body font-[600] text-[13px] text-gold hover:underline inline-flex items-center gap-1 shrink-0">
-                                    Ver site →
-                                </a>
-                            </div>
+                    <!-- Slide 4: Alto da Serra -->
+                    <div class="swiper-slide">
+                        <video src="videos/preview-restaurante.mp4"
+                            muted loop playsinline
+                            onmouseenter="this.play()"
+                            onmouseleave="this.pause();this.currentTime=0;">
+                        </video>
+                        <div class="slide-info">
+                            <div class="slide-badge">Restaurante & Churrascaria</div>
+                            <div class="slide-title">Alto da Serra</div>
+                            <div class="slide-sub">Angatuba, SP</div>
+                            <a href="https://restaurante-alto-da-serra.vercel.app"
+                                target="_blank" class="slide-link">
+                                Ver site &rarr;
+                            </a>
                         </div>
                     </div>
 
                 </div><!-- end swiper-wrapper -->
 
-                <!-- Navigation arrows -->
-                <div class="swiper-button-prev portfolio-prev !text-gold !w-[48px] !h-[48px] after:!text-[18px]"></div>
-                <div class="swiper-button-next portfolio-next !text-gold !w-[48px] !h-[48px] after:!text-[18px]"></div>
-
-                <!-- Pagination -->
-                <div class="swiper-pagination portfolio-pagination !bottom-0"></div>
+                <div class="swiper-pagination" style="position:relative;margin-top:8px;"></div>
             </div>
 
-            <div class="mt-[48px] text-center font-body text-[16px] text-muted">
+            <div class="mt-[24px] text-center font-body text-[16px] text-muted">
                 Quer ver como ficaria o site do seu negócio?
-                <a href="#contato" class="text-gold hover:underline">Fale com a nossa equipe &rarr;</a>
+                <a href="#contato" class="hover:underline" style="color:var(--text);text-decoration:underline;">Fale com a nossa equipe &rarr;</a>
             </div>
         </div>
     </section>
@@ -1019,22 +1001,22 @@
                 <ul class="flex flex-col gap-2 mt-auto">
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Sites e landing pages
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Identidade visual
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Google e Maps
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Conteúdo e marketing
                   </li>
                 </ul>
@@ -1070,22 +1052,22 @@
                 <ul class="flex flex-col gap-2 mt-auto">
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     App por nicho
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Dashboard de gestão
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     CRM de clientes
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Sua marca no sistema
                   </li>
                 </ul>
@@ -1116,22 +1098,22 @@
                 <ul class="flex flex-col gap-2 mt-auto">
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Funil de vendas
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Tráfego pago
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Conteúdo com IA
                   </li>
                   <li class="font-body text-[13px]
                   flex items-center gap-2" style="color:var(--text);">
-                    <span class="font-[600]" style="color:var(--text);">→</span>
+                    <span style="width:16px;height:1px;background:var(--border);flex-shrink:0;display:inline-block;"></span>
                     Rede de parceiros
                   </li>
                 </ul>
@@ -1149,13 +1131,13 @@
                   margin-bottom:16px;">
                   PACOTE COMPLETO
                 </span>
-                <h3 style="font-family:'Playfair Display',serif;
+                <h3 style="font-family:'Bricolage Grotesque',sans-serif;
                   font-size:clamp(28px,3.5vw,40px);
                   font-weight:700;line-height:1.1;
                   color:#F5F3EF;letter-spacing:-0.02em;">
                   Tudo em um único projeto.
                 </h3>
-                <p style="font-family:'DM Sans',sans-serif;
+                <p style="font-family:'Geist',sans-serif;
                   font-size:15px;font-weight:300;
                   color:rgba(245,243,239,0.6);
                   line-height:1.75;margin-top:12px;
@@ -1166,7 +1148,7 @@
                 <a href="#contato"
                   style="display:inline-flex;align-items:center;
                     gap:8px;margin-top:24px;
-                    font-family:'DM Sans',sans-serif;
+                    font-family:'Geist',sans-serif;
                     font-size:14px;font-weight:500;
                     color:#0D0C0A;background:#B8A882;
                     padding:13px 24px;text-decoration:none;
@@ -1182,7 +1164,7 @@
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
                     background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'DM Sans',sans-serif;
+                  <span style="font-family:'Geist',sans-serif;
                     font-size:14px;color:#F5F3EF;">
                     Site Premium
                   </span>
@@ -1190,7 +1172,7 @@
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
                     background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'DM Sans',sans-serif;
+                  <span style="font-family:'Geist',sans-serif;
                     font-size:14px;color:#F5F3EF;">
                     Identidade Visual
                   </span>
@@ -1198,7 +1180,7 @@
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
                     background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'DM Sans',sans-serif;
+                  <span style="font-family:'Geist',sans-serif;
                     font-size:14px;color:#F5F3EF;">
                     App de Gestão
                   </span>
@@ -1206,7 +1188,7 @@
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
                     background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'DM Sans',sans-serif;
+                  <span style="font-family:'Geist',sans-serif;
                     font-size:14px;color:#F5F3EF;">
                     Presença Digital Completa
                   </span>
@@ -1214,7 +1196,7 @@
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
                     background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'DM Sans',sans-serif;
+                  <span style="font-family:'Geist',sans-serif;
                     font-size:14px;color:#F5F3EF;">
                     Posts e Marketing
                   </span>
@@ -1222,7 +1204,7 @@
                 <div style="display:flex;align-items:center;gap:12px;">
                   <div style="width:16px;height:1px;
                     background:#B8A882;flex-shrink:0;"></div>
-                  <span style="font-family:'DM Sans',sans-serif;
+                  <span style="font-family:'Geist',sans-serif;
                     font-size:14px;color:#F5F3EF;">
                     Configuração completa
                   </span>
@@ -1275,12 +1257,12 @@
           margin-bottom:40px;">
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Playfair Display',serif;
+            <div style="font-family:'Bricolage Grotesque',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Sua identidade visual
             </div>
-            <p style="font-family:'DM Sans',sans-serif;
+            <p style="font-family:'Geist',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Cor, logo e nome do seu negócio em todo o sistema.
@@ -1288,12 +1270,12 @@
           </div>
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Playfair Display',serif;
+            <div style="font-family:'Bricolage Grotesque',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Pacientes e clientes
             </div>
-            <p style="font-family:'DM Sans',sans-serif;
+            <p style="font-family:'Geist',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Cadastro, histórico, agenda e relatórios
@@ -1302,12 +1284,12 @@
           </div>
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Playfair Display',serif;
+            <div style="font-family:'Bricolage Grotesque',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Dashboard com seus dados
             </div>
-            <p style="font-family:'DM Sans',sans-serif;
+            <p style="font-family:'Geist',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Visão do dia, semana e mês.
@@ -1316,12 +1298,12 @@
           </div>
 
           <div style="background:var(--bg);padding:36px 32px;">
-            <div style="font-family:'Playfair Display',serif;
+            <div style="font-family:'Bricolage Grotesque',sans-serif;
               font-size:18px;font-weight:700;
               color:var(--text);margin-bottom:8px;">
               Funciona no celular
             </div>
-            <p style="font-family:'DM Sans',sans-serif;
+            <p style="font-family:'Geist',sans-serif;
               font-size:14px;color:var(--muted);
               line-height:1.7;">
               Sem baixar nada. Abre no navegador,
@@ -1375,7 +1357,7 @@
         <div style="margin-top:32px;">
           <a href="#contato"
             style="display:inline-flex;align-items:center;
-              gap:8px;font-family:'DM Sans',sans-serif;
+              gap:8px;font-family:'Geist',sans-serif;
               font-size:14px;font-weight:500;
               color:var(--text);text-decoration:none;
               border:1px solid var(--text);
@@ -1492,7 +1474,7 @@
 
             <!-- HIGHLIGHT BOX -->
             <div class="w-full mt-[64px] bg-[rgba(184,168,130,0.06)] border border-[rgba(184,168,130,0.3)] p-[40px_32px] md:p-[40px_48px] sharp flex flex-col md:flex-row gap-6 text-left relative overflow-hidden">
-                <div class="font-display font-[600] text-[64px] md:text-[80px] text-gold opacity-40 leading-none shrink-0 relative top-2">"</div>
+                <div class="font-display font-[600] text-[64px] md:text-[80px] opacity-40 leading-none shrink-0 relative top-2" style="color:var(--muted);">"</div>
                 <div class="flex-1 pl-0 md:pl-2">
                     <p class="font-body text-[16px] md:text-[18px] text-text leading-[1.7]">
                         Conectamos nossos clientes entre si. Uma clínica pode indicar um restaurante. Uma empresa pode precisar de outra. Construímos mais do que sistemas — construímos uma rede.
@@ -1517,8 +1499,8 @@
                 <!-- Item 2 -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
-                        <span class="group-hover:text-gold transition-colors duration-200">Quanto tempo leva para ficar pronto?</span>
-                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                        <span class="group-hover:text-[var(--muted)] transition-colors duration-200">Quanto tempo leva para ficar pronto?</span>
+                        <span class="faq-icon text-[24px] leading-none transition-transform duration-300 transform font-normal" style="color:var(--muted);">+</span>
                     </button>
                     <div class="faq-answer">
                         <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
@@ -1530,8 +1512,8 @@
                 <!-- Item 3 -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
-                        <span class="group-hover:text-gold transition-colors duration-200">Como funciona o processo de criação?</span>
-                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                        <span class="group-hover:text-[var(--muted)] transition-colors duration-200">Como funciona o processo de criação?</span>
+                        <span class="faq-icon text-[24px] leading-none transition-transform duration-300 transform font-normal" style="color:var(--muted);">+</span>
                     </button>
                     <div class="faq-answer">
                         <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
@@ -1543,8 +1525,8 @@
                 <!-- Item 4 -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
-                        <span class="group-hover:text-gold transition-colors duration-200">Funciona para negócio pequeno?</span>
-                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                        <span class="group-hover:text-[var(--muted)] transition-colors duration-200">Funciona para negócio pequeno?</span>
+                        <span class="faq-icon text-[24px] leading-none transition-transform duration-300 transform font-normal" style="color:var(--muted);">+</span>
                     </button>
                     <div class="faq-answer">
                         <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
@@ -1556,8 +1538,8 @@
                 <!-- Item 5 -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
-                        <span class="group-hover:text-gold transition-colors duration-200">E se eu precisar mudar algo depois?</span>
-                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                        <span class="group-hover:text-[var(--muted)] transition-colors duration-200">E se eu precisar mudar algo depois?</span>
+                        <span class="faq-icon text-[24px] leading-none transition-transform duration-300 transform font-normal" style="color:var(--muted);">+</span>
                     </button>
                     <div class="faq-answer">
                         <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
@@ -1569,8 +1551,8 @@
                 <!-- Item: App no celular -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
-                        <span class="group-hover:text-gold transition-colors duration-200">O app de gestão funciona no celular?</span>
-                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                        <span class="group-hover:text-[var(--muted)] transition-colors duration-200">O app de gestão funciona no celular?</span>
+                        <span class="faq-icon text-[24px] leading-none transition-transform duration-300 transform font-normal" style="color:var(--muted);">+</span>
                     </button>
                     <div class="faq-answer">
                         <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
@@ -1582,8 +1564,8 @@
                 <!-- Item: Personalização do app -->
                 <div class="faq-item border-b border-border">
                     <button class="w-full text-left py-[24px] flex justify-between items-center cursor-pointer font-display font-[700] text-[18px] text-text group outline-none">
-                        <span class="group-hover:text-gold transition-colors duration-200">Posso personalizar o app com a minha marca?</span>
-                        <span class="faq-icon text-gold text-[24px] leading-none transition-transform duration-300 transform font-normal">+</span>
+                        <span class="group-hover:text-[var(--muted)] transition-colors duration-200">Posso personalizar o app com a minha marca?</span>
+                        <span class="faq-icon text-[24px] leading-none transition-transform duration-300 transform font-normal" style="color:var(--muted);">+</span>
                     </button>
                     <div class="faq-answer">
                         <p class="font-body font-[400] text-[15px] text-muted leading-[1.75] pb-[24px]">
@@ -1730,8 +1712,8 @@
                 <!-- COL 4 -->
                 <div class="flex flex-col">
                     <span class="font-body font-[600] text-[12px] text-muted tracking-[0.1em] mb-[16px]">CONTATO</span>
-                    <a href="https://wa.me/5549988913704" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-gold transition-colors duration-200 py-1.5 block">(49) 98891-3704</a>
-                    <a href="https://instagram.com/waxlo.tech" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-gold transition-colors duration-200 py-1.5 block">@waxlo.tech</a>
+                    <a href="https://wa.me/5549988913704" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">(49) 98891-3704</a>
+                    <a href="https://instagram.com/waxlo.tech" target="_blank" class="font-body font-[400] text-[14px] text-muted hover:text-text transition-colors duration-200 py-1.5 block">@waxlo.tech</a>
                     <span class="font-body font-[400] text-[14px] text-muted py-1.5 block mt-2">Lages, SC — Brasil</span>
                 </div>
             </div>
@@ -1955,27 +1937,43 @@
     // Wait for GSAP + Swiper to load
     window.addEventListener('load', function () {
 
-        /* ── 1. Swiper — Portfolio Carousel ── */
+        /* ── 1. Swiper — Coverflow Portfolio Carousel ── */
         if (typeof Swiper !== 'undefined') {
-            new Swiper('.portfolio-swiper', {
-                slidesPerView: 'auto',
-                spaceBetween: 20,
-                centeredSlides: false,
+            new Swiper('#trabalhos .swiper', {
+                effect: 'coverflow',
+                loop: true,
                 grabCursor: true,
-                speed: 600,
-                navigation: {
-                    nextEl: '.portfolio-next',
-                    prevEl: '.portfolio-prev',
+                centeredSlides: true,
+                coverflowEffect: {
+                    rotate: 40,
+                    stretch: 0,
+                    depth: 120,
+                    modifier: 1,
+                    slideShadows: true,
                 },
                 pagination: {
-                    el: '.portfolio-pagination',
+                    el: '#trabalhos .swiper-pagination',
                     clickable: true,
                 },
                 breakpoints: {
-                    0:   { spaceBetween: 12 },
-                    768: { spaceBetween: 20 },
-                    1280:{ spaceBetween: 28 },
+                    320:  { slidesPerView: 1.2 },
+                    580:  { slidesPerView: 1.8 },
+                    767:  { slidesPerView: 2.2 },
+                    992:  { slidesPerView: 2.8 },
+                    1200: { slidesPerView: 3.2 },
+                    1400: { slidesPerView: 3.6 },
                 },
+                on: {
+                    slideChangeTransitionStart: function() {
+                        document.querySelectorAll('#trabalhos .swiper-slide video')
+                            .forEach(function(v) { v.pause(); });
+                    },
+                    slideChangeTransitionEnd: function() {
+                        var active = document.querySelector(
+                            '#trabalhos .swiper-slide-active video');
+                        if (active) active.play();
+                    }
+                }
             });
         }
 
@@ -2012,7 +2010,7 @@
 
         /* ── 6. Portfolio video: pause when slide not visible ── */
         document.querySelectorAll(
-            '.portfolio-swiper video'
+            '#trabalhos .swiper-slide video'
         ).forEach(function(v) {
             v.pause();
         });
