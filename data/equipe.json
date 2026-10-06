@@ -1,0 +1,5 @@
+[
+  {"slug": "joao-canonica", "nome": "João Canonica", "cargo": "CEO", "descricao": "Responsável pelo desenvolvimento e inovação, fechamento das reuniões, comercial, relacionamento e crescimento dos clientes."},
+  {"slug": "joao-otavio-pereira", "nome": "João Otávio Pereira", "cargo": "CCO", "descricao": "Responsável pelas mídias sociais, o digital e as reuniões."},
+  {"slug": "marco-oliveira", "nome": "Marco Oliveira", "cargo": "CTO", "descricao": "Responsável pela estrutura dos projetos, desenvolvimento e suporte."}
+]
