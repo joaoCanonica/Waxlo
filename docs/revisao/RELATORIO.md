@@ -8,11 +8,11 @@
 | Acessibilidade | 100 | 100 |
 | Boas práticas | 96 | 100 |
 | SEO | 100 | 100 |
-| FCP | 3,8 s | 0,8 s |
+| FCP | 3,8 s | 0,6 s |
 | LCP | 4,5 s | 1,1 s |
 | CLS | 0 | 0 |
-| TBT | 710 ms | 90 ms |
-| Peso total | 15.735 KiB | 84 KiB |
+| TBT | 710 ms | 0 ms |
+| Peso total | 15.735 KiB | 99 KiB |
 
 O ambiente bloqueia CDNs e o domínio de produção, então o "antes" foi medido servindo o index.html original com Tailwind/GSAP/Swiper/Lucide copiados do npm (Tailwind v4 browser no lugar do Play CDN v3). É uma aproximação. Rode o PageSpeed no deploy de preview para os números reais.
 Relatórios completos: `antes/lighthouse-mobile.report.html` e `depois/lighthouse-mobile.report.html`.
@@ -59,3 +59,10 @@ Dourado em texto: só os números do Processo (40 px). Botões dourados usam tex
 - O fundo do vídeo do hero tem textura e, mesmo com a máscara de 8%, dá para perceber um retângulo levemente diferente do creme em telas boas.
 - A rede dourada do hero não diz nada sobre o negócio; é decorativa.
 - Equipe sem fotos e descrições curtas dos cases continuam valendo.
+
+## Rodada 3: ajustes do hero
+- Os 4 arquivos que faltavam foram derivados dos próprios vídeos (sem alterar os vídeos): intro-poster.jpg (1º quadro da intro), hero-poster.jpg (1º quadro do loop), hero-static.jpg (quadro de 6 s, rede formada) e waxlo-wordmark-transparente.png (logo recortada do último quadro da intro, tinta #0E1013, 844x197). Se você tiver os originais, é só sobrescrever com o mesmo nome e rodar o build.
+- Crossfade vídeo/logo medido no navegador: as caixas da logo coincidem com diferença de 1 px em 1024, 1440 e 1920.
+- O retângulo do vídeo sumiu: `filter: brightness(1.06) contrast(1.08)` + `mix-blend-mode: multiply` sobre o creme. O fundo do vídeo vira branco e multiplicado dá exatamente #F8F6F1 (medido em 5 pontos); a textura desaparece e só a rede dourada fica. Arquivo intacto.
+- Mobile: hero-static recortado em 4:3 na região da rede, inserido só depois do load (decorativo, não disputa o LCP com o H1). A intro CSS usa a logo leve (20 KB).
+- Lighthouse mobile final: 100 / 100 / 100 / 100, LCP 1,1 s, CLS 0. Desktop: 100, LCP 0,4 s.

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" data-media="{&quot;introWebm&quot;:&quot;/assets/media/intro-waxlo-1080.webm&quot;,&quot;introMp4&quot;:&quot;/assets/media/intro-waxlo-1080.mp4&quot;,&quot;introPoster&quot;:&quot;&quot;,&quot;heroWebm&quot;:&quot;/assets/media/hero-loop-1280.webm&quot;,&quot;heroMp4&quot;:&quot;/assets/media/hero-loop-1280.mp4&quot;,&quot;heroPoster&quot;:&quot;&quot;,&quot;heroStatic&quot;:&quot;&quot;,&quot;wordmark&quot;:&quot;&quot;}">
+<html lang="pt-BR" data-media="{&quot;introWebm&quot;:&quot;/assets/media/intro-waxlo-1080.webm&quot;,&quot;introMp4&quot;:&quot;/assets/media/intro-waxlo-1080.mp4&quot;,&quot;introPoster&quot;:&quot;/assets/media/intro-poster.jpg&quot;,&quot;heroWebm&quot;:&quot;/assets/media/hero-loop-1280.webm&quot;,&quot;heroMp4&quot;:&quot;/assets/media/hero-loop-1280.mp4&quot;,&quot;heroPoster&quot;:&quot;/assets/media/hero-poster.jpg&quot;,&quot;heroStatic&quot;:&quot;/assets/media/hero-static.jpg&quot;,&quot;wordmark&quot;:&quot;/assets/media/waxlo-wordmark-transparente.png&quot;}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -125,11 +125,16 @@ mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparen
 mask-composite: intersect;
 }
 .hero__media video { opacity: 0; transition: opacity .6s ease; }
+.hero__media video, .hero__media img { filter: brightness(1.06) contrast(1.08); mix-blend-mode: multiply; }
 .hero__media video.is-on { opacity: 1; }
 .hero__pause { position: absolute; right: 10px; bottom: 10px; width: 38px; height: 38px; border-radius: 999px; border: 1.5px solid var(--line); background: rgba(248, 246, 241, .9); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
 .hero__pause[hidden] { display: none; }
 .hero__pause svg { width: 14px; height: 14px; }
-@media (max-width: 767px) { .hero__media--nostatic { display: none; } }
+@media (max-width: 767px) {
+.hero__media--nostatic { display: none; }
+.hero__media { aspect-ratio: 4 / 3; width: 72%; margin: -8px 0 0 auto; }
+.hero__media img { object-position: 88% 50%; }
+}
 @media (min-width: 1024px) {
 .hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
 .hero h1 { font-size: clamp(44px, 4.3vw, 62px); max-width: 16ch; }
@@ -317,7 +322,7 @@ html.intro .logo img { opacity: 0; }
     <p class="hero__sub">A WAXLO é uma empresa de tecnologia de Lages, SC. Criamos o site do seu negócio, colocamos você no Google e organizamos o contato com o cliente pelo WhatsApp. Trabalhamos com clientes no Brasil e na Irlanda.</p>
     <div class="hero__cta"><a class="btn btn--gold" href="#contato">Pedir diagnóstico</a><a class="btn btn--line" href="#trabalhos">Ver trabalhos</a></div>
     </div>
-    <div class="hero__media hero__media--nostatic"><video muted loop playsinline preload="none" aria-hidden="true" tabindex="-1"></video><button class="hero__pause" type="button" aria-label="Pausar animação" hidden></button></div>
+    <div class="hero__media"><video muted loop playsinline preload="none" data-poster="/assets/media/hero-poster.jpg" aria-hidden="true" tabindex="-1"></video><button class="hero__pause" type="button" aria-label="Pausar animação" hidden></button></div>
   </div>
 </section>
 <div class="proof"><div class="wrap"><p>No ar em Lages (SC), Angatuba (SP) e Dublin (Irlanda).</p></div></div>

@@ -22,7 +22,7 @@
     var page = $$("body > header, body > nav, body > main, body > footer, body > .wpp, body > .skip");
     var ov = document.createElement("div");
     ov.className = "intro-ov" + (useVideo ? "" : " intro-ov--css");
-    var mark = MEDIA.wordmark || "/assets/escritaWaxlo-alpha-dark.png";
+    var mark = "/assets/escritaWaxlo-alpha-dark.png";
     if (useVideo) {
       var srcs = (MEDIA.introWebm ? '<source src="' + MEDIA.introWebm + '" type="video/webm">' : "") + (MEDIA.introMp4 ? '<source src="' + MEDIA.introMp4 + '" type="video/mp4">' : "");
       ov.innerHTML = '<div class="intro-ov__box"><video muted playsinline preload="auto" aria-hidden="true"' + (MEDIA.introPoster ? ' poster="' + MEDIA.introPoster + '"' : "") + ">" + srcs + "</video>" +
@@ -86,11 +86,16 @@
       if (hv) hv.remove();
       if (hb) hb.remove();
       if (still) {
-        var im = new Image();
-        im.alt = "";
-        im.decoding = "async";
-        im.src = still;
-        heroBox.appendChild(im);
+        // Imagem decorativa: entra só depois do load e da entrada, para não disputar o LCP com o H1
+        var addStill = function () {
+          var im = new Image();
+          im.alt = "";
+          im.decoding = "async";
+          im.src = still;
+          heroBox.appendChild(im);
+        };
+        var whenLoaded = function () { onIntroDone(function () { (window.requestIdleCallback || setTimeout)(addStill); }); };
+        document.readyState === "complete" ? whenLoaded() : window.addEventListener("load", whenLoaded);
       }
     } else {
       if (hv.getAttribute("data-poster")) hv.poster = hv.getAttribute("data-poster");
