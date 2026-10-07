@@ -136,11 +136,15 @@ html.intro .logo img { opacity: 0; }
 .logo img { transition: opacity .6s ease; }
 .intro-ov { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity .6s ease; cursor: pointer; }
 .intro-ov.is-out { opacity: 0; pointer-events: none; }
+.intro-ov.is-flying { transition: opacity .45s ease .35s; }
+.intro-ov.is-flying .intro-ov__skip { visibility: hidden; }
 .intro-ov__box { position: relative; width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; container-type: size; }
 .intro-ov__box video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
 .intro-ov__logo { position: absolute; left: 50%; top: 50%; width: 44%; height: auto; transform: translate(-50%, calc(-50% - 0.556cqh)); opacity: 0; transition: opacity .3s linear; }
 .intro-ov__logo.is-on { opacity: 1; }
-.intro-ov__skip { position: absolute; top: 18px; right: 18px; z-index: 2; min-height: 44px; padding: 0 20px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--bg); color: var(--ink); font-weight: 600; font-size: 16px; cursor: pointer; }
+.intro-ov__skip { position: absolute; top: 18px; right: 18px; z-index: 2; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(248, 246, 241, .85); color: var(--ink); font-weight: 500; font-size: 16px; cursor: pointer; transition: border-color .2s; }
+.intro-ov__skip:hover { border-color: var(--ink); }
+.intro-fly { position: fixed; z-index: 101; margin: 0; transform-origin: 0 0; pointer-events: none; }
 .intro-ov--css .intro-ov__line { position: absolute; left: 0; top: calc(50% + 48px); width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; animation: introLine .7s cubic-bezier(.6, 0, .2, 1) forwards; }
 .intro-ov--css .intro-ov__mark { position: relative; width: min(64vw, 280px); height: auto; opacity: 0; animation: introFade .45s ease .55s forwards; }
 @keyframes introLine { to { transform: scaleX(1); } }

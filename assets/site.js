@@ -38,23 +38,48 @@
     document.body.appendChild(ov);
     root.classList.add("intro-ready");
     page.forEach(function (el) { el.inert = true; });
-    skip.focus({ preventScroll: true });
+    skip.focus({ preventScroll: true, focusVisible: false });
 
-    var ended = false, safety;
+    var ended = false, safety, t0 = Date.now();
     var finish = function () {
       if (ended) return;
       ended = true;
       clearTimeout(safety);
       try { localStorage.setItem("waxlo-intro-v4", String(Date.now())); } catch (e) {}
       page.forEach(function (el) { el.inert = false; });
-      ov.classList.add("is-out");
-      root.classList.remove("intro");
       document.removeEventListener("keydown", onKey);
-      setTimeout(function () {
+      var done = function () {
         ov.remove();
         introDone = true;
         introWaiters.forEach(function (fn) { fn(); });
-      }, 600);
+      };
+      // Se a logo já está na tela, ela "voa" até a logo da navbar enquanto o fundo some
+      var from = useVideo ? $(".intro-ov__logo.is-on", ov) : (Date.now() - t0 > 900 ? $(".intro-ov__mark", ov) : null);
+      var navImg = $(".top .logo img");
+      if (from && navImg && from.animate) {
+        var r1 = from.getBoundingClientRect(), r2 = navImg.getBoundingClientRect();
+        var fly = from.cloneNode();
+        fly.className = "intro-fly";
+        fly.style.cssText = "left:" + r1.left + "px;top:" + r1.top + "px;width:" + r1.width + "px;height:" + r1.height + "px";
+        document.body.appendChild(fly);
+        from.style.visibility = "hidden";
+        $$("video, .intro-ov__line", ov).forEach(function (el) { el.style.visibility = "hidden"; });
+        ov.classList.add("is-flying");
+        var sx = r2.width / r1.width, sy = r2.height / r1.height;
+        var dx = r2.left - r1.left, dy = r2.top - r1.top;
+        ov.classList.add("is-out");
+        fly.animate([{ transform: "none" }, { transform: "translate(" + dx + "px," + dy + "px) scale(" + sx + "," + sy + ")" }],
+          { duration: 750, easing: "cubic-bezier(.65,0,.25,1)", fill: "forwards" }).onfinish = function () {
+          navImg.style.transition = "none";
+          root.classList.remove("intro");
+          requestAnimationFrame(function () { fly.remove(); navImg.style.transition = ""; });
+          done();
+        };
+      } else {
+        ov.classList.add("is-out");
+        root.classList.remove("intro");
+        setTimeout(done, 600);
+      }
     };
     var onKey = function (e) { if (e.key === "Escape") finish(); };
     document.addEventListener("keydown", onKey);
