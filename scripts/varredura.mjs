@@ -24,7 +24,7 @@ add('"excelência"', count(/excelência/gi));
 add("<em>/<i> dentro de títulos", (html.match(/<h[1-6][^>]*>[^<]*<(em|i)\b/g) || []).length);
 add('numeração "01/02…" fora do Processo', count(/\b0[1-9]\b/g));
 add("vídeo com autoplay", (html.match(/<video[^>]*autoplay/g) || []).length);
-const vids = readdirSync(join(ROOT, "videos/trabalhos")).filter((f) => statSync(join(ROOT, "videos/trabalhos", f)).size > 1.2 * 1024 * 1024);
+const vids = ["videos/trabalhos", "assets/media"].flatMap((d) => readdirSync(join(ROOT, d)).filter((f) => /\.(mp4|webm)$/.test(f)).map((f) => `${d}/${f}`)).filter((f) => statSync(join(ROOT, f)).size > 1.2 * 1024 * 1024);
 add("vídeo > 1,2 MB", vids.length, vids.join(", "));
 add("placeholders ({{, undefined, null, lorem)", count(/\{\{|undefined|\bnull\b|lorem|XX\.XXX/gi) + count(/\bTODO\b/g));
 add('"sistema(s) de gestão" fora da faixa em breve', count(/sistemas? de gestão/gi) - 1);

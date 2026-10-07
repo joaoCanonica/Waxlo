@@ -5,6 +5,132 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
+  var root = document.documentElement;
+  var MEDIA = {};
+  try { MEDIA = JSON.parse(root.getAttribute("data-media") || "{}"); } catch (e) {}
+  var conn = navigator.connection || {};
+  var saveData = !!conn.saveData;
+  var ICON_PAUSE_S = '<svg viewBox="0 0 16 16" aria-hidden="true"><rect x="3" y="2" width="3.5" height="12" fill="currentColor"/><rect x="9.5" y="2" width="3.5" height="12" fill="currentColor"/></svg>';
+  var ICON_PLAY_S = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2l10 6-10 6z" fill="currentColor"/></svg>';
+
+  /* Entrada animada: só criada por JS, decidida no <head> (classe "intro") */
+  var introDone = !root.classList.contains("intro");
+  var introWaiters = [];
+  var onIntroDone = function (fn) { introDone ? fn() : introWaiters.push(fn); };
+  if (!introDone) {
+    var useVideo = root.classList.contains("intro-v");
+    var page = $$("body > header, body > nav, body > main, body > footer, body > .wpp, body > .skip");
+    var ov = document.createElement("div");
+    ov.className = "intro-ov" + (useVideo ? "" : " intro-ov--css");
+    var mark = MEDIA.wordmark || "/assets/escritaWaxlo-alpha-dark.png";
+    if (useVideo) {
+      var srcs = (MEDIA.introWebm ? '<source src="' + MEDIA.introWebm + '" type="video/webm">' : "") + (MEDIA.introMp4 ? '<source src="' + MEDIA.introMp4 + '" type="video/mp4">' : "");
+      ov.innerHTML = '<div class="intro-ov__box"><video muted playsinline preload="auto" aria-hidden="true"' + (MEDIA.introPoster ? ' poster="' + MEDIA.introPoster + '"' : "") + ">" + srcs + "</video>" +
+        (MEDIA.wordmark ? '<img class="intro-ov__logo" src="' + MEDIA.wordmark + '" alt="" aria-hidden="true">' : "") + "</div>";
+    } else {
+      ov.innerHTML = '<span class="intro-ov__line" aria-hidden="true"></span><img class="intro-ov__mark" src="' + mark + '" alt="" aria-hidden="true">';
+    }
+    var skip = document.createElement("button");
+    skip.type = "button";
+    skip.className = "intro-ov__skip";
+    skip.textContent = "Pular";
+    ov.appendChild(skip);
+    document.body.appendChild(ov);
+    root.classList.add("intro-ready");
+    page.forEach(function (el) { el.inert = true; });
+    skip.focus({ preventScroll: true });
+
+    var ended = false, safety;
+    var finish = function () {
+      if (ended) return;
+      ended = true;
+      clearTimeout(safety);
+      try { localStorage.setItem("waxlo-intro-v4", String(Date.now())); } catch (e) {}
+      page.forEach(function (el) { el.inert = false; });
+      ov.classList.add("is-out");
+      root.classList.remove("intro");
+      document.removeEventListener("keydown", onKey);
+      setTimeout(function () {
+        ov.remove();
+        introDone = true;
+        introWaiters.forEach(function (fn) { fn(); });
+      }, 600);
+    };
+    var onKey = function (e) { if (e.key === "Escape") finish(); };
+    document.addEventListener("keydown", onKey);
+    ov.addEventListener("click", finish);
+
+    if (useVideo) {
+      var iv = $("video", ov), logo = $(".intro-ov__logo", ov);
+      safety = setTimeout(finish, 6000);
+      iv.addEventListener("timeupdate", function () {
+        if (logo && iv.duration && iv.currentTime >= iv.duration - 0.5) logo.classList.add("is-on");
+      });
+      iv.addEventListener("ended", finish);
+      iv.addEventListener("error", finish, true);
+      var pr = iv.play();
+      if (pr && pr.catch) pr.catch(function () { if (logo) logo.classList.add("is-on"); setTimeout(finish, 800); });
+    } else {
+      safety = setTimeout(finish, 1200);
+    }
+  }
+
+  /* Hero em vídeo: começa depois do load e do fim da entrada */
+  var heroBox = $(".hero__media");
+  if (heroBox) {
+    var hv = $("video", heroBox), hb = $(".hero__pause", heroBox);
+    var small = window.matchMedia("(max-width: 767px)").matches;
+    var staticOnly = !hv || small || saveData || reduce;
+    if (staticOnly) {
+      var still = MEDIA.heroStatic || (!small && MEDIA.heroPoster);
+      if (hv) hv.remove();
+      if (hb) hb.remove();
+      if (still) {
+        var im = new Image();
+        im.alt = "";
+        im.decoding = "async";
+        im.src = still;
+        heroBox.appendChild(im);
+      }
+    } else {
+      if (hv.getAttribute("data-poster")) hv.poster = hv.getAttribute("data-poster");
+      var heroPaused = false, heroVisible = true, started = false;
+      var setHeroIcon = function () {
+        var playing = !hv.paused;
+        hb.innerHTML = playing ? ICON_PAUSE_S : ICON_PLAY_S;
+        hb.setAttribute("aria-label", playing ? "Pausar animação" : "Reproduzir animação");
+      };
+      var tryPlay = function () {
+        if (heroPaused || !heroVisible || document.hidden || !started) return;
+        var p = hv.play();
+        if (p && p.catch) p.catch(function () {});
+      };
+      var start = function () {
+        if (started) return;
+        started = true;
+        hv.innerHTML = (MEDIA.heroWebm ? '<source src="' + MEDIA.heroWebm + '" type="video/webm">' : "") + (MEDIA.heroMp4 ? '<source src="' + MEDIA.heroMp4 + '" type="video/mp4">' : "");
+        hv.load();
+        hb.hidden = false;
+        tryPlay();
+      };
+      hv.addEventListener("playing", function () { hv.classList.add("is-on"); setHeroIcon(); });
+      hv.addEventListener("pause", setHeroIcon);
+      hb.addEventListener("click", function () {
+        if (hv.paused) { heroPaused = false; tryPlay(); } else { heroPaused = true; hv.pause(); }
+      });
+      document.addEventListener("visibilitychange", function () { document.hidden ? hv.pause() : tryPlay(); });
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (en) {
+          heroVisible = en[0].isIntersecting;
+          heroVisible ? tryPlay() : hv.pause();
+        }).observe(heroBox);
+      }
+      var idle = window.requestIdleCallback || function (fn) { setTimeout(fn, 200); };
+      var afterLoad = function () { onIntroDone(function () { idle(start, { timeout: 2000 }); }); };
+      document.readyState === "complete" ? afterLoad() : window.addEventListener("load", afterLoad);
+    }
+  }
+
   /* Header border on scroll */
   var top = $(".top");
   if (top) {

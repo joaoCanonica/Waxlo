@@ -11,7 +11,7 @@ const SITE = "https://www.waxlo.com.br";
 const WPP = "5549988913704";
 const TEL = "+5549988913704";
 const IG = "https://www.instagram.com/waxlo.tech/";
-const UPDATED = "2026-10-06";
+const UPDATED = "2026-10-07";
 
 const read = (p) => JSON.parse(readFileSync(join(ROOT, p), "utf8"));
 const empresa = read("data/empresa.json");
@@ -35,16 +35,33 @@ const css = readFileSync(join(ROOT, "src/site.css"), "utf8").replace(/\/\*[\s\S]
 mkdirSync(join(ROOT, "assets"), { recursive: true });
 copyFileSync(join(ROOT, "src/site.js"), join(ROOT, "assets/site.js"));
 
+/* Mídia da entrada e do hero: cada arquivo só é usado se existir em assets/media/ */
+const M = "assets/media/";
+const media2 = (f) => (exists(M + f) ? "/" + M + f : "");
+const MEDIA = {
+  introWebm: media2("intro-waxlo-1080.webm"),
+  introMp4: media2("intro-waxlo-1080.mp4"),
+  introPoster: media2("intro-poster.jpg"),
+  heroWebm: media2("hero-loop-1280.webm"),
+  heroMp4: media2("hero-loop-1280.mp4"),
+  heroPoster: media2("hero-poster.jpg"),
+  heroStatic: media2("hero-static.jpg"),
+  wordmark: media2("waxlo-wordmark-transparente.png"),
+};
+// Decide antes da primeira pintura se a entrada roda (evita piscar o site).
+const INTRO_HEAD = `<script>(function(){var d=document.documentElement,f=/[?&]intro=1(&|$)/.test(location.search),s=0;try{s=+localStorage.getItem("waxlo-intro-v4")||0}catch(e){}var c=navigator.connection,r=matchMedia("(prefers-reduced-motion: reduce)").matches,v=c&&c.saveData;if(f||(Date.now()-s>2592e6&&!r&&!v)){d.classList.add("intro",innerWidth>=768${MEDIA.introWebm || MEDIA.introMp4 ? "" : "&&false"}?"intro-v":"intro-c")}})()</script>`;
+
 const WPP_ICON = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6l.4-.5c.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2 0-5.4 4.4-9.8 9.8-9.8 2.6 0 5.1 1 6.9 2.9 1.8 1.8 2.9 4.3 2.9 6.9 0 5.4-4.4 9.8-9.8 9.8zm8.4-18.2C18.1 1.3 15.2.1 12 .1 5.5.1.2 5.4.2 11.9c0 2.1.5 4.1 1.6 5.9L.1 24l6.3-1.7c1.7.9 3.7 1.4 5.6 1.4 6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.4-8.3z"/></svg>`;
 
 const NAV = [["Trabalhos", "trabalhos"], ["Serviços", "servicos"], ["Processo", "processo"], ["Equipe", "equipe"], ["Contato", "contato"]];
 
 function layout({ title, description, path, body, jsonld, ogImage = "/assets/og-image.jpg", home = false }) {
+  const dataMedia = home ? ` data-media="${esc(JSON.stringify(MEDIA))}"` : "";
   const url = SITE + path;
   const pre = home ? "" : "/";
   const navLinks = NAV.map(([t, id]) => `<a href="${pre}#${id}">${t}</a>`).join("");
   return `<!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR"${dataMedia}>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -64,11 +81,13 @@ function layout({ title, description, path, body, jsonld, ogImage = "/assets/og-
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="WAXLO, criação de sites profissionais em Lages, SC">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>${css}</style>
-<script>document.documentElement.className="js"</script>
+<script>document.documentElement.classList.add("js")</script>
+${home ? INTRO_HEAD : ""}
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j)}</script>`).join("\n")}
 <script src="/assets/site.js" defer></script>
 </head>
@@ -139,7 +158,7 @@ const orgLd = {
       ...(has(empresa.cnpj) ? { taxID: empresa.cnpj } : {}),
       ...(has(empresa.email) ? { email: empresa.email } : {}),
       url: SITE + "/",
-      logo: SITE + "/assets/icon-192.png",
+      logo: SITE + "/assets/icon-512.png",
       image: SITE + "/assets/og-image.jpg",
       description: "Criação de sites profissionais, presença no Google e marketing para negócios de Lages (SC) e de todo o Brasil, com clientes também na Irlanda.",
       telephone: TEL,
@@ -234,12 +253,20 @@ const team = equipe.map((p) => {
 
 const opt = (name, value, type = "checkbox") => `<label class="opt"><input type="${type}" name="${name}" value="${value}"><span>${value}</span></label>`;
 
+const heroVideo = MEDIA.heroWebm || MEDIA.heroMp4;
+const heroMedia = heroVideo || MEDIA.heroStatic || MEDIA.heroPoster
+  ? `<div class="hero__media${MEDIA.heroStatic ? "" : " hero__media--nostatic"}${heroVideo ? "" : " hero__media--novideo"}">${heroVideo ? `<video muted loop playsinline preload="none"${MEDIA.heroPoster ? ` data-poster="${MEDIA.heroPoster}"` : ""} aria-hidden="true" tabindex="-1"></video><button class="hero__pause" type="button" aria-label="Pausar animação" hidden></button>` : ""}</div>`
+  : "";
+
 const homeBody = `
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
     <h1>Sites profissionais para negócios que querem ser encontrados e escolhidos.</h1>
     <p class="hero__sub">A WAXLO é uma empresa de tecnologia de Lages, SC. Criamos o site do seu negócio, colocamos você no Google e organizamos o contato com o cliente pelo WhatsApp. Trabalhamos com clientes no Brasil e na Irlanda.</p>
     <div class="hero__cta"><a class="btn btn--gold" href="#contato">Pedir diagnóstico</a><a class="btn btn--line" href="#trabalhos">Ver trabalhos</a></div>
+    </div>
+    ${heroMedia}
   </div>
 </section>
 <div class="proof"><div class="wrap"><p>No ar em Lages (SC), Angatuba (SP) e Dublin (Irlanda).</p></div></div>
@@ -405,7 +432,7 @@ const controladora = [
 ].filter(Boolean).join(", ");
 const privBody = `<article class="page"><div class="wrap prose">
   <h1>Política de Privacidade</h1>
-  <p style="margin-top:20px">Atualizada em 6 de outubro de 2026.</p>
+  <p style="margin-top:20px">Atualizada em 7 de outubro de 2026.</p>
   <h2>Quem cuida dos seus dados</h2>
   <p>A controladora dos dados é ${controladora}. Contato: WhatsApp (49) 98891-3704${has(empresa.email) ? ` ou ${esc(empresa.email)}` : ""}.</p>
   <h2>Quais dados coletamos</h2>
@@ -425,7 +452,7 @@ const privBody = `<article class="page"><div class="wrap prose">
   <h2>Seus direitos</h2>
   <p>Pelo art. 18 da LGPD, você pode pedir: confirmação de que tratamos seus dados, acesso, correção, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, informação sobre compartilhamento, eliminação dos dados tratados com consentimento e revogação do consentimento. Basta escrever para o nosso WhatsApp. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
   <h2>Cookies</h2>
-  <p>Este site não usa cookies próprios nem ferramentas de analytics. Os sites de clientes abertos pelo visualizador ao vivo seguem as políticas de cada um.</p>
+  <p>Este site não usa cookies próprios nem ferramentas de analytics. O armazenamento local do navegador (localStorage) guarda apenas a data em que você viu a animação de entrada, para não repeti-la por 30 dias; nenhum dado pessoal é gravado. Os sites de clientes abertos pelo visualizador ao vivo seguem as políticas de cada um.</p>
 </div></article>`;
 pages.push(["politica-de-privacidade/index.html", layout({
   path: "/politica-de-privacidade/",
@@ -437,8 +464,8 @@ pages.push(["politica-de-privacidade/index.html", layout({
 
 /* ---------- Write + checks ---------- */
 for (const [file, html] of pages) {
-  if (/\{\{|\}\}|undefined|\bnull\b|NaN|\[object Object\]/.test(html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, ""))) {
-    throw new Error(`Placeholder ou valor vazio em ${file}`);
+  if (/\{\{|\}\}|undefined|\bnull\b|NaN|\[object Object\]/.test(html.replace(/<script[\s\S]*?<\/script>/g, "").replace(/data-media="[^"]*"/, ""))) {
+    throw new Error(`Placeholder ou valor vazio em ${file}: ${html.match(/.{40}(\{\{|\}\}|undefined|\bnull\b|NaN|\[object Object\]).{40}/s)?.[0]}`);
   }
   mkdirSync(dirname(join(ROOT, file)), { recursive: true });
   writeFileSync(join(ROOT, file), html);
