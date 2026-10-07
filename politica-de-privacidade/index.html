@@ -19,6 +19,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="WAXLO, criação de sites profissionais em Lages, SC">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -114,6 +115,51 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero h1 { font-size: clamp(40px, 7.2vw, 88px); max-width: 15ch; letter-spacing: -0.035em; }
 .hero__sub { margin-top: 28px; font-size: clamp(18px, 1.8vw, 21px); color: var(--muted); max-width: 60ch; }
 .hero__cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__grid { display: grid; gap: 40px; align-items: center; }
+.hero__media { position: relative; aspect-ratio: 16 / 9; background: var(--bg); overflow: hidden; }
+.hero__media video, .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero__media video, .hero__media img {
+-webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+-webkit-mask-composite: source-in;
+mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+mask-composite: intersect;
+}
+.hero__media video { opacity: 0; transition: opacity .6s ease; }
+.hero__media video, .hero__media img { filter: brightness(1.06) contrast(1.08); mix-blend-mode: multiply; }
+.hero__media video.is-on { opacity: 1; }
+.hero__pause { position: absolute; right: 10px; bottom: 10px; width: 38px; height: 38px; border-radius: 999px; border: 1.5px solid var(--line); background: rgba(248, 246, 241, .9); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.hero__pause[hidden] { display: none; }
+.hero__pause svg { width: 14px; height: 14px; }
+@media (max-width: 767px) {
+.hero__media--nostatic { display: none; }
+.hero__media { aspect-ratio: 4 / 3; width: 72%; margin: -8px 0 0 auto; }
+.hero__media img { object-position: 88% 50%; }
+}
+@media (min-width: 1024px) {
+.hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.hero h1 { font-size: clamp(44px, 4.3vw, 62px); max-width: 16ch; }
+.hero { padding-top: clamp(48px, 6vw, 88px); }
+}
+html.intro::after { content: ""; position: fixed; inset: 0; z-index: 90; background: var(--bg); animation: introSafety 0s linear 2.5s forwards; }
+html.intro.intro-ready::after { display: none; }
+@keyframes introSafety { to { visibility: hidden; } }
+html.intro .logo img { opacity: 0; }
+.logo img { transition: opacity .6s ease; }
+.intro-ov { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity .6s ease; cursor: pointer; }
+.intro-ov.is-out { opacity: 0; pointer-events: none; }
+.intro-ov.is-flying { transition: opacity .45s ease .35s; }
+.intro-ov.is-flying .intro-ov__skip { visibility: hidden; }
+.intro-ov__box { position: relative; width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; container-type: size; }
+.intro-ov__box video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.intro-ov__logo { position: absolute; left: 50%; top: 50%; width: 44%; height: auto; transform: translate(-50%, calc(-50% - 0.556cqh)); opacity: 0; transition: opacity .3s linear; }
+.intro-ov__logo.is-on { opacity: 1; }
+.intro-ov__skip { position: absolute; top: 18px; right: 18px; z-index: 2; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(248, 246, 241, .85); color: var(--ink); font-weight: 500; font-size: 16px; cursor: pointer; transition: border-color .2s; }
+.intro-ov__skip:hover { border-color: var(--ink); }
+.intro-fly { position: fixed; z-index: 101; margin: 0; transform-origin: 0 0; pointer-events: none; }
+.intro-ov--css .intro-ov__line { position: absolute; left: 0; top: calc(50% + 48px); width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; animation: introLine .7s cubic-bezier(.6, 0, .2, 1) forwards; }
+.intro-ov--css .intro-ov__mark { position: relative; width: min(64vw, 280px); height: auto; opacity: 0; animation: introFade .45s ease .55s forwards; }
+@keyframes introLine { to { transform: scaleX(1); } }
+@keyframes introFade { to { opacity: 1; } }
 .proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
 .proof p { padding: 22px 0; font-size: clamp(18px, 2vw, 22px); font-weight: 600; letter-spacing: -0.01em; }
 .problem__grid { display: grid; gap: 40px; }
@@ -254,7 +300,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .js .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .js .rv.in { opacity: 1; transform: none; }
 }</style>
-<script>document.documentElement.className="js"</script>
+<script>document.documentElement.classList.add("js")</script>
+
 
 <script src="/assets/site.js" defer></script>
 </head>
@@ -272,7 +319,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 <main id="conteudo">
 <article class="page"><div class="wrap prose">
   <h1>Política de Privacidade</h1>
-  <p style="margin-top:20px">Atualizada em 6 de outubro de 2026.</p>
+  <p style="margin-top:20px">Atualizada em 7 de outubro de 2026.</p>
   <h2>Quem cuida dos seus dados</h2>
   <p>A controladora dos dados é WAXLO, Lages/SC. Contato: WhatsApp (49) 98891-3704.</p>
   <h2>Quais dados coletamos</h2>
@@ -292,7 +339,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
   <h2>Seus direitos</h2>
   <p>Pelo art. 18 da LGPD, você pode pedir: confirmação de que tratamos seus dados, acesso, correção, anonimização, bloqueio ou eliminação de dados desnecessários, portabilidade, informação sobre compartilhamento, eliminação dos dados tratados com consentimento e revogação do consentimento. Basta escrever para o nosso WhatsApp. Você também pode reclamar à Autoridade Nacional de Proteção de Dados (ANPD).</p>
   <h2>Cookies</h2>
-  <p>Este site não usa cookies próprios nem ferramentas de analytics. Os sites de clientes abertos pelo visualizador ao vivo seguem as políticas de cada um.</p>
+  <p>Este site não usa cookies próprios nem ferramentas de analytics. O armazenamento local do navegador (localStorage) guarda apenas a data em que você viu a animação de entrada, para não repeti-la por 30 dias; nenhum dado pessoal é gravado. Os sites de clientes abertos pelo visualizador ao vivo seguem as políticas de cada um.</p>
 </div></article>
 </main>
 <footer class="foot">

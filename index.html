@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-media="{&quot;introWebm&quot;:&quot;/assets/media/intro-waxlo-1080.webm&quot;,&quot;introMp4&quot;:&quot;/assets/media/intro-waxlo-1080.mp4&quot;,&quot;introPoster&quot;:&quot;/assets/media/intro-poster.jpg&quot;,&quot;heroWebm&quot;:&quot;/assets/media/hero-loop-1280.webm&quot;,&quot;heroMp4&quot;:&quot;/assets/media/hero-loop-1280.mp4&quot;,&quot;heroPoster&quot;:&quot;/assets/media/hero-poster.jpg&quot;,&quot;heroStatic&quot;:&quot;/assets/media/hero-static.jpg&quot;,&quot;wordmark&quot;:&quot;/assets/media/waxlo-wordmark-transparente.png&quot;}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,6 +19,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="WAXLO, criação de sites profissionais em Lages, SC">
 <meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -114,6 +115,51 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .hero h1 { font-size: clamp(40px, 7.2vw, 88px); max-width: 15ch; letter-spacing: -0.035em; }
 .hero__sub { margin-top: 28px; font-size: clamp(18px, 1.8vw, 21px); color: var(--muted); max-width: 60ch; }
 .hero__cta { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
+.hero__grid { display: grid; gap: 40px; align-items: center; }
+.hero__media { position: relative; aspect-ratio: 16 / 9; background: var(--bg); overflow: hidden; }
+.hero__media video, .hero__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.hero__media video, .hero__media img {
+-webkit-mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+-webkit-mask-composite: source-in;
+mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent), linear-gradient(to bottom, transparent, #000 8%, #000 92%, transparent);
+mask-composite: intersect;
+}
+.hero__media video { opacity: 0; transition: opacity .6s ease; }
+.hero__media video, .hero__media img { filter: brightness(1.06) contrast(1.08); mix-blend-mode: multiply; }
+.hero__media video.is-on { opacity: 1; }
+.hero__pause { position: absolute; right: 10px; bottom: 10px; width: 38px; height: 38px; border-radius: 999px; border: 1.5px solid var(--line); background: rgba(248, 246, 241, .9); color: var(--ink); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.hero__pause[hidden] { display: none; }
+.hero__pause svg { width: 14px; height: 14px; }
+@media (max-width: 767px) {
+.hero__media--nostatic { display: none; }
+.hero__media { aspect-ratio: 4 / 3; width: 72%; margin: -8px 0 0 auto; }
+.hero__media img { object-position: 88% 50%; }
+}
+@media (min-width: 1024px) {
+.hero__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.hero h1 { font-size: clamp(44px, 4.3vw, 62px); max-width: 16ch; }
+.hero { padding-top: clamp(48px, 6vw, 88px); }
+}
+html.intro::after { content: ""; position: fixed; inset: 0; z-index: 90; background: var(--bg); animation: introSafety 0s linear 2.5s forwards; }
+html.intro.intro-ready::after { display: none; }
+@keyframes introSafety { to { visibility: hidden; } }
+html.intro .logo img { opacity: 0; }
+.logo img { transition: opacity .6s ease; }
+.intro-ov { position: fixed; inset: 0; z-index: 100; background: var(--bg); display: flex; align-items: center; justify-content: center; transition: opacity .6s ease; cursor: pointer; }
+.intro-ov.is-out { opacity: 0; pointer-events: none; }
+.intro-ov.is-flying { transition: opacity .45s ease .35s; }
+.intro-ov.is-flying .intro-ov__skip { visibility: hidden; }
+.intro-ov__box { position: relative; width: min(100vw, calc(100vh * 16 / 9)); aspect-ratio: 16 / 9; container-type: size; }
+.intro-ov__box video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.intro-ov__logo { position: absolute; left: 50%; top: 50%; width: 44%; height: auto; transform: translate(-50%, calc(-50% - 0.556cqh)); opacity: 0; transition: opacity .3s linear; }
+.intro-ov__logo.is-on { opacity: 1; }
+.intro-ov__skip { position: absolute; top: 18px; right: 18px; z-index: 2; min-height: 44px; padding: 0 18px; border-radius: 999px; border: 1px solid var(--line); background: rgba(248, 246, 241, .85); color: var(--ink); font-weight: 500; font-size: 16px; cursor: pointer; transition: border-color .2s; }
+.intro-ov__skip:hover { border-color: var(--ink); }
+.intro-fly { position: fixed; z-index: 101; margin: 0; transform-origin: 0 0; pointer-events: none; }
+.intro-ov--css .intro-ov__line { position: absolute; left: 0; top: calc(50% + 48px); width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: left; animation: introLine .7s cubic-bezier(.6, 0, .2, 1) forwards; }
+.intro-ov--css .intro-ov__mark { position: relative; width: min(64vw, 280px); height: auto; opacity: 0; animation: introFade .45s ease .55s forwards; }
+@keyframes introLine { to { transform: scaleX(1); } }
+@keyframes introFade { to { opacity: 1; } }
 .proof { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
 .proof p { padding: 22px 0; font-size: clamp(18px, 2vw, 22px); font-weight: 600; letter-spacing: -0.01em; }
 .problem__grid { display: grid; gap: 40px; }
@@ -254,8 +300,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .js .rv { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
 .js .rv.in { opacity: 1; transform: none; }
 }</style>
-<script>document.documentElement.className="js"</script>
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.waxlo.com.br/#org","name":"WAXLO","url":"https://www.waxlo.com.br/","logo":"https://www.waxlo.com.br/assets/icon-192.png","image":"https://www.waxlo.com.br/assets/og-image.jpg","description":"Criação de sites profissionais, presença no Google e marketing para negócios de Lages (SC) e de todo o Brasil, com clientes também na Irlanda.","telephone":"+5549988913704","address":{"@type":"PostalAddress","addressLocality":"Lages","addressRegion":"SC","addressCountry":"BR"},"areaServed":["BR","IE"],"sameAs":["https://www.instagram.com/waxlo.tech/"],"founder":[{"@id":"https://www.waxlo.com.br/#joao-canonica"},{"@id":"https://www.waxlo.com.br/#joao-otavio-pereira"},{"@id":"https://www.waxlo.com.br/#marco-oliveira"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Serviços WAXLO","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Criação de sites"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Presença no Google (SEO local)"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Marketing e conteúdo"}}]}},{"@type":"WebSite","@id":"https://www.waxlo.com.br/#site","url":"https://www.waxlo.com.br/","name":"WAXLO","inLanguage":"pt-BR","publisher":{"@id":"https://www.waxlo.com.br/#org"}},{"@type":"Person","@id":"https://www.waxlo.com.br/#joao-canonica","name":"João Canonica","jobTitle":"CEO","worksFor":{"@id":"https://www.waxlo.com.br/#org"}},{"@type":"Person","@id":"https://www.waxlo.com.br/#joao-otavio-pereira","name":"João Otávio Pereira","jobTitle":"CCO","worksFor":{"@id":"https://www.waxlo.com.br/#org"}},{"@type":"Person","@id":"https://www.waxlo.com.br/#marco-oliveira","name":"Marco Oliveira","jobTitle":"CTO","worksFor":{"@id":"https://www.waxlo.com.br/#org"}}]}</script>
+<script>document.documentElement.classList.add("js")</script>
+<script>(function(){var d=document.documentElement,f=/[?&]intro=1(&|$)/.test(location.search),s=0;try{s=+localStorage.getItem("waxlo-intro-v4")||0}catch(e){}var c=navigator.connection,r=matchMedia("(prefers-reduced-motion: reduce)").matches,v=c&&c.saveData;if(f||(Date.now()-s>2592e6&&!r&&!v)){d.classList.add("intro",innerWidth>=768?"intro-v":"intro-c")}})()</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":["Organization","ProfessionalService"],"@id":"https://www.waxlo.com.br/#org","name":"WAXLO","url":"https://www.waxlo.com.br/","logo":"https://www.waxlo.com.br/assets/icon-512.png","image":"https://www.waxlo.com.br/assets/og-image.jpg","description":"Criação de sites profissionais, presença no Google e marketing para negócios de Lages (SC) e de todo o Brasil, com clientes também na Irlanda.","telephone":"+5549988913704","address":{"@type":"PostalAddress","addressLocality":"Lages","addressRegion":"SC","addressCountry":"BR"},"areaServed":["BR","IE"],"sameAs":["https://www.instagram.com/waxlo.tech/"],"founder":[{"@id":"https://www.waxlo.com.br/#joao-canonica"},{"@id":"https://www.waxlo.com.br/#joao-otavio-pereira"},{"@id":"https://www.waxlo.com.br/#marco-oliveira"}],"hasOfferCatalog":{"@type":"OfferCatalog","name":"Serviços WAXLO","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Criação de sites"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Presença no Google (SEO local)"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Marketing e conteúdo"}}]}},{"@type":"WebSite","@id":"https://www.waxlo.com.br/#site","url":"https://www.waxlo.com.br/","name":"WAXLO","inLanguage":"pt-BR","publisher":{"@id":"https://www.waxlo.com.br/#org"}},{"@type":"Person","@id":"https://www.waxlo.com.br/#joao-canonica","name":"João Canonica","jobTitle":"CEO","worksFor":{"@id":"https://www.waxlo.com.br/#org"}},{"@type":"Person","@id":"https://www.waxlo.com.br/#joao-otavio-pereira","name":"João Otávio Pereira","jobTitle":"CCO","worksFor":{"@id":"https://www.waxlo.com.br/#org"}},{"@type":"Person","@id":"https://www.waxlo.com.br/#marco-oliveira","name":"Marco Oliveira","jobTitle":"CTO","worksFor":{"@id":"https://www.waxlo.com.br/#org"}}]}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Quanto tempo leva para ficar pronto?","acceptedAnswer":{"@type":"Answer","text":"Depende do escopo do projeto. Na nossa primeira reunião, definimos juntos o que será feito, o prazo real e todas as etapas, para que não haja surpresas de nenhum dos dois lados. Alinhamento antes da execução é uma das prioridades."}},{"@type":"Question","name":"Como funciona o processo de criação?","acceptedAnswer":{"@type":"Answer","text":"Tudo começa com uma conversa. Entendemos seu negócio, seus clientes e seus objetivos. Fazemos reuniões de acompanhamento durante o desenvolvimento para que você participe de cada decisão. O resultado é algo construído para o seu negócio."}},{"@type":"Question","name":"Funciona para negócio pequeno?","acceptedAnswer":{"@type":"Answer","text":"Sim. Foi exatamente para negócios locais e em crescimento que desenvolvemos essas soluções. Não existe tamanho mínimo."}},{"@type":"Question","name":"E se eu precisar mudar algo depois?","acceptedAnswer":{"@type":"Answer","text":"Alterações estão inclusas na mensalidade. Você pede, nós executamos, sem custo extra e sem burocracia."}},{"@type":"Question","name":"Quanto custa?","acceptedAnswer":{"@type":"Answer","text":"O valor é combinado na reunião de diagnóstico, conforme o escopo do projeto, e fica registrado no contrato antes de começarmos."}}]}</script>
 <script src="/assets/site.js" defer></script>
 </head>
@@ -273,10 +320,13 @@ button, input, select, textarea { font: inherit; color: inherit; }
 <main id="conteudo">
 
 <section class="hero">
-  <div class="wrap">
+  <div class="wrap hero__grid">
+    <div class="hero__text">
     <h1>Sites profissionais para negócios que querem ser encontrados e escolhidos.</h1>
     <p class="hero__sub">A WAXLO é uma empresa de tecnologia de Lages, SC. Criamos o site do seu negócio, colocamos você no Google e organizamos o contato com o cliente pelo WhatsApp. Trabalhamos com clientes no Brasil e na Irlanda.</p>
     <div class="hero__cta"><a class="btn btn--gold" href="#contato">Pedir diagnóstico</a><a class="btn btn--line" href="#trabalhos">Ver trabalhos</a></div>
+    </div>
+    <div class="hero__media"><video muted loop playsinline preload="none" data-poster="/assets/media/hero-poster.jpg" aria-hidden="true" tabindex="-1"></video><button class="hero__pause" type="button" aria-label="Pausar animação" hidden></button></div>
   </div>
 </section>
 <div class="proof"><div class="wrap"><p>No ar em Lages (SC), Angatuba (SP) e Dublin (Irlanda).</p></div></div>

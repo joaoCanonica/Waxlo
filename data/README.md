@@ -12,3 +12,5 @@ Depois de editar qualquer arquivo daqui, rode `node scripts/build.mjs` e faça c
 
 Prévias novas: `node scripts/make-previews.mjs <slug>` (precisa de Playwright e ffmpeg).
 Varredura de aceite: `node scripts/varredura.mjs`.
+
+Mídia da entrada e do hero: `assets/media/` (intro-waxlo-1080.*, intro-poster.jpg, hero-loop-1280.*, hero-poster.jpg, hero-static.jpg, waxlo-wordmark-transparente.png). Arquivo ausente = recurso desligado. Para ver a entrada de novo: `?intro=1` na URL.
